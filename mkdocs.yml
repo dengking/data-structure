@@ -1,4 +1,4 @@
-site_name:  data structure
+site_name:  data-structure
 site_url: https://dengking.github.io/data-structure
 site_description: Project documentation with Markdown.
 site_author: DengKing
@@ -22,7 +22,7 @@ nav:
 - structure: structure.md
 - ADT:
   - wikipedia-Abstract-data-type: ADT/wikipedia-Abstract-data-type.md
-- data-structure:
+- data-structures:
   - tree:
     - application-of-tree: data-structure/tree/application-of-tree.md
     - tree-and-recursion: data-structure/tree/tree-and-recursion.md
