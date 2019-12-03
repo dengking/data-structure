@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="DengKing">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>structure - compiler principle</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "structure";
+    var mkdocs_page_input_path = "structure.md";
+    var mkdocs_page_url = "/data-structure/structure/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/django.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> compiler principle</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../wikipedia-Data-structure/">home</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">structure</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#hierarchical">hierarchical</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#hierarchical-structure-and-recursion">Hierarchical structure and recursion</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#structure-of-sentence">structure of sentence</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ADT</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../ADT/wikipedia-Abstract-data-type/">wikipedia-Abstract-data-type</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">data-structure</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">tree</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../data-structure/tree/application-of-tree/">application-of-tree</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../data-structure/tree/tree-and-recursion/">tree-and-recursion</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../data-structure/tree/tree-and-stack/">tree-and-stack</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">compiler principle</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>structure</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>我们使用data structure来保存数据，那么是否想过这样的问题：数据有哪些结构呢？显然，对结构的研究有助于我们选择合适的data structure来保存我们的数据，并且只有当我们知道事物结构后，才能够使用计算机来处理它。structure是一个宏大的话题，在这篇文章中，我仅仅从<a href="https://en.wikipedia.org/wiki/Computer_science">computer science</a>的角度来探讨structure.</p>
+<h1 id="hierarchical"><a href="https://en.wikipedia.org/wiki/Hierarchical">hierarchical</a><a class="headerlink" href="#hierarchical" title="Permanent link"></a></h1>
+<p><a href="https://en.wikipedia.org/wiki/Hierarchical">Hierarchical</a> structure is common in computer science.</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Directory_(computing)">directory</a></li>
+</ul>
+<h2 id="hierarchical-structure-and-recursion"><a href="https://en.wikipedia.org/wiki/Hierarchical">Hierarchical</a> structure and recursion<a class="headerlink" href="#hierarchical-structure-and-recursion" title="Permanent link"></a></h2>
+<h1 id="structure-of-sentence">structure of sentence<a class="headerlink" href="#structure-of-sentence" title="Permanent link"></a></h1>
+<p>In <a href="https://en.wikipedia.org/wiki/Linguistics">linguistics</a>, <a href="https://en.wikipedia.org/wiki/Syntax"><strong>syntax</strong></a> is the set of rules, principles, and processes that govern the structure of <a href="https://en.wikipedia.org/wiki/Sentence_(linguistics)">sentences</a> (<strong>sentence structure</strong>) in a given <a href="https://en.wikipedia.org/wiki/Natural_language">language</a>, usually including <a href="https://en.wikipedia.org/wiki/Word_order">word order</a>. The term <em>syntax</em> is also used to refer to the study of such principles and processes.[<a href="https://en.wikipedia.org/wiki/Syntax#cite_note-Chomsky_def-3">3]</a> The goal of many syntacticians is to discover the <a href="https://en.wikipedia.org/wiki/Universal_grammar">syntactic rules</a> common to all languages.</p>
+<p>Studies of the <a href="https://en.wikipedia.org/wiki/Syntax">syntactical</a> aspects of languages(their internal <strong>structural patterns</strong>)  belongs to the <a href="https://en.wikipedia.org/wiki/Formal_language">theory of formal language</a>. In theory of formal language, <a href="https://en.wikipedia.org/wiki/Formal_grammar">formal grammar</a> is used to describe structure of <a href="https://en.wikipedia.org/wiki/Sentence_(linguistics)">sentences</a>, that is <a href="https://en.wikipedia.org/wiki/Syntax"><strong>syntax</strong></a> .  <a href="https://en.wikipedia.org/wiki/Formal_grammar">Formal grammar</a> such as a <a href="https://en.wikipedia.org/wiki/Regular_grammar">regular grammar</a> or <a href="https://en.wikipedia.org/wiki/Context-free_grammar">context-free grammar</a>, consists of its <a href="https://en.wikipedia.org/wiki/Formation_rule">formation rules</a>. The first step to describing the meaning of an utterance in language is to break it down part by part and look at its analyzed form (known as its <a href="https://en.wikipedia.org/wiki/Parse_tree">parse tree</a> in computer science, and as its <a href="https://en.wikipedia.org/wiki/Deep_structure_and_surface_structure">deep structure</a> in <a href="https://en.wikipedia.org/wiki/Generative_grammar">generative grammar</a>).</p>
+<p><a href="https://en.wikipedia.org/wiki/Parse_tree">Parse tree</a>  is used in compiler, which reveal to us that tree can be used to describe the structure of <a href="https://en.wikipedia.org/wiki/Sentence_(linguistics)">sentences</a> that is  <a href="https://en.wikipedia.org/wiki/Syntax">syntax</a> and  <a href="https://en.wikipedia.org/wiki/Formal_grammar">formal grammar</a> can be convert to <a href="https://en.wikipedia.org/wiki/Tree_(data_structure)">tree</a>.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ADT/wikipedia-Abstract-data-type/" class="btn btn-neutral float-right" title="wikipedia-Abstract-data-type">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../wikipedia-Data-structure/" class="btn btn-neutral" title="home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/dengking/data-structure" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../wikipedia-Data-structure/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../ADT/wikipedia-Abstract-data-type/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
