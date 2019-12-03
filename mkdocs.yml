@@ -1,0 +1,37 @@
+site_name:  compiler principle
+site_url: https://dengking.github.io/data-structure
+site_description: Project documentation with Markdown.
+site_author: DengKing
+
+
+repo_url: https://github.com/dengking/data-structure
+
+edit_uri: ""
+
+
+
+theme:
+    name: readthedocs
+    highlightjs: true
+    hljs_languages:
+        - yaml
+        - django
+        
+nav:
+- Home: index.md
+
+    
+extra_css:
+    - css/extra.css
+
+markdown_extensions:
+    - toc:
+        permalink: 
+    - admonition
+    - def_list
+    - mdx_gh_links:
+        user: mkdocs
+        repo: mkdocs
+        
+plugins:
+    - search
