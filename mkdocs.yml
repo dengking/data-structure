@@ -1,4 +1,4 @@
-site_name:  compiler principle
+site_name:  data structure
 site_url: https://dengking.github.io/data-structure
 site_description: Project documentation with Markdown.
 site_author: DengKing
@@ -18,7 +18,7 @@ theme:
         - django
         
 nav:
-- home: wikipedia-Data-structure.md
+- Home: wikipedia-Data-structure.md
 - structure: structure.md
 - ADT:
   - wikipedia-Abstract-data-type: ADT/wikipedia-Abstract-data-type.md
