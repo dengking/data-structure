@@ -35,9 +35,9 @@ class DictionaryTreeBuilder:
                 path = os.path.join(*sub_dir_pathes[1:])
                 for sub_dir_path in sub_dir_pathes[1:]:
                     """沿着路径找到所属的节点"""
-
-                    if sub_dir_path in current_node:
-                        current_node = current_node[sub_dir_path]
+                    key = self.key_name(sub_dir_path)
+                    if key in current_node:
+                        current_node = current_node[key]
                     else:
                         error = '{}未添加'.format(sub_dir_path)
                         raise Exception(error)
