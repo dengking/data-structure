@@ -18,7 +18,15 @@ theme:
         - django
         
 nav:
-- Home: index.md
+- home: wikipedia-Data-structure.md
+- structure: structure.md
+- ADT:
+  - wikipedia-Abstract-data-type: ADT/wikipedia-Abstract-data-type.md
+- data-structure:
+  - tree:
+    - application-of-tree: data-structure/tree/application-of-tree.md
+    - tree-and-recursion: data-structure/tree/tree-and-recursion.md
+    - tree-and-stack: data-structure/tree/tree-and-stack.md
 
     
 extra_css:
