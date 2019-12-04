@@ -26,3 +26,36 @@ Essentially Speaking, a **programming language** is a [formal language](https://
 
 So it's natural to use trees in the compiling.
 
+[Regular expression](https://en.wikipedia.org/wiki/Regular_expression), [algebraic expression](https://en.wikipedia.org/wiki/Algebraic_expression) can be described using  [formal grammar](https://en.wikipedia.org/wiki/Formal_grammar), so given an expression, it can be converted to an equivalent  [parse tree](https://en.wikipedia.org/wiki/Parse_tree).
+
+
+
+[Derivations and syntax trees](https://en.wikipedia.org/wiki/Context-free_grammar#Derivations_and_syntax_trees)对此的解释是非常好的。
+
+
+
+## implicit  tree 
+
+https://en.wikipedia.org/wiki/Bottom-up_parsing
+
+Tree is then merely implicit in the parser's actions.
+
+类似的有递归调用树。
+
+https://opendatastructures.org/ods-cpp/10_1_Implicit_Binary_Tree.html
+
+An Implicit Binary Tree
+
+
+
+[Implicit data structure](https://en.wikipedia.org/wiki/Implicit_data_structure)
+
+
+
+
+
+[Implicit *k*-d tree](https://en.wikipedia.org/wiki/Implicit_k-d_tree)
+
+
+
+## [decision tree](https://en.wikipedia.org/wiki/Decision_tree)
