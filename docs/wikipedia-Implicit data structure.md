@@ -32,3 +32,8 @@ This can be generalized to a [complete binary tree](https://en.wikipedia.org/wik
 
 More sophisticated implicit data structures include the [beap](https://en.wikipedia.org/wiki/Beap) (bi-parental heap).
 
+
+
+### implicit stack
+
+https://mp.weixin.qq.com/s/YCWRBCay8PvnjomVcEBOTA

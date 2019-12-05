@@ -52,6 +52,8 @@ An Implicit Binary Tree
 
 
 
+函数的调用过程使用的是栈，正如在[Implicit data structure](https://en.wikipedia.org/wiki/Implicit_data_structure)中所介绍的，可以将tree保存到一个array中，函数调用过程中所使用的call stack其实就类似于将一棵树保存到栈中。
+
 
 
 [Implicit *k*-d tree](https://en.wikipedia.org/wiki/Implicit_k-d_tree)
