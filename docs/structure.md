@@ -5,6 +5,9 @@
 [Hierarchical](https://en.wikipedia.org/wiki/Hierarchical) structure is common in computer science.
 
 - [directory](https://en.wikipedia.org/wiki/Directory_(computing))
+- [Formal grammar](https://en.wikipedia.org/wiki/Formal_grammar) 
+- 一些[File format](https://en.wikipedia.org/wiki/File_format)，如：[Document Object Model](https://en.wikipedia.org/wiki/Document_Object_Model)（[XML](https://en.wikipedia.org/wiki/XML)）,[json](https://en.wikipedia.org/wiki/JSON), [yaml](https://en.wikipedia.org/wiki/YAML)
+- [binary expression tree](https://en.wikipedia.org/wiki/Binary_expression_tree)
 
 ## [Hierarchical](https://en.wikipedia.org/wiki/Hierarchical) structure and recursion
 
@@ -18,3 +21,20 @@ Studies of the [syntactical](https://en.wikipedia.org/wiki/Syntax) aspects of la
 
 [Parse tree](https://en.wikipedia.org/wiki/Parse_tree)  is used in compiler, which reveal to us that tree can be used to describe the structure of [sentences](https://en.wikipedia.org/wiki/Sentence_(linguistics)) that is  [syntax](https://en.wikipedia.org/wiki/Syntax) and  [formal grammar](https://en.wikipedia.org/wiki/Formal_grammar) can be convert to [tree](https://en.wikipedia.org/wiki/Tree_(data_structure)).
 
+参见《Compilers Principles, Techniques, & Tools Second Edition》4.2.4 Parse Trees and Derivations
+
+
+
+# hierarchy and recursion
+
+具备[hierarchical](https://en.wikipedia.org/wiki/Hierarchical)结构的往往具备recursive的特征，这一点在维基百科的词条[hierarchical](https://en.wikipedia.org/wiki/Hierarchical)中也有论述。
+
+
+
+
+
+# [Hierarchical database model](https://en.wikipedia.org/wiki/Hierarchical_database_model)
+
+
+
+# [Data model](https://en.wikipedia.org/wiki/Data_model#Data_structure_diagram)
