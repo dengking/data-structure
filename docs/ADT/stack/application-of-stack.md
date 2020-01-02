@@ -30,3 +30,13 @@
 - [Deterministic pushdown automaton](https://en.wikipedia.org/wiki/Deterministic_pushdown_automaton)
 - [Pushdown automaton](https://en.wikipedia.org/wiki/Pushdown_automaton)
 
+
+
+
+
+# 显示栈和隐式栈
+
+隐式栈是指使用call stack，比如：
+
+- python的`pgen`使用隐式栈来实现括号的匹配
+

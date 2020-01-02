@@ -77,7 +77,21 @@ Graph models are useful tools in the design of software. We will briefly describ
 
 在tensorflow中，node表示operation，edge表示tensor，与此类似的有，
 
+### computational graph
 
+https://www.codingame.com/playgrounds/9487/deep-learning-from-scratch---theory-and-implementation/computational-graphs
+
+http://colah.github.io/posts/2015-08-Backprop/
+
+http://www.cs.columbia.edu/~mcollins/ff2.pdf
+
+### [Knowledge Graph](https://en.wikipedia.org/wiki/Knowledge_Graph)
+
+
+
+### word graph
+
+In [jieba](https://github.com/fxsjy/jieba),  based on a prefix dictionary structure to achieve efficient **word graph** scanning. Build a directed acyclic graph (DAG) for all possible word combinations.
 
 ## TOURNAMENTS
 
