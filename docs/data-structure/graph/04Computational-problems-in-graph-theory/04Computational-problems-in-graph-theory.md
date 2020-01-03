@@ -1,4 +1,4 @@
-
+[TOC]
 
 # [Computational problems in graph theory](https://en.wikipedia.org/wiki/Category:Computational_problems_in_graph_theory)
 
@@ -43,6 +43,18 @@
 
 
 ### [Longest path problem](https://en.wikipedia.org/wiki/Longest_path_problem)
+
+
+
+## [Tree decomposition](https://en.wikipedia.org/wiki/Tree_decomposition)
+
+[Junction tree algorithm](https://en.wikipedia.org/wiki/Junction_tree_algorithm)
+
+# [Graph algorithms](https://en.wikipedia.org/wiki/Category:Graph_algorithms)
+
+**Graph algorithms** solve problems related to [graph theory](https://en.wikipedia.org/wiki/Graph_theory).
+
+
 
 
 

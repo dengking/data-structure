@@ -93,6 +93,12 @@ http://www.cs.columbia.edu/~mcollins/ff2.pdf
 
 In [jieba](https://github.com/fxsjy/jieba),  based on a prefix dictionary structure to achieve efficient **word graph** scanning. Build a directed acyclic graph (DAG) for all possible word combinations.
 
+
+
+### [probabilistic graphical model](https://en.wikipedia.org/wiki/Graphical_model)
+
+
+
 ## TOURNAMENTS
 
 We now give some examples that show how graphs can also be used to model different kinds of tournaments.
