@@ -97,7 +97,11 @@ In [jieba](https://github.com/fxsjy/jieba),  based on a prefix dictionary struct
 
 ### [probabilistic graphical model](https://en.wikipedia.org/wiki/Graphical_model)
 
+[Tree diagram (probability theory)](https://en.wikipedia.org/wiki/Tree_diagram_(probability_theory))
 
+### [Automata theory](https://en.wikipedia.org/wiki/Automata_theory)
+
+### [Finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine)
 
 ## TOURNAMENTS
 
