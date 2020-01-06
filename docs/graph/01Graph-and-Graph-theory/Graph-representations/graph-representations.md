@@ -1,0 +1,1 @@
+# [Graph (abstract data type)](https://en.wikipedia.org/wiki/Graph_(abstract_data_type))
