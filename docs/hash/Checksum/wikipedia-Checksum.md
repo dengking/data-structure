@@ -1,0 +1,1 @@
+# [Checksum](https://en.wikipedia.org/wiki/Checksum)
