@@ -92,3 +92,25 @@ I haven't looked into it deeply, but on the surface it seems solid.
 - 2
 
   I think [Fizz' answer](https://stackoverflow.com/a/28270537/1847419) is more up-to-date (from 2015) rather than this answer (2012) and therefore should probably be the preferred answer by now. – [fnl](https://stackoverflow.com/users/1847419/fnl) [Jul 11 '17 at 10:45](https://stackoverflow.com/questions/256511/skip-list-vs-binary-search-tree#comment77038160_260277)
+
+
+
+
+
+
+
+# [B-tree](https://en.wikipedia.org/wiki/B-tree) VS [skip list](https://en.wikipedia.org/wiki/Skip_list)
+
+看了这两种DS的原理，发现两者其实有些类似：以空间换时间，即通过构建数据之间的更多关系来加速数据的access，显然这些关系是需要耗费空间来存储的，所以就是前面所述的以空间换时间，其实当我看完了两者的原理后，觉得它们其实非常类似，尤其是看到[B-tree](https://en.wikipedia.org/wiki/B-tree)的主要应用是在DB或file system中实现索引后，我发掘其实它们的原理的共同之处其实就是index；通过重建index来加速数据的access；
+
+于是我就想，既然[B-tree](https://en.wikipedia.org/wiki/B-tree)的主要应用是在DB或file system中实现索引，那么[skip list](https://en.wikipedia.org/wiki/Skip_list)是否也能够呢？
+
+检索了一番后，发现其实是有应用案例的：
+
+- [MemSQL](https://en.wikipedia.org/wiki/MemSQL) uses skip lists as its prime indexing structure for its database technology.
+
+- [The Story Behind MemSQL’s Skiplist Indexes](https://www.memsql.com/blog/what-is-skiplist-why-skiplist-index-for-memsql/)
+
+
+
+其实发现，在文件系统中多使用B-tree，而在内存中则多使用skip list

@@ -81,3 +81,14 @@ while len(to_expand_words):
 ## tree and set
 
 # [Tree automaton](https://en.wikipedia.org/wiki/Tree_automaton)
+
+
+
+
+
+## [Hierarchy](https://en.wikipedia.org/wiki/Hierarchy) structure and recursion
+
+具备[hierarchical](https://en.wikipedia.org/wiki/Hierarchical)结构的往往具备recursive的特征，这一点在维基百科的词条[hierarchical](https://en.wikipedia.org/wiki/Hierarchical)中也有论述。
+
+
+

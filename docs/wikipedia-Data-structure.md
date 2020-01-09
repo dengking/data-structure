@@ -21,3 +21,13 @@ Different types of data structures are suited to different kinds of applications
 > NOTE: So how to choose data structure ? It is an art and worth learning.
 
 Data structures provide a means to manage large amounts of data efficiently for uses such as large [databases](https://en.wikipedia.org/wiki/Database) and [internet indexing services](https://en.wikipedia.org/wiki/Web_indexing). Usually, efficient data structures are key to designing efficient [algorithms](https://en.wikipedia.org/wiki/Algorithm). Some formal design methods and [programming languages](https://en.wikipedia.org/wiki/Programming_language) emphasize data structures, rather than algorithms, as the key organizing factor in software design. Data structures can be used to organize the storage and retrieval of information stored in both [main memory](https://en.wikipedia.org/wiki/Main_memory) and [secondary memory](https://en.wikipedia.org/wiki/Secondary_memory).
+
+
+
+# [List of data structures](https://en.wikipedia.org/wiki/List_of_data_structures)
+
+
+
+
+
+# [List of terms relating to algorithms and data structures](https://en.wikipedia.org/wiki/List_of_terms_relating_to_algorithms_and_data_structures)
