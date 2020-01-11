@@ -1,8 +1,26 @@
+[TOC]
+
 # Application of tree data structure
+
+> NOTE: The content is concluded from the following post:
+>
+> - [Tree structure](https://en.wikipedia.org/wiki/Tree_structure#Examples_of_tree_structures)
+> - [Tree (data structure)](https://en.wikipedia.org/wiki/Tree_(data_structure)#Common_uses)
+
+|                         Application                          |                                                              |
+| :----------------------------------------------------------: | ------------------------------------------------------------ |
+| Representing  [hierarchy](https://en.wikipedia.org/wiki/Hierarchical) structure | [Unordered tree](https://en.wikipedia.org/wiki/Tree_(data_structure)#Unordered_tree) |
+| Representing [sorted lists](https://en.wikipedia.org/wiki/Sorting_algorithm) of data | [Ordered tree](https://en.wikipedia.org/wiki/Tree_(data_structure)#Ordered_tree)/[Search tree](https://en.wikipedia.org/wiki/Search_tree) |
+
+
 
 ## Representing  [hierarchy](https://en.wikipedia.org/wiki/Hierarchical) structure 
 
-[Hierarchy](https://en.wikipedia.org/wiki/Hierarchical) structure is common in computer science, it often appears as a [tree structure](https://en.wikipedia.org/wiki/Tree_structure), it is obvious that [tree (data structure)](https://en.wikipedia.org/wiki/Tree_(data_structure)) is used to implement it. Here is examples of [tree structures](https://en.wikipedia.org/wiki/Tree_structure):
+[Hierarchy](https://en.wikipedia.org/wiki/Hierarchical) structure is common in computer science, it often appears as a [tree structure](https://en.wikipedia.org/wiki/Tree_structure), it is obvious that [tree (data structure)](https://en.wikipedia.org/wiki/Tree_(data_structure)) is used to implement it. 
+
+
+
+Here is examples of [tree structures](https://en.wikipedia.org/wiki/Tree_structure):
 
 ### [Operating system](https://en.wikipedia.org/wiki/Operating_system)
 
@@ -30,7 +48,7 @@
 >
 > [Parse tree](https://en.wikipedia.org/wiki/Parse_tree)  is used in compiler, which reveal to us that tree can be used to describe the structure of [sentences](https://en.wikipedia.org/wiki/Sentence_(linguistics)) that is  [syntax](https://en.wikipedia.org/wiki/Syntax) and  [formal grammar](https://en.wikipedia.org/wiki/Formal_grammar) can be convert to [tree](https://en.wikipedia.org/wiki/Tree_(data_structure)).
 
-If you have read book describe the **compiler technology**, for example the classic definitive book [Compilers: Principles, Techniques, and Tools](https://en.wikipedia.org/wiki/Compilers:_Principles,_Techniques,_and_Tools) by Alfred V. Aho, Monica S. Lam, Ravi Sethi, and Jeffrey D. Ullman, you will be aware how important the tree structure is to the compiler. As described in chapter 2.2.3 Parse Trees:
+If you have read book describing the **compiler technology**, for example the classic definitive book [Compilers: Principles, Techniques, and Tools](https://en.wikipedia.org/wiki/Compilers:_Principles,_Techniques,_and_Tools) by Alfred V. Aho, Monica S. Lam, Ravi Sethi, and Jeffrey D. Ullman, you will be aware how important the tree structure is to the compiler. As described in chapter 2.2.3 Parse Trees:
 
 > Tree data structures figure prominently in compiling.
 
@@ -58,3 +76,4 @@ So it's natural to use trees in the compiling.
 
 
 
+## Representing [sorted lists](https://en.wikipedia.org/wiki/Sorting_algorithm) of data

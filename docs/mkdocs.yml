@@ -1,4 +1,4 @@
-- docs:
+docs:
     - introduction: index.md
     - structure: structure.md
     - wikipedia-Data-structure:
@@ -13,3 +13,4 @@
     - probabilistic-data-structures: None
     - summary-of-data-structure: None
     - TODO: TODO.md
+others: None
