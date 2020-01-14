@@ -28,6 +28,8 @@ Other popular methods include [arrays](https://en.wikipedia.org/wiki/Array_data_
 
 The Boolean set operations can be implemented in terms of more elementary operations (`pop`, `clear`, and `add`), but specialized algorithms may yield lower asymptotic time bounds. If sets are implemented as sorted lists, for example, the naive algorithm for `union(*S*,*T*)` will take time proportional to the length *m* of *S* times the length *n* of *T*; whereas a variant of the [list merging algorithm](https://en.wikipedia.org/wiki/Merge_algorithm) will do the job in time proportional to *m*+*n*. Moreover, there are specialized set data structures (such as the [union-find data structure](https://en.wikipedia.org/wiki/Union-find_algorithm)) that are optimized for one or more of these operations, at the expense of others.
 
+
+
 - [How is set() implemented in python ?](https://stackoverflow.com/questions/3949310/how-is-set-implemented)
 - [What are the underlying data structures used for Redis?](https://stackoverflow.com/questions/9625246/what-are-the-underlying-data-structures-used-for-redis)
 - [How is the Redis sorted set implemented?](https://jameshfisher.com/2018/04/22/redis-sorted-set/)

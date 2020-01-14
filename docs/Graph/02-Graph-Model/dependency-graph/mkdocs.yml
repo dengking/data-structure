@@ -1,0 +1,4 @@
+docs:
+    - Dependency-graph: Dependency-graph.md
+    - Precedence-graph: wikipedia-Precedence-graph.md
+    - Dependency-resolving-algorithm: Dependency-resolving-algorithm.md

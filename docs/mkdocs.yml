@@ -1,16 +1,14 @@
 docs:
-    - introduction: index.md
-    - structure: structure.md
-    - wikipedia-Data-structure:
-        - Data-structure: wikipedia-Data-structure.md
-        - Implicit-data-structure: wikipedia-Implicit-data-structure.md
+    - Home: index.md
+    - Structure: structure.md
+    - Data-structure: None
     - ADT: None
-    - array: None
-    - list: None
-    - graph: None
-    - tree: None
-    - hash: None
-    - probabilistic-data-structures: None
-    - summary-of-data-structure: None
+    - Array: None
+    - List: None
+    - Graph: None
+    - Tree: None
+    - Hash: None
+    - Probabilistic-data-structures: None
+    - Summary-of-data-structure: None
     - TODO: TODO.md
 others: None
