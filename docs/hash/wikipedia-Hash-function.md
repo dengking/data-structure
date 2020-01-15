@@ -61,4 +61,4 @@ Hash functions rely on generating favorable probability distributions for their 
 
 
 
-## Hashing variable-length data
+## Hashing variable-length dat

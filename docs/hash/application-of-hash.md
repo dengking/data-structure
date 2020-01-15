@@ -33,3 +33,7 @@ https://www.i-programmer.info/babbages-bag/479-hashing.html?start=1
 ## Applications of Hashing
 
 https://www.geeksforgeeks.org/applications-of-hashing/
+
+
+
+## python中的symbol table是使用的hash 吗？
