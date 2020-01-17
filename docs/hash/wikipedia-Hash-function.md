@@ -64,7 +64,7 @@ Hash functions rely on generating favorable probability distributions for their 
 
 ## Properties
 
-> Note: Properties determine their usage, it is necessary to know the properties a hash function possess.
+> Note: Properties determine their usage, it is necessary to know the properties a hash function possess. 
 
 ### Uniformity
 
