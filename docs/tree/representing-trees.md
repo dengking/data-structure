@@ -77,7 +77,7 @@ science
 
 > Note: The following content comes from the [the dragon book](https://en.wikipedia.org/wiki/Compilers:_Principles,_Techniques,_and_Tools) 6.2 Three-Address Code:
 >
-> Three-address code is a linearized representation of a syntax tree or a DAG in which explicit names correspond to the interior nodes of the graph. 
+> Three-address code is a **linearized representation** of a syntax tree or a DAG in which explicit names correspond to the interior nodes of the graph. 
 
 ## [Three-address code](https://en.wikipedia.org/wiki/Three-address_code)
 
