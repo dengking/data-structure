@@ -58,7 +58,14 @@
 
 
 
+# [Reachability](https://en.wikipedia.org/wiki/Reachability)
+
+
+
+# [Connectivity (graph theory)](https://en.wikipedia.org/wiki/Connectivity_(graph_theory))
+
 # TODO
 
 [Directed graph traversal, orderings and applications to data-flow analysis](https://eli.thegreenplace.net/2015/directed-graph-traversal-orderings-and-applications-to-data-flow-analysis/)
 
+[Control-flow graph](https://en.wikipedia.org/wiki/Control-flow_graph)

@@ -8,7 +8,7 @@
 
 # [Structure](https://en.wikipedia.org/wiki/Structure)
 
-A **structure** is an arrangement and organization of interrelated elements in a material object or [system](https://en.wikipedia.org/wiki/System), or the object or system so organized. Material structures include man-made objects such as [buildings](https://en.wikipedia.org/wiki/Building) and [machines](https://en.wikipedia.org/wiki/Machine) and natural objects such as [biological organisms](https://en.wikipedia.org/wiki/Organism), [minerals](https://en.wikipedia.org/wiki/Mineral) and [chemicals](https://en.wikipedia.org/wiki/Chemical_substance). Abstract structures include [data structures](https://en.wikipedia.org/wiki/Data_structure) in [computer science](https://en.wikipedia.org/wiki/Computer_science) and [musical form](https://en.wikipedia.org/wiki/Musical_form). 
+A **structure** is an arrangement and **organization** of interrelated elements in a material object or [system](https://en.wikipedia.org/wiki/System), or the object or system so organized. Material structures include man-made objects such as [buildings](https://en.wikipedia.org/wiki/Building) and [machines](https://en.wikipedia.org/wiki/Machine) and natural objects such as [biological organisms](https://en.wikipedia.org/wiki/Organism), [minerals](https://en.wikipedia.org/wiki/Mineral) and [chemicals](https://en.wikipedia.org/wiki/Chemical_substance). Abstract structures include [data structures](https://en.wikipedia.org/wiki/Data_structure) in [computer science](https://en.wikipedia.org/wiki/Computer_science) and [musical form](https://en.wikipedia.org/wiki/Musical_form). 
 
 Types of structure include a [hierarchy](https://en.wikipedia.org/wiki/Hierarchy) (a cascade of one-to-many relationships), a [network](https://en.wikipedia.org/wiki/Complex_network) featuring many-to-many [links](https://en.wikipedia.org/wiki/Link_(geometry)), or a [lattice](https://en.wikipedia.org/wiki/Lattice_(order)) featuring connections between components that are neighbors in space.
 
@@ -25,3 +25,11 @@ In computer science, structure is everywhere:
 ## [Hierarchy](https://en.wikipedia.org/wiki/Hierarchical) 
 
 [Hierarchy](https://en.wikipedia.org/wiki/Hierarchical) structure is common in computer science, it often appears as a [tree structure](https://en.wikipedia.org/wiki/Tree_structure), which will be described in `tree` chapter.
+
+# structure and relation
+
+按照数据的关系来对它进行组织，比如：
+
+- 按照parent-child关系来组织process
+- 按照inheritance来组织类
+

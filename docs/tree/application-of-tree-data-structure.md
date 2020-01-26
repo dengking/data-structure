@@ -24,7 +24,11 @@ Here is examples of [tree structures](https://en.wikipedia.org/wiki/Tree_structu
 
 ### [Operating system](https://en.wikipedia.org/wiki/Operating_system)
 
-- [directory structure](https://en.wikipedia.org/wiki/Directory_structure) ([directory](https://en.wikipedia.org/wiki/Directory_(computing)))
+#### [directory structure](https://en.wikipedia.org/wiki/Directory_structure) ([directory](https://en.wikipedia.org/wiki/Directory_(computing)))
+
+see also: [tree (command)](https://en.wikipedia.org/wiki/Tree_(command))
+
+#### [process tree](https://en.wikipedia.org/wiki/Pstree)
 
 ### Sports
 
@@ -32,11 +36,29 @@ Here is examples of [tree structures](https://en.wikipedia.org/wiki/Tree_structu
 
 ### Computer Science(partial):
 
-- [binary search tree](https://en.wikipedia.org/wiki/Binary_search_tree)
-- [Red-Black Tree](https://en.wikipedia.org/wiki/Red-Black_Tree)
-- [AVL tree](https://en.wikipedia.org/wiki/AVL_tree)
-- [R-tree](https://en.wikipedia.org/wiki/R-tree)
-- [binary expression tree](https://en.wikipedia.org/wiki/Binary_expression_tree)
+#### [binary search tree](https://en.wikipedia.org/wiki/Binary_search_tree)
+
+
+
+#### [Red-Black Tree](https://en.wikipedia.org/wiki/Red-Black_Tree)
+
+
+
+#### [AVL tree](https://en.wikipedia.org/wiki/AVL_tree)
+
+
+
+#### [R-tree](https://en.wikipedia.org/wiki/R-tree)
+
+
+
+#### [binary expression tree](https://en.wikipedia.org/wiki/Binary_expression_tree)
+
+
+
+#### [Namespace](https://en.wikipedia.org/wiki/Namespace)
+
+namespace的应用场景实在太多，在维基百科的[Namespace](https://en.wikipedia.org/wiki/Namespace)对它总结地非常好。在对它进行思考的时候，发觉使用namespace来组织的数据最终就是hierarchy结构。其实也可以简单地将namespace看做是括号。
 
 ### Linguistics
 
