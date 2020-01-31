@@ -26,7 +26,11 @@ Here is examples of [tree structures](https://en.wikipedia.org/wiki/Tree_structu
 
 #### [directory structure](https://en.wikipedia.org/wiki/Directory_structure) ([directory](https://en.wikipedia.org/wiki/Directory_(computing)))
 
-see also: [tree (command)](https://en.wikipedia.org/wiki/Tree_(command))
+see also: 
+
+[tree (command)](https://en.wikipedia.org/wiki/Tree_(command))
+
+[Path (computing)](https://en.wikipedia.org/wiki/Path_(computing))
 
 #### [process tree](https://en.wikipedia.org/wiki/Pstree)
 

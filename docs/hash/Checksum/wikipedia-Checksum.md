@@ -7,3 +7,21 @@ The [procedure](https://en.wikipedia.org/wiki/Algorithm) which generates this ch
 > NOTE: Hash code can be used as checksum.
 
 [Check digits](https://en.wikipedia.org/wiki/Check_digit) and [parity bits](https://en.wikipedia.org/wiki/Parity_bit) are special cases of checksums, appropriate for small blocks of data (such as [Social Security numbers](https://en.wikipedia.org/wiki/Social_Security_number), [bank account](https://en.wikipedia.org/wiki/Bank_account) numbers, [computer words](https://en.wikipedia.org/wiki/Word_(data_type)), single [bytes](https://en.wikipedia.org/wiki/Byte), etc.). Some [error-correcting codes](https://en.wikipedia.org/wiki/Error-correcting_code) are based on special checksums which not only detect common errors but also allow the original data to be recovered in certain cases.
+
+
+
+# 补充
+
+## [What Is a Checksum (and Why Should You Care)?](https://www.howtogeek.com/363735/what-is-a-checksum-and-why-should-you-care/)
+
+
+
+## [Git](https://git-scm.com/) Has Integrity
+
+在[Pro Git book](https://git-scm.com/book/en/v2)的[1.3 Getting Started - What is Git?](https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F)节中描述了git中checksum的使用情况。
+
+
+
+## [Practical Application of Cryptographic Checksums](http://www.peterjockisch.de/texte/computerartikel/Kryptographische-Pruefsummen/Kryptographische-Pruefsummen_EN.html)
+
+总结的非常好
