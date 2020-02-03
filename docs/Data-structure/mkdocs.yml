@@ -1,5 +1,4 @@
-docs:
+nav:
     - Introduction: index.md
     - Data-structure: wikipedia-Data-structure.md
-    - Description-and-representation-of-data-structure: description-and-representation-of-data-structure.md
     - Implicit-data-structure: wikipedia-Implicit-data-structure.md

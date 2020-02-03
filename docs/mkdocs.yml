@@ -1,14 +1,14 @@
-docs:
+nav:
     - Home: index.md
     - Structure: structure.md
-    - Data-structure: None
-    - ADT: None
-    - Array: None
-    - List: None
-    - Graph: None
-    - Tree: None
-    - Hash: None
-    - Probabilistic-data-structures: None
-    - Summary-of-data-structure: None
+    - Data-structure: Data-structure
+    - ADT: ADT
+    - Array: Array
+    - List: List
+    - Graph: Graph
+    - Tree: Tree
+    - Hash: Hash
+    - Probabilistic-data-structures: Probabilistic-data-structures
+    - Summary-of-data-structure: Summary-of-data-structure
     - TODO: TODO.md
 others: None
