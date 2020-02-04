@@ -1,6 +1,8 @@
 # [Authenticated Data Structures, Generically](http://soc1024.ece.illinois.edu/gpads/)
 
+论文其他地址：
 
+[Authenticated data structures, generically](https://dl.acm.org/doi/10.1145/2535838.2535851)
 
 # [authenticated-data-structures](https://github.com/bobatkey/authenticated-data-structures)
 

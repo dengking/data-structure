@@ -118,9 +118,19 @@ A hash chain is similar to a [blockchain](https://en.wikipedia.org/wiki/Blockcha
 
 > In contrast to the recursive structure of hash chains, the elements of a hash list are independent of each other.
 
+TO READ
 
+[When was hash chain first used?](https://crypto.stackexchange.com/questions/68290/when-was-hash-chain-first-used)
 
+https://www.techopedia.com/definition/32920/hash-chain
 
+https://link.springer.com/referenceworkentry/10.1007%2F978-1-4419-5906-5_780
+
+https://www.researchgate.net/figure/The-Bitcoin-blockchain-is-a-hash-chain-of-blocks-Each-block-has-a-Merkle-tree-of_fig1_316789505
+
+这篇文章将hash chain和block chain联系起来了。
+
+> The Bitcoin blockchain is a hash chain of blocks. Each block has a Merkle tree of transactions. Efficient membership proofs of transactions can be constructed with respect to the Merkle root. Here, tx 1 transfers coins from Alice, Bob and Carol to Dan and somebody else (miners receive a fee of 1 coin). Alice authorizes the transfer of her coins by signing tx 1 , which has an input pointing to her coins locked in the 1st output of txa. Bob and Carol do the same. Similarly, Dan later spends his coins locked in tx 1 's 1st output by signing a new transaction tx d with an input pointing to tx 1 's 1st output. 
 
 # [Merkle tree](https://en.wikipedia.org/wiki/Merkle_tree)
 
@@ -153,3 +163,15 @@ In the top of a hash tree there is a *top hash* (or *root hash* or *master hash*
 
 
 git和blockchain都可以看做是[Merkle tree](https://en.wikipedia.org/wiki/Merkle_tree)，不同的是git是支持branch，所以git的commit所组成的是tree，而blockchain则是线性的。
+
+
+
+# TO READ
+
+https://blockchainlabs.ai/the-merkle-tree/
+
+
+
+# Linked timestamping
+
+https://en.wikipedia.org/wiki/Linked_timestamping
