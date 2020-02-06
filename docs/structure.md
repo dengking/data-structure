@@ -26,6 +26,8 @@ In computer science, structure is everywhere:
 
 [Hierarchy](https://en.wikipedia.org/wiki/Hierarchical) structure is common in computer science, it often appears as a [tree structure](https://en.wikipedia.org/wiki/Tree_structure), which will be described in `tree` chapter.
 
+
+
 # structure and relation
 
 按照数据的关系来对它进行组织，比如：

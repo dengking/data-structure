@@ -1,5 +1,11 @@
 [TOC]
 
+
+
+# [List (abstract data type)](https://en.wikipedia.org/wiki/List_(abstract_data_type))
+
+
+
 # [Linked list](https://en.wikipedia.org/wiki/Linked_list)
 
 
@@ -41,3 +47,14 @@ A [hash table](https://en.wikipedia.org/wiki/Hash_table) may use linked lists to
 A [heap](https://en.wikipedia.org/wiki/Heap_(data_structure)) shares some of the ordering properties of a linked list, but is almost always implemented using an array. Instead of references from node to node, the next and previous data indexes are calculated using the current data's index.
 
 A [self-organizing list](https://en.wikipedia.org/wiki/Self-organizing_list) rearranges its nodes based on some heuristic which reduces search times for data retrieval by keeping commonly accessed nodes at the head of the list.
+
+
+
+
+
+# [Unrolled linked list](https://en.wikipedia.org/wiki/Unrolled_linked_list)
+
+ 展开的链表 
+
+In computer programming, an **unrolled linked list** is a variation on the [linked list](https://en.wikipedia.org/wiki/Linked_list) which stores multiple elements in each node. It can dramatically increase [cache](https://en.wikipedia.org/wiki/CPU_cache) performance, while decreasing the memory overhead associated with storing list metadata such as [references](https://en.wikipedia.org/wiki/Reference). It is related to the [B-tree](https://en.wikipedia.org/wiki/B-tree). 
+
