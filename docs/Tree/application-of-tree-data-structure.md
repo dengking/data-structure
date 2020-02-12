@@ -1,5 +1,3 @@
-[TOC]
-
 # Application of tree data structure
 
 > NOTE: The content is concluded from the following post:
