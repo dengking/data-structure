@@ -2,7 +2,7 @@
 
 我们使用data structure来保存数据，那么是否想过这样的问题：数据有哪些结构呢？显然，对结构的研究有助于我们选择合适的data structure来保存我们的数据，并且当我们知道事物结构后，能够更好地使用计算机来处理它。
 
-除此之外，我们不仅要关注事物的物理结构，还需要关注逻辑结构。
+我们不仅要关注事物的物理结构，还需要关注逻辑结构。
 
 Structure是一个宏大的话题，在这篇文章中，我仅仅从[computer science](https://en.wikipedia.org/wiki/Computer_science)的角度来探讨structure.
 
@@ -28,13 +28,13 @@ In computer science, structure is everywhere:
 
 #### [Nesting (computing)](https://en.wikipedia.org/wiki/Nesting_(computing))
 
-Nesting结构在computer science是非常常见，它是一种典型的hierarchy结构，nesting结构基本上可以使用括号的方式来进行表示：
+Nesting结构在computer science是非常常见，它是一种典型的hierarchy结构，nesting结构可以使用括号的方式来进行表示：
 
 ```
 ( () () ( ( ) ) )
 ```
 
-C和C++中就是使用的这种做法，它所采用的是`{}`。
+Nesting的中文含义是“嵌套”，显然，它能够描述元素之间的嵌套关系；上面使用括号来表示nesting结构，因为括号所能够表达的“包含”关系和“嵌套”关系是基本类似的，关于此，参见下面的[Structure and relation](#Structure and relation)。
 
 上述结构是可以表示成树的，如下：
 
@@ -52,7 +52,7 @@ C和C++中就是使用的这种做法，它所采用的是`{}`。
 
 - 龙书7.2.1 Activation Trees：
 
-  > Stack allo cation would not be feasible if pro cedure calls, or activations of procedures, did not nest in time. 
+  > Stack allocation would not be feasible if procedure calls, or activations of procedures, did not **nest** in time. 
 
   即函数的执行过程，从时间上来看也是嵌套的。
 
@@ -60,7 +60,7 @@ C和C++中就是使用的这种做法，它所采用的是`{}`。
 
 
 
-## structure and relation
+## Structure and relation
 
 按照数据的关系来对它进行组织，比如：
 
