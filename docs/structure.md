@@ -1,6 +1,10 @@
 # 结构
 
-我们使用data structure来保存数据，那么是否想过这样的问题：数据有哪些结构呢？显然，对结构的研究有助于我们选择合适的data structure来保存我们的数据，并且只有当我们知道事物结构后，才能够使用计算机来处理它。structure是一个宏大的话题，在这篇文章中，我仅仅从[computer science](https://en.wikipedia.org/wiki/Computer_science)的角度来探讨structure.
+我们使用data structure来保存数据，那么是否想过这样的问题：数据有哪些结构呢？显然，对结构的研究有助于我们选择合适的data structure来保存我们的数据，并且当我们知道事物结构后，能够更好地使用计算机来处理它。
+
+除此之外，我们不仅要关注事物的物理结构，还需要关注逻辑结构。
+
+Structure是一个宏大的话题，在这篇文章中，我仅仅从[computer science](https://en.wikipedia.org/wiki/Computer_science)的角度来探讨structure.
 
 ## [Structure](https://en.wikipedia.org/wiki/Structure)
 
@@ -22,9 +26,39 @@ In computer science, structure is everywhere:
 
 [Hierarchy](https://en.wikipedia.org/wiki/Hierarchical) structure is common in computer science, it often appears as a [tree structure](https://en.wikipedia.org/wiki/Tree_structure), which will be described in `tree` chapter.
 
-### [Nesting (computing)](https://en.wikipedia.org/wiki/Nesting_(computing))
+#### [Nesting (computing)](https://en.wikipedia.org/wiki/Nesting_(computing))
+
+Nesting结构在computer science是非常常见，它是一种典型的hierarchy结构，nesting结构基本上可以使用括号的方式来进行表示：
+
+```
+( () () ( ( ) ) )
+```
+
+C和C++中就是使用的这种做法，它所采用的是`{}`。
+
+上述结构是可以表示成树的，如下：
+
+```
+					( )
+	
+    ( )				( )				 ( )
+    								
+    								 ( )
+```
+
+例子包括：
+
+- C和C++中，使用`{}`来定义block，block中可以再包含block，从而形成nesting结构
+
+- 龙书7.2.1 Activation Trees：
+
+  > Stack allo cation would not be feasible if pro cedure calls, or activations of procedures, did not nest in time. 
+
+  即函数的执行过程，从时间上来看也是嵌套的。
 
 ### [Chain](https://en.wikipedia.org/wiki/Chain)
+
+
 
 ## structure and relation
 
