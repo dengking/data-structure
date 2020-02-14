@@ -2,7 +2,7 @@
 
 A **data structure** is a data organization, management, and storage format that enables [efficient](https://en.wikipedia.org/wiki/Algorithmic_efficiency) access and modification. More precisely, a data structure is a collection of [data values](https://en.wikipedia.org/wiki/Data), the relationships among them, and the functions or operations that can be applied to the data.
 
-> NOTE: [efficient](https://en.wikipedia.org/wiki/Algorithmic_efficiency) can be measured by [time complexity](https://en.wikipedia.org/wiki/Time_complexity) and [space complexity](https://en.wikipedia.org/wiki/Space_complexity).
+> NOTE: [Efficient](https://en.wikipedia.org/wiki/Algorithmic_efficiency) can be measured by [time complexity](https://en.wikipedia.org/wiki/Time_complexity) and [space complexity](https://en.wikipedia.org/wiki/Space_complexity).
 
 
 
@@ -10,7 +10,7 @@ A **data structure** is a data organization, management, and storage format that
 
 Data structures serve as the basis for [abstract data types](https://en.wikipedia.org/wiki/Abstract_data_type) (ADT). The ADT defines the logical form of the data type. The data structure implements the physical form of the data type.
 
-> NOTE: This can be thought as separating interface and implementation, ADT is interface and concrete data structure is implementation. 
+> NOTE: 实现与抽象的分离
 
 
 
