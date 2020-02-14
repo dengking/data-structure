@@ -1,4 +1,4 @@
-# 前言
+# 关于本工程
 
 本工程由两部分组成：
 
@@ -14,5 +14,5 @@
 
 
 
-总的来说，这个项目作为[data structure](https://en.wikipedia.org/wiki/Data_structure)的知识库，提供文档与实现。
+总的来说，这个工程作为[data structure](https://en.wikipedia.org/wiki/Data_structure)的知识库，提供文档与实现。
 

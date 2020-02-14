@@ -24,21 +24,21 @@ Data structures provide a means to manage large amounts of data efficiently for 
 
 
 
-# [Implicit data structure](https://en.wikipedia.org/wiki/Implicit_data_structure)
+## [Implicit data structure](https://en.wikipedia.org/wiki/Implicit_data_structure)
 
-##  [An Implicit Binary Tree](https://opendatastructures.org/ods-cpp/10_1_Implicit_Binary_Tree.html) 
+###  [An Implicit Binary Tree](https://opendatastructures.org/ods-cpp/10_1_Implicit_Binary_Tree.html) 
 
-## implicit stack
+### implicit stack
 
 https://mp.weixin.qq.com/s/YCWRBCay8PvnjomVcEBOTA
 
 
 
-# [List of data structures](https://en.wikipedia.org/wiki/List_of_data_structures)
+## [List of data structures](https://en.wikipedia.org/wiki/List_of_data_structures)
 
 
 
 
 
-# [List of terms relating to algorithms and data structures](https://en.wikipedia.org/wiki/List_of_terms_relating_to_algorithms_and_data_structures)
+## [List of terms relating to algorithms and data structures](https://en.wikipedia.org/wiki/List_of_terms_relating_to_algorithms_and_data_structures)
 
