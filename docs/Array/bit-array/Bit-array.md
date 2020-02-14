@@ -1,16 +1,11 @@
-[TOC]
-
-
-
 # [Bit array](https://en.wikipedia.org/wiki/Bit_array)
 
 A **bit array** (also known as **bit map**, **bit set**, **bit string**, or **bit vector**) is an [array data structure](https://en.wikipedia.org/wiki/Array_data_structure) that compactly stores [bits](https://en.wikipedia.org/wiki/Bit). It can be used to implement a simple [set data structure](https://en.wikipedia.org/wiki/Set_data_structure). A bit array is effective at exploiting bit-level parallelism in hardware to perform operations quickly. A typical bit array stores *kw* bits, where *w* is the number of bits in the unit of storage, such as a [byte](https://en.wikipedia.org/wiki/Byte) or [word](https://en.wikipedia.org/wiki/Word_(computer_architecture)), and *k* is some nonnegative integer. If *w* does not divide the number of bits to be stored, some space is wasted due to [internal fragmentation](https://en.wikipedia.org/wiki/Fragmentation_(computing)).
 
-***SUMMARY*** : 有 如下问题：
-
-- 如何使用binary literal来初始化bit array？
-- 如何index bit array？
-- 使用什么类型来表示bit array？
+> NOTE: 有 如下问题：
+> - 如何使用binary literal来初始化bit array？
+> - 如何index bit array？
+> - 使用什么类型来表示bit array？
 
 ## Definition
 
@@ -50,7 +45,7 @@ for i from 0 to n/w-1
     difference[i]   := a[i] and (not b[i])
 ```
 
-***SUMMARY*** : 上述算法是一次操作一个byte，而不是bit
+> NOTE: 上述算法是一次操作一个byte，而不是bit
 
 If we wish to iterate through the bits of a bit array, we can do this efficiently using a doubly nested loop that loops through each word, one at a time. Only *n*/*w* memory accesses are required:
 
@@ -95,3 +90,8 @@ The last operation can be written ((x&0x55555555)<<1) | (x&0xaaaaaaaa)>>1)).
 
 The [find first set](https://en.wikipedia.org/wiki/Find_first_set) or *find first one* operation identifies the index or position of the 1-bit with the smallest index in an array, and has widespread hardware support (for arrays not larger than a word) and efficient algorithms for its computation. When a [priority queue](https://en.wikipedia.org/wiki/Priority_queue) is stored in a bit array, find first one can be used to identify the highest priority element in the queue. To expand a word-size *find first one* to longer arrays, one can find the first nonzero word and then run *find first one* on that word. The related operations *find first zero*, *count leading zeros*, *count leading ones*, *count trailing zeros*, *count trailing ones*, and *log base 2* (see [find first set](https://en.wikipedia.org/wiki/Find_first_set)) can also be extended to a **bit array** in a straightforward manner.
 
+
+
+## 开源库
+
+[BitArray](https://github.com/noporpoise/BitArray)

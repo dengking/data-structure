@@ -1,7 +1,3 @@
-[TOC]
-
-
-
 # [Circular buffer](https://en.wikipedia.org/wiki/Circular_buffer)
 
 A **circular buffer**, **circular queue**, **cyclic buffer** or **ring buffer** is a [data structure](https://en.wikipedia.org/wiki/Data_structure) that uses a single, fixed-size [buffer](https://en.wikipedia.org/wiki/Buffer_(computer_science)) as if it were connected end-to-end. This structure lends itself easily to buffering [data streams](https://en.wikipedia.org/wiki/Data_stream).
@@ -69,10 +65,10 @@ This image shows a full buffer with four elements (numbers 1 through 4) having b
 
 
 
-# [CIRCULAR QUEUE IN C](http://www.martinbroadhurst.com/cirque-in-c.html)
+## [CIRCULAR QUEUE IN C](http://www.martinbroadhurst.com/cirque-in-c.html)
 
 
 
 
 
-# [Implementing a Queue using a *circular* array](http://www.mathcs.emory.edu/~cheung/Courses/171/Syllabus/8-List/array-queue2.html)
+## [Implementing a Queue using a *circular* array](http://www.mathcs.emory.edu/~cheung/Courses/171/Syllabus/8-List/array-queue2.html)
