@@ -1,5 +1,3 @@
-[TOC]
-
 # [Tree (data structure)](https://en.wikipedia.org/wiki/Tree_(data_structure))
 
 In [computer science](https://en.wikipedia.org/wiki/Computer_science), a **tree** is a widely used [abstract data type](https://en.wikipedia.org/wiki/Abstract_data_type) (ADT)—or [data structure](https://en.wikipedia.org/wiki/Data_structure) implementing this ADT—that simulates a hierarchical [tree structure](https://en.wikipedia.org/wiki/Tree_structure), with a root value and subtrees of children with a [parent node](https://en.wikipedia.org/wiki/Tree_(data_structure)#Terminology), represented as a set of linked [nodes](https://en.wikipedia.org/wiki/Node_(computer_science)).
@@ -29,6 +27,8 @@ A tree is a **nonlinear** data structure, compared to arrays, linked lists, stac
 ## Mathematical definition
 
 > NOTE: 下面两段比较难懂，需要set theory的知识作为基础。
+>
+> 其实可以简单理解，使用tree来表示集合的包含关系，这就好比是括号了。
 
 ### Unordered tree
 
