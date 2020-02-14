@@ -1,3 +1,5 @@
 docs:
     - Graph-and-Graph-theory.md: 01-Graph-and-Graph-theory.md
+    - Graph-representations: Graph-representations
+    - Directed-graph: Directed-graph
     

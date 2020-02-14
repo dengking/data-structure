@@ -1,4 +1,4 @@
 docs:
-    - Spanning-tree: wikipedia-Spanning-tree.md
-    - Minimum-spanning-tree: wikipedia-Minimum-spanning-tree.md
-    - Borůvka's-algorithm: wikipedia-Borůvka's-algorithm.md
+    - Spanning-tree: Spanning-tree.md
+    - Minimum-spanning-tree: Minimum-spanning-tree.md
+    - Borůvka's-algorithm: Borůvka's-algorithm.md
