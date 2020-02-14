@@ -1,11 +1,11 @@
 - docs:
-    - introduction: index.md
-    - what-is-tree: 
-        - wikipedia-Tree-structure:  wikipedia-Tree-structure.md
-        - wikipedia-Tree(data-structure): wikipedia-Tree(data-structure).md
-        - wikipedia-Tree(set-theory): wikipedia-Tree(set-theory).md
-    - representing-trees: representing-trees.md
-    - application-of-tree-data-structure: application-of-tree-data-structure.md
+    - Introduction: index.md
+    - What-is-tree: 
+        - Tree-structure:  Tree-structure.md
+        - Tree(data-structure): Tree(data-structure).md
+        - Tree(set-theory): Tree(set-theory).md
+    - Representing-trees: representing-trees.md
+    - Application-of-tree-data-structure: application-of-tree-data-structure.md
     - tree-and-recursion-and-stack: tree-and-recursion-and-stack.md
     - Implicit-tree: Implicit-tree.md
     - tree-operation: None
