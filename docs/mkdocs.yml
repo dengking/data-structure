@@ -2,7 +2,6 @@ nav:
     - Home: index.md
     - Structure: structure.md
     - Data-structure: Data-structure
-    - ADT: ADT
     - Array: Array
     - List: List
     - Graph: Graph

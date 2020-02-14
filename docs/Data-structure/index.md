@@ -1,6 +1,8 @@
-# 前言
+# 关于本章
 
-这一章节对[data structure](https://en.wikipedia.org/wiki/Data_structure)进行综述，并引出各种具体的data structure都会涉及到的一些公共的议题，后续在讨论各种具体的data structure的时候，会对这些议题进行具体的分析。下面罗列了这些议题：
+这一章节对[data structure](https://en.wikipedia.org/wiki/Data_structure)进行综述，说明data structure领域的一些常见概念。
+
+下面这些是在后面讨论各种具体的data structure都会涉及到的一些公共的议题，后续在讨论各种具体的data structure的时候，会对这些议题进行具体的分析。下面罗列了这些议题：
 
 - formal description of data structure：如何来形式化地描述data structure？
 - representation of data structure：如何表示data structure？

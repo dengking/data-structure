@@ -1,3 +1,4 @@
 nav:
     - Introduction: index.md
     - Data-structure: Data-structure.md
+    - Abstract-data-type: Abstract-data-type.md
