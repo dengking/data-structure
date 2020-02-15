@@ -34,3 +34,52 @@ Nesting结构具备hierarchy特性，可以这样来进行解释：
 
 
 
+
+
+
+
+## 草稿
+
+
+
+### [Hierarchy](https://en.wikipedia.org/wiki/Hierarchical) 
+
+[Hierarchy](https://en.wikipedia.org/wiki/Hierarchical) structure is common in computer science, it often appears as a [tree structure](https://en.wikipedia.org/wiki/Tree_structure), which will be described in `tree` chapter.
+
+#### [Nesting (computing)](https://en.wikipedia.org/wiki/Nesting_(computing))
+
+Nesting结构在computer science是非常常见，它是一种典型的hierarchy结构，nesting结构可以使用括号的方式来进行表示：
+
+```
+( () () ( ( ) ) )
+```
+
+Nesting的中文含义是“嵌套”，显然，它能够描述元素之间的嵌套关系；上面使用括号来表示nesting结构，因为括号所能够表达的“包含”关系和“嵌套”关系是基本类似的，关于此，参见下面的[Structure and relation](#Structure and relation)。
+
+上述结构是可以表示成树的，如下：
+
+```
+					( )
+	
+    ( )				( )				 ( )
+    								
+    								 ( )
+```
+
+例子包括：
+
+- C和C++中，使用`{}`来定义block，block中可以再包含block，从而形成nesting结构
+
+- 龙书7.2.1 Activation Trees：
+
+  > Stack allocation would not be feasible if procedure calls, or activations of procedures, did not **nest** in time. 
+
+  即函数的执行过程，从时间上来看也是嵌套的。
+
+
+
+[Nested set model](https://en.wikipedia.org/wiki/Nested_set_model)
+
+[Nested set](https://en.wikipedia.org/wiki/Nested_set)
+
+[Hereditary property](https://en.wikipedia.org/wiki/Hereditary_property)

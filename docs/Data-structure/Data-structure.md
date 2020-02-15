@@ -10,7 +10,7 @@ A **data structure** is a data organization, management, and storage format that
 
 Data structures serve as the basis for [abstract data types](https://en.wikipedia.org/wiki/Abstract_data_type) (ADT). The ADT defines the logical form of the data type. The data structure implements the physical form of the data type.
 
-> NOTE: 实现与抽象的分离
+> NOTE: 参见 [抽象与实现](https://dengking.github.io/Post/Abstraction/Abstraction/)
 
 
 
