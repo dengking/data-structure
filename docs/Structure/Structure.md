@@ -85,12 +85,6 @@ In [computer science](https://en.wikipedia.org/wiki/Computer_science), [tree (da
 
 
 
-思考：activation tree，parse tree，它们都是呈现的tree结构，但是函数的执行仅仅需要一个call stack，parsing的过程也仅仅只需要一个[pushdown automata](https://en.wikipedia.org/wiki/Pushdown_automaton)（本质上是一个stack），两者存在着非常类似的现象，我们需要取思考现象背后所蕴含的道理。两个过程都具有nesting特性，所以它们的过程都呈现tree structure。在[4.6 Introduction to LR Parsing: Simple LR](https://dengking.github.io/compiler-principle/Chapter-4-Syntax-Analysis/4.6-Introduction-to-LR-Parsing-Simple-LR/)中我对此有过分析。
-
-
-
-
-
 ## 各个学科中的Structure
 
 前面我们接触了Structure in math，下面看看在其他学科中关于Structure的研究内容。
