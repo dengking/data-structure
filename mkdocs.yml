@@ -88,6 +88,14 @@ nav:
   - TODO: Tree/TODO.md
 - Hash:
   - Introduction: Hash/index.md
+  - Hash-function:
+    - Hash-function: Hash/Hash-function/Hash-function.md
+    - Rolling-hash: Hash/Hash-function/Rolling-hash.md
+    - SipHash: Hash/Hash-function/SipHash.md
+    - Cryptographic-hash-functions:
+      - Cryptographic-hash-function: Hash/Hash-function/Cryptographic-hash-functions/Cryptographic-hash-function.md
+      - Cipher: Hash/Hash-function/Cryptographic-hash-functions/Cipher.md
+      - Salt(cryptography): Hash/Hash-function/Cryptographic-hash-functions/Salt(cryptography).md
 - Set:
   - Set: Set/Set(abstract-data-type).md
 - Probabilistic-data-structures:
