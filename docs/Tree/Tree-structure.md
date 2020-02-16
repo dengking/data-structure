@@ -1,15 +1,180 @@
 # Tree structure
 
-与tree structure相关的有词：
+本文所要讨论的是“树形形状”，标题中的“structure”在所要表达的含义是“形状”。
 
-- [Hierarchy](https://en.wikipedia.org/wiki/Hierarchy)
-- [Nesting (computing)](https://en.wikipedia.org/wiki/Nesting_(computing))
+本文基于维基百科[Tree structure](https://en.wikipedia.org/wiki/Tree_structure)。
 
-Software engineer对这两个词肯定不会陌生，但不知是否知晓它们都可以使用tree structure来进行表示，希望在阅读了本文后，读者下次在遇到这两个词的时候能够产生这样的反映。
+A **tree structure** or **tree diagram** is a way of representing the [hierarchical](https://en.wikipedia.org/wiki/Hierarchy) nature of a [structure](https://en.wikipedia.org/wiki/Structure) in a graphical form. It is named a "tree structure" because the classic [representation](https://en.wikipedia.org/wiki/Tree_structure#Representing_trees) resembles a [tree](https://en.wikipedia.org/wiki/Tree).
 
-看看维基百科[Tree structure](https://en.wikipedia.org/wiki/Tree_structure)：
+在[Hierarchy](../Structure/Hierarchy.md)中，我们已经总结了**tree structure**对应的是 nested hierarchy structure。**tree structure** 的最最典型的特性是：一个节点可以有（包含）多个子节点，一个子节点只能够有一个父节点，root节点没有父节点。**tree structure** 的 “一个子节点只能够有一个父节点” 的要求，将它和graph区分开来了（参见[Discrete Mathematics and Its Applications](https://www.amazon.com/Discrete-Mathematics-Applications-Kenneth-Rosen/dp/125967651X)的Tree章节）。
 
-A **tree structure** or **tree diagram** is a way of representing the [hierarchical](https://en.wikipedia.org/wiki/Hierarchy) nature of a [structure](https://en.wikipedia.org/wiki/Structure) in a graphical form. It is named a "tree structure" because the classic [representation](https://en.wikipedia.org/wiki/Tree_structure#Representing_trees) resembles a [tree](https://en.wikipedia.org/wiki/Tree), even though the chart is generally upside down compared to an actual tree, with the "part of the plant in the ground" at the top and the "leaves" at the bottom.
+描述**tree structure**的这个最最典型特性的词是：nesting ，nesting这个词的含义是丰富的，它的表面意思是“嵌套”，同时它蕴含着“包含”的含义；“嵌套”蕴含着“递归”；后面我们将统一”nesting“解释为“嵌套包含”。
+
+我第一次碰到这个词是在阅读[Compilers Principles, Techniques and Tools Second Edition(aka ***dragon book***)](https://en.wikipedia.org/wiki/Compilers:_Principles,_Techniques,_and_Tools) 的[7.2.1 Activation Trees](https://dengking.github.io/compiler-principle/Chapter-7-Run-Time-Environments/7.2-Stack-Allocation-of-Space/#721-activation-trees)节时：
+
+> Stack allocation would not be feasible if procedure calls, or activations of procedures, did not **nest in time**. The following example illustrates nesting of procedure calls.
+
+这是activations of procedures的**nest in time**特性，使得“Stack allocation”变得可行，并且activations of procedures的过程是tree structure的。
+
+第二次碰到这个词是在阅读[Hierarchy](../Structure/Hierarchy.md)的“Nested hierarchy”节时，至此才更加觉得它非常能够体现**tree structure**的本质。
+
+更多关于nesting的描述，参见：[Nesting (computing)](https://en.wikipedia.org/wiki/Nesting_(computing))和[Nested sets](https://en.wikipedia.org/wiki/Nested_set)）。
+
+显然具备nesting特性，就具备了如下特性：
+
+- [hierarchical](https://en.wikipedia.org/wiki/Hierarchy)，即树结构是层次的
+- [recursive](../Data-structure/Recursive-data-type.md)，即树结构是具备递归特性的
+
+
+
+## 哪些关系能够形成树形状
+
+这个问题在[Hierarchy](../Structure/Hierarchy.md)中同样提问过，本段从实例出发来进行总结。
+
+### Example: nesting关系
+
+在前面我们已经说明了tree structure的最最根本的特征是nesting，所有的具备nesting关系的数据，按照该关系进行组织，都能够形成tree structure。在计算机科学中，存在着太多太多具备nesting关系的数据了，在下面的[Examples of tree structures](#Examples of tree structures)会枚举具备这种关系的结构。
+
+
+
+### Example: Parent-child关系
+
+一个parent可以有多个children，一个child只能够有一个parent。其实nesting
+
+
+
+形成这种结构的一个典型例子就是parent-children关系，一个parent有多个children，但是每个child只能够有一个parent，这种关系是N:1的（记得在[Relational algebra](https://en.wikipedia.org/wiki/Relational_algebra)中有这样的理论）。这种关系的另外一个
+
+
+
+
+
+其实上述都是在使用tree来表示关系，expression中的关系是`+=*/`，recursion invocation tree是函数调用关系，具备传递性的包含关系是包含关系；
+
+在使用tree来描述这些关系的时候，**叶子节点**是**terminal元素**，**内节点**都是在**表达关系**；
+
+
+
+## 扩展关系
+
+扩展一个使用tree描述的关系的最终目标是获得所有的叶子节点，它的基本算法是：一个节点，只要是non-terminal元素，就需要对它进行expand，其实这个过程就是[Parse tree](https://en.wikipedia.org/wiki/Parse_tree)的生成过程；
+
+所以其实，我上述所描述的都是[Parse tree](https://en.wikipedia.org/wiki/Parse_tree)的生成过程过程；
+
+下面是一段描述上述**具备传递性的包含关系**的获取所有的可能的叶子节点的简单算法，它需要将所有的内节点进行扩展，最终的结果只能够包含叶子节点而不能包含叶子节点
+
+```
+self.expanded_fen_zi_dict[fen_zi_word_info] = list()
+to_expand_words = list(retriever_context.fen_zi_detail_dict[fen_zi_word_str]) # 待扩展词列表
+while len(to_expand_words):
+    word = to_expand_words.pop() # 一次只处理一个词
+    if word in retriever_context.fen_zi_detail_dict: # 当前词相当于一个内节点
+        to_expand_words.extend(retriever_context.fen_zi_detail_dict[word]) # 扩展当前词，并且将它添加到待扩展词列表中
+    else: # 当前词是一个页节点
+        self.expanded_fen_zi_dict[fen_zi_word_info].append(word) # 将该词进行输出
+
+```
+
+
+
+### tree and set
+
+
+
+## Examples of tree structures
+
+### [Directory structure](https://en.wikipedia.org/wiki/Directory_structure) ([directory](https://en.wikipedia.org/wiki/Directory_(computing)))
+
+包含关系。
+
+See also: 
+
+[Tree (command)](https://en.wikipedia.org/wiki/Tree_(command))
+
+[Path (computing)](https://en.wikipedia.org/wiki/Path_(computing))
+
+### [Process tree](https://en.wikipedia.org/wiki/Pstree)
+
+parent-children关系。
+
+
+
+### [File format](https://en.wikipedia.org/wiki/File_format)
+
+包含关系。
+
+- [Document Object Model](https://en.wikipedia.org/wiki/Document_Object_Model)（[XML](https://en.wikipedia.org/wiki/XML)）
+- [json](https://en.wikipedia.org/wiki/JSON)
+- [yaml](https://en.wikipedia.org/wiki/YAML)
+
+
+
+### [Namespace](https://en.wikipedia.org/wiki/Namespace)
+
+包含关系。
+
+Namespace的应用场景实在太多，在维基百科的[Namespace](https://en.wikipedia.org/wiki/Namespace)对它总结地非常好。在对它进行思考的时候，发觉使用namespace来组织的数据最终就是hierarchy结构。其实也可以简单地将namespace看做是括号。
+
+
+
+### Expression
+
+[binary expression tree](https://en.wikipedia.org/wiki/Binary_expression_tree)
+
+
+
+
+
+
+
+### source code
+
+[Abstract syntax tree](https://en.wikipedia.org/wiki/Abstract_syntax_tree)使用一棵树表达了源代码的语法结构
+
+Parse tree
+
+
+
+
+
+
+
+
+### Activation tree
+
+函数的调用过程也是可以使用tree来进行描述的，参见龙书 chapter 7。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 从字面的意思来看，[Hierarchy](https://en.wikipedia.org/wiki/Hierarchy)和[nesting](https://en.wikipedia.org/wiki/Nesting_(computing))这两个词描述了structure的性质，比较形象。下面我们来看看它们它们是如何转换为tree structure的。
 
@@ -83,3 +248,12 @@ Nesting的中文含义是“嵌套”，显然，它能够描述元素之间的�
 [Nested set](https://en.wikipedia.org/wiki/Nested_set)
 
 [Hereditary property](https://en.wikipedia.org/wiki/Hereditary_property)
+
+
+
+与tree structure相关的有词：
+
+- [Hierarchy](https://en.wikipedia.org/wiki/Hierarchy)
+- [Nesting (computing)](https://en.wikipedia.org/wiki/Nesting_(computing))
+
+Software engineer对这两个词肯定不会陌生，但不知是否知晓它们都可以使用tree structure来进行表示，希望在阅读了本文后，读者下次在遇到这两个词的时候能够产生这样的反映。

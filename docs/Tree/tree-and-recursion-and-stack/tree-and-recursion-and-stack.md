@@ -5,13 +5,12 @@
 还有一些结构也是隐式的数结构：
 
 # 可以使用树结构来进行描述的内容
-## 目录
-目录是典型的可用使用tree来进行描述的
 
-## [yaml](https://en.wikipedia.org/wiki/YAML)
 
 ## expression
 [binary expression tree](https://en.wikipedia.org/wiki/Binary_expression_tree)
+
+
 
 ## source code
 

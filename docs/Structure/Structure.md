@@ -30,11 +30,15 @@ Structure是一个宏大的话题，在这篇文章中，我仅仅从[computer s
 
 阅读了上述定义，直观感受就是：结构不仅仅关乎元素，而且关乎它们之间的关系。相同的元素，如果使用不同的关系来进行组织的话，所呈现出的结构是不同的。所以，我们在研究结构的时候，切莫忽视元素之间的关系。
 
+> NOTE: 关于“关系”，参见[Relation](./Relation.md)。
+
 通过上面的描述，现在让我们来回答本节标题中的问题：结构是我们按照某种关系对元素进行组织后形成的，它可能是有形的（物理的），也可能是是抽象的（逻辑的）。
+
+“结构”是一个特殊的术语，后面当我们想要表达的是结构的形态（肉眼可见的）时，我们使用“形状”这个词。
 
 ## 结构的形状
 
-当我们按照一定的关系对元素进行组织后，如果能够将它们给“画”出来，可能会呈现一定的“形状”，此处使用“形状”这个词，其实是为了与结构这个词有所区分，它强调的是，我们肉眼可以看到的形态，但是，平时，我们更多的还是使用结构这个词。
+当我们按照一定的关系对元素进行组织后，如果能够将它们给“画”出来，可能会呈现一定的“形状”，此处使用“形状”这个词，是为了与"结构""这个词有所区分，它强调的是，我们肉眼可以看到的形态，但是，平时，我们更多的还是使用结构这个词。
 
 比较常见有：
 
@@ -55,7 +59,7 @@ In [computer science](https://en.wikipedia.org/wiki/Computer_science), [tree (da
 - 按照parent-child关系来组织process，最终形成的是树
 - 按照inheritance来组织类，如果不允许多继承的话，则最终形成的是树；如果允许多继承的话，则最终形成的是图
 
-按照有的关系来组织数据，它们会形成树结构（不会成环），比如parent-children关系；按照有的关系来组织数据，它们会形成图（会成环）。那是关系的什么特效决定了这种结果呢？这正是本节需要进行探讨的一个话题。
+按照有的关系来组织数据，它们会形成树结构（不会成环），比如parent-children关系；按照有的关系来组织数据，它们会形成图（会成环）。那是关系的什么特效决定了这种结果呢？要搞清楚这个问题，需要对“关系”理论有一定的了解（参见[Relation](./Relation.md)），这个问题是本节需要进行探讨的一个话题。
 
 如何来描述关系呢？不同的学科有不同的语言，比如数学中，可以使用函数来描述关系，计算机科学中呢？参见[Structure in computer science](#Structure in computer science)。
 
@@ -63,11 +67,19 @@ In [computer science](https://en.wikipedia.org/wiki/Computer_science), [tree (da
 
 一些动态过程，比如函数执行过程、推导过程等，都呈现出一定的结构，本节对此进行分析，显然这种结构就是前面提到的逻辑结构。
 
+### Proof过程呈现出list或tree结构
+
 在阅读[Proof theory](https://en.wikipedia.org/wiki/Proof_theory)时，其中的一段话：
 
 > Proofs are typically presented as inductively-defined [data structures](https://en.wikipedia.org/wiki/Data_structures) such as plain lists, boxed lists, or [trees](https://en.wikipedia.org/wiki/Tree_(data_structure)), which are constructed according to the [axioms](https://en.wikipedia.org/wiki/Axiom) and [rules of inference](https://en.wikipedia.org/wiki/Rule_of_inference) of the logical system.
 
 上面这段话的意思是，如果将推导的过程可以展示为一种数据结构，比如列表、树。[Parse tree](http://en.wikipedia.org/wiki/Parse_tree)就是一个典型的例子，在自顶向下[parsing](https://en.wikipedia.org/wiki/Parsing)的过程中，parser不断地使用production进行推导（expand），最终生成了一棵parse tree。
+
+#### Parsing
+
+### 函数调用过程呈现tree结构
+
+在[Compilers Principles, Techniques and Tools Second Edition(aka ***dragon book***)](https://en.wikipedia.org/wiki/Compilers:_Principles,_Techniques,_and_Tools) 的[7.2.1 Activation Trees](https://dengking.github.io/compiler-principle/Chapter-7-Run-Time-Environments/7.2-Stack-Allocation-of-Space/#721-activation-trees)中对此进行了详细分析。
 
 TODO：补充如下内容
 
