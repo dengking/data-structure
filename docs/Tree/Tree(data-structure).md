@@ -96,3 +96,5 @@ In general a node in a tree will not have pointers to its parents, but this info
 
 - https://cgi.csc.liv.ac.uk/~michele/TEACHING/COMP102/2006/5.4.pdf
 - http://www.montefiore.ulg.ac.be/~piater/Cours/INFO0902/notes/tree/foil04.xhtml
+
+树的结构是具备递归性的：一个节点的左节点可能是一棵树，右节点也可能是一棵树，显然树的定义是由它自身定义的；所以对树的操作可以充分利用树结构的递归性而写出递归函数；

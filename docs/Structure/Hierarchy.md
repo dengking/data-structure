@@ -95,3 +95,8 @@ Nested hierarchy structure可以是要弄tree来进行表示你。
 
 
 
+
+
+## [Hierarchy](https://en.wikipedia.org/wiki/Hierarchy) structure and recursion
+
+具备[hierarchical](https://en.wikipedia.org/wiki/Hierarchical)结构的往往具备recursive的特征。
