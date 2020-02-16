@@ -1,10 +1,10 @@
+# Represent tree
 
-
-# [Visually  Representing Trees ](https://en.wikipedia.org/wiki/Tree_structure#Representing_trees)
+## [Visually  Representing Trees ](https://en.wikipedia.org/wiki/Tree_structure#Representing_trees)
 
 There are many ways of visually representing tree structures. Almost always, these boil down to variations, or combinations, of a few basic styles:
 
-## Classical node-link diagrams
+### Classical node-link diagrams
 
 Classical node-link diagrams, that connect nodes together with line segments:
 
@@ -17,7 +17,7 @@ art		craft
 
 ```
 
-## Nested sets
+### Nested sets
 
 [Nested sets](https://en.wikipedia.org/wiki/Nested_set_model) that use enclosure/containment to show parenthood, examples include [TreeMaps](https://en.wikipedia.org/wiki/Treemapping) and [fractal maps](https://en.wikipedia.org/w/index.php?title=Fractal_space_map&action=edit&redlink=1):
 
@@ -25,11 +25,11 @@ art		craft
 
 ```
 
-## Layered "icicle" diagrams
+### Layered "icicle" diagrams
 
 Layered "icicle" diagrams that use alignment/adjacency.
 
-## Outlines and tree views
+### Outlines and tree views
 
 Lists or diagrams that use indentation, sometimes called "[outlines](https://en.wikipedia.org/wiki/Outline_(hierarchical))" or "[tree views](https://en.wikipedia.org/wiki/Tree_view)".
 
@@ -45,7 +45,7 @@ A tree view:
 
 
 
-## Nested parentheses
+### Nested parentheses
 
 *See also:* [Newick format](https://en.wikipedia.org/wiki/Newick_format) *and* [Dyck language](https://en.wikipedia.org/wiki/Dyck_language)
 
@@ -57,7 +57,7 @@ or
 encyclopedia(culture(art,craft),science)
 ```
 
-## Radial trees
+### Radial trees
 
 *See also:* [Radial tree](https://en.wikipedia.org/wiki/Radial_tree)
 
@@ -79,13 +79,13 @@ science
 >
 > Three-address code is a **linearized representation** of a syntax tree or a DAG in which explicit names correspond to the interior nodes of the graph. 
 
-## [Three-address code](https://en.wikipedia.org/wiki/Three-address_code)
+### [Three-address code](https://en.wikipedia.org/wiki/Three-address_code)
 
 
 
 
 
-## [Reverse Polish notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation)
+### [Reverse Polish notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation)
 
 
 
@@ -93,7 +93,7 @@ science
 
 
 
-# [Representing Tree in Memory/Implementation](https://en.wikipedia.org/wiki/Tree_(data_structure)#Representations)
+## [Representing Tree in Memory/Implementation](https://en.wikipedia.org/wiki/Tree_(data_structure)#Representations)
 
 The following is a partial enumeration:
 
