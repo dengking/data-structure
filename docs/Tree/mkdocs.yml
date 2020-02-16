@@ -1,12 +1,11 @@
-- docs:
+nav:
     - Introduction: index.md
-    - What-is-tree: 
-        - Tree-structure:  Tree-structure.md
-        - Represent-tree: Represent-tree.md
-        - Tree(set-theory): Tree(set-theory).md
-        - Tree(data-structure): Tree(data-structure).md
+    - Tree-structure:  Tree-structure.md
+    - Represent-tree: Represent-tree.md
+    - Tree(set-theory): Tree(set-theory).md
+    - Tree(data-structure): Tree(data-structure).md
     - Application-of-tree-data-structure: application-of-tree-data-structure.md
-    - tree-and-recursion-and-stack: tree-and-recursion-and-stack.md
+    - Tree-and-stack: Tree-and-stack
     - Implicit-tree: Implicit-tree.md
-    - Tree-operation: None
+    - Tree-operation: Tree-operation
     - TODO: TODO.md

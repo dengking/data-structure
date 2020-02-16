@@ -1,4 +1,4 @@
-docs:
+nav:
     - Graph-Model: Graph-Model.md
     - Application-of-graph: Application-of-graph.md
-    - Dependency-graph: None
+    - Dependency-graph: Dependency-graph

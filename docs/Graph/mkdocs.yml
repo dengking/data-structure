@@ -1,6 +1,6 @@
-docs:
+nav:
     - Introduction: index.md
-    - 01-Graph-and-Graph-theory: None
-    - 02-Graph-Model: None 
-    - 03-Graph-operation: None
-    - 04-Computational-problems-in-graph-theory: None
+    - 01-Graph-and-Graph-theory: 01-Graph-and-Graph-theory
+    - 02-Graph-Model: 02-Graph-Model
+    - 03-Graph-operation: 03-Graph-operation
+    - 04-Computational-problems-in-graph-theory: 04-Computational-problems-in-graph-theory

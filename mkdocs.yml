@@ -1,37 +1,114 @@
-site_name:  data-structure
-site_url: https://dengking.github.io/data-structure
-site_description: Project documentation with Markdown.
-site_author: DengKing
-
-
-repo_url: https://github.com/dengking/data-structure
-
-edit_uri: ""
-
-
-
-theme:
-    name: readthedocs
-    highlightjs: true
-    hljs_languages:
-        - yaml
-        - django
-        
-nav: None
-
-
-    
+edit_uri: ''
 extra_css:
-    - css/extra.css
-
+- css/extra.css
+google_analytics:
+- UA-27795084-5
+- mkdocs.org
 markdown_extensions:
-    - toc:
-        permalink: 
-    - admonition
-    - def_list
-    - mdx_gh_links:
-        user: mkdocs
-        repo: mkdocs
-        
+- toc:
+    baselevel: 1
+    permalink: '#'
+    separator: _
+- admonition
+- def_list
+- mdx_gh_links:
+    repo: mkdocs
+    user: mkdocs
+nav:
+- Home: index.md
+- Structure:
+  - Introduction: Structure/index.md
+  - Structure: Structure/Structure.md
+  - Hierarchy: Structure/Hierarchy.md
+  - Relation: Structure/Relation.md
+- Data-structure:
+  - Introduction: Data-structure/index.md
+  - Data-structure: Data-structure/Data-structure.md
+  - Recursive-data-type: Data-structure/Recursive-data-type.md
+  - Abstract-data-type: Data-structure/Abstract-data-type.md
+- Array:
+  - Introduction: Array/index.md
+  - Array-data-structure: Array/Array-data-structure.md
+  - bit-array:
+    - Bit-array: Array/bit-array/Bit-array.md
+  - circular-array:
+    - Circular-buffer: Array/circular-array/Circular-buffer.md
+    - Circular-array: Array/circular-array/circular-array.md
+- List:
+  - List: List/List.md
+  - Chain: List/Chain.md
+  - VS-double-linked-list-VS-binary-tree: List/VS-double-linked-list-VS-binary-tree.md
+  - VS-Unrolled-linked list-VS-B-tree: List/VS-Unrolled-linked list-VS-B-tree.md
+- Graph:
+  - Introduction: Graph/index.md
+  - 01-Graph-and-Graph-theory:
+    - Graph-and-Graph-theory.md: Graph/01-Graph-and-Graph-theory/01-Graph-and-Graph-theory.md
+    - Graph-representations:
+      - Graph-representations: Graph/01-Graph-and-Graph-theory/Graph-representations/Graph-representations.md
+    - Directed-graph:
+      - Directed-graph: Graph/01-Graph-and-Graph-theory/Directed-graph/Directed-graph.md
+      - Directed-acyclic-graph:
+        - Directed-acyclic-graph: Graph/01-Graph-and-Graph-theory/Directed-graph/Directed-acyclic-graph/Directed-acyclic-graph.md
+  - 02-Graph-Model:
+    - Graph-Model: Graph/02-Graph-Model/Graph-Model.md
+    - Application-of-graph: Graph/02-Graph-Model/Application-of-graph.md
+    - Dependency-graph:
+      - Dependency-graph: Graph/02-Graph-Model/Dependency-graph/Dependency-graph.md
+      - Precedence-graph: Graph/02-Graph-Model/Dependency-graph/Precedence-graph.md
+      - Dependency-resolving-algorithm: Graph/02-Graph-Model/Dependency-graph/Dependency-resolving-algorithm.md
+  - 03-Graph-operation:
+    - Graph-operation: Graph/03-Graph-operation/Graph-operation.md
+  - 04-Computational-problems-in-graph-theory:
+    - Computational-problems-in-graph-theory: Graph/04-Computational-problems-in-graph-theory/Computational-problems-in-graph-theory.md
+    - Circular:
+      - Cycle-detection: Graph/04-Computational-problems-in-graph-theory/Circular/Cycle-detection.md
+      - Circular-dependency: Graph/04-Computational-problems-in-graph-theory/Circular/Circular-dependency.md
+    - Dominator:
+      - Dominator: Graph/04-Computational-problems-in-graph-theory/Dominator/Dominator(graph-theory).md
+    - Sorting:
+      - Topological-sorting: Graph/04-Computational-problems-in-graph-theory/Sorting/Topological-sorting.md
+    - Spanning-tree:
+      - Spanning-tree: Graph/04-Computational-problems-in-graph-theory/Spanning-tree/Spanning-tree.md
+      - Minimum-spanning-tree: Graph/04-Computational-problems-in-graph-theory/Spanning-tree/Minimum-spanning-tree.md
+      - "Bor\u016Fvka's-algorithm": "Graph/04-Computational-problems-in-graph-theory/Spanning-tree/Bor\u016F\
+          vka's-algorithm.md"
+- Tree:
+  - Introduction: Tree/index.md
+  - Tree-structure: Tree/Tree-structure.md
+  - Represent-tree: Tree/Represent-tree.md
+  - Tree(set-theory): Tree/Tree(set-theory).md
+  - Tree(data-structure): Tree/Tree(data-structure).md
+  - Application-of-tree-data-structure: Tree/application-of-tree-data-structure.md
+  - Tree-and-stack:
+    - Introduction: Tree/Tree-and-stack/index.md
+    - VS-bracket-VS-tree: Tree/Tree-and-stack/VS-bracket-VS-tree.md
+  - Implicit-tree: Tree/Implicit-tree.md
+  - Tree-operation:
+    - Introduction: Tree/Tree-operation/index.md
+  - TODO: Tree/TODO.md
+- Hash:
+  - Hash-function: Hash/wikipedia-Hash-function.md
+- Set:
+  - Set: Set/Set(abstract-data-type).md
+- Probabilistic-data-structures:
+  - Bloom-filter: Probabilistic-data-structures/Bloom-filter.md
+  - Random-tree: Probabilistic-data-structures/Random-tree.md
+  - Skip-list: Probabilistic-data-structures/Skip-list.md
+- Summary-of-data-structure:
+  - Introduction: Summary-of-data-structure/index.md
+  - List-of-data-structure: Summary-of-data-structure/List-of-data-structure.md
+  - VS-of-trees: Summary-of-data-structure/VS-of-tree.md
+  - VS-of-graph-and-tree-and-list: Summary-of-data-structure/VS-of-graph-and-tree-and-list.md
+  - VS-of-implementation-of-ADT: Summary-of-data-structure/VS-of-implementation-of-ADT.md
+  - VS-of-search-tree-and-hash-table: Summary-of-data-structure/VS-of-search-tree-and-hash-table.md
+  - VS-of-search-tree-and-skip-list: Summary-of-data-structure/VS-of-search-tree-and-skip-list.md
+- TODO: TODO.md
 plugins:
-    - search
+- search
+repo_url: https://github.com/dengking/data-structure
+site_author: DengKing
+site_description: Project documentation with Markdown.
+site_name: data-structure
+site_url: https://dengking.github.io/data-structure
+theme:
+  name: material

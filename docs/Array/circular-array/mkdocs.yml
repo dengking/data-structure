@@ -1,2 +1,3 @@
-docs:
+nav:
     - Circular-buffer: Circular-buffer.md
+    - Circular-array: circular-array.md
