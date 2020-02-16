@@ -87,7 +87,7 @@ nav:
     - Introduction: Tree/Tree-operation/index.md
   - TODO: Tree/TODO.md
 - Hash:
-  - Hash-function: Hash/wikipedia-Hash-function.md
+  - Introduction: Hash/index.md
 - Set:
   - Set: Set/Set(abstract-data-type).md
 - Probabilistic-data-structures:
