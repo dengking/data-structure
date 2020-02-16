@@ -1,10 +1,6 @@
-[TOC]
-
-
-
 # [Trie](https://en.wikipedia.org/wiki/Trie)
 
-***SUMMARY*** : trie也可以称之为前缀树
+> NOTE: trie也可以称之为前缀树
 
 In [computer science](https://en.wikipedia.org/wiki/Computer_science), a **trie**, also called **digital tree**, **radix tree** or **prefix tree**, is a kind of [search tree](https://en.wikipedia.org/wiki/Search_tree)—an ordered [tree](https://en.wikipedia.org/wiki/Tree_(data_structure)) [data structure](https://en.wikipedia.org/wiki/Data_structure) used to store a [dynamic set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) or [associative array](https://en.wikipedia.org/wiki/Associative_array) where the keys are usually [strings](https://en.wikipedia.org/wiki/String_(computer_science)). Unlike a [binary search tree](https://en.wikipedia.org/wiki/Binary_search_tree), no node in the tree stores the **key** associated with that node; instead, its position in the tree defines the key with which it is associated. All the descendants of a node have a common [prefix](https://en.wikipedia.org/wiki/Prefix) of the string associated with that node, and the root is associated with the [empty string](https://en.wikipedia.org/wiki/Empty_string). Keys tend to be associated with leaves, though some inner nodes may correspond to keys of interest. Hence, keys are not necessarily associated with every node. For the space-optimized presentation of prefix tree, see [compact prefix tree](https://en.wikipedia.org/wiki/Compact_prefix_tree).
 

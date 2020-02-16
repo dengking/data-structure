@@ -1,4 +1,3 @@
 - docs:
     - introduction: index.md
-    - wikipedia-Trie: wikipedia-Trie.md
-    - TODO: TODO.md
+    - Trie: Trie.md
