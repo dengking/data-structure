@@ -57,7 +57,7 @@ In [computer science](https://en.wikipedia.org/wiki/Computer_science), [tree (da
 
 按照有的关系来组织数据，它们会形成树结构（不会成环），比如parent-children关系；按照有的关系来组织数据，它们会形成图（会成环）。那是关系的什么特效决定了这种结果呢？这正是本节需要进行探讨的一个话题。
 
-
+如何来描述关系呢？不同的学科有不同的语言，比如数学中，可以使用函数来描述关系，计算机科学中呢？参见[Structure in computer science](#Structure in computer science)。
 
 ## 过程的结构
 

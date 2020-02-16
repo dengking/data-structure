@@ -1,6 +1,6 @@
 nav:
     - Home: index.md
-    - Structure: structure.md
+    - Structure: Structure
     - Data-structure: Data-structure
     - Array: Array
     - List: List
