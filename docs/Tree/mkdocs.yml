@@ -8,4 +8,5 @@ nav:
     - Tree-and-stack: Tree-and-stack
     - Implicit-tree: Implicit-tree.md
     - Tree-operation: Tree-operation
+    - Trie: Trie
     - TODO: TODO.md
