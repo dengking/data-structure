@@ -1,7 +1,3 @@
-[TOC]
-
-
-
 # [Stack (abstract data type)](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))
 
 In [computer science](https://en.wikipedia.org/wiki/Computer_science), a *stack* is an [abstract data type](https://en.wikipedia.org/wiki/Abstract_data_type) that serves as a [collection](https://en.wikipedia.org/wiki/Collection_(computing)) of elements, with two principal operations:

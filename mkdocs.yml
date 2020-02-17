@@ -39,6 +39,9 @@ nav:
   - Chain: List/Chain.md
   - VS-double-linked-list-VS-binary-tree: List/VS-double-linked-list-VS-binary-tree.md
   - VS-Unrolled-linked list-VS-B-tree: List/VS-Unrolled-linked list-VS-B-tree.md
+- Stack:
+  - Stack: Stack/wikipedia-Stack(abstract-data-type).md
+  - Application-of-stack: Stack/Application-of-stack.md
 - Graph:
   - Introduction: Graph/index.md
   - 01-Graph-and-Graph-theory:
@@ -78,13 +81,16 @@ nav:
   - Represent-tree: Tree/Represent-tree.md
   - Tree(set-theory): Tree/Tree(set-theory).md
   - Tree(data-structure): Tree/Tree(data-structure).md
-  - Application-of-tree-data-structure: Tree/application-of-tree-data-structure.md
+  - Application-of-tree-data-structure: Tree/Application-of-tree-data-structure.md
   - Tree-and-stack:
     - Introduction: Tree/Tree-and-stack/index.md
     - VS-bracket-VS-tree: Tree/Tree-and-stack/VS-bracket-VS-tree.md
   - Implicit-tree: Tree/Implicit-tree.md
   - Tree-operation:
     - Introduction: Tree/Tree-operation/index.md
+  - Trie:
+    - Introduction: Tree/Trie/index.md
+    - Trie: Tree/Trie/Trie.md
   - TODO: Tree/TODO.md
 - Hash:
   - Introduction: Hash/index.md

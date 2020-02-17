@@ -4,6 +4,7 @@ nav:
     - Data-structure: Data-structure
     - Array: Array
     - List: List
+    - Stack: Stack
     - Graph: Graph
     - Tree: Tree
     - Hash: Hash
