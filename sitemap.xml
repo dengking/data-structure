@@ -91,6 +91,16 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://dengking.github.io/data-structure/Stack/Stack(abstract-data-type)/</loc>
+     <lastmod>2020-02-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://dengking.github.io/data-structure/Stack/Application-of-stack/</loc>
+     <lastmod>2020-02-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://dengking.github.io/data-structure/Graph/</loc>
      <lastmod>2020-02-17</lastmod>
      <changefreq>daily</changefreq>
@@ -211,8 +221,8 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc></loc>
-     
+     <loc>https://dengking.github.io/data-structure/Tree/Application-of-tree-data-structure/</loc>
+     <lastmod>2020-02-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
@@ -232,6 +242,16 @@
     </url>
     <url>
      <loc>https://dengking.github.io/data-structure/Tree/Tree-operation/</loc>
+     <lastmod>2020-02-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://dengking.github.io/data-structure/Tree/Trie/</loc>
+     <lastmod>2020-02-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://dengking.github.io/data-structure/Tree/Trie/Trie/</loc>
      <lastmod>2020-02-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
