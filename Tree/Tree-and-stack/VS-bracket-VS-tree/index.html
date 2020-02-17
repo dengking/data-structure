@@ -1,0 +1,2099 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Project documentation with Markdown.">
+      
+      
+        <link rel="canonical" href="https://dengking.github.io/data-structure/Tree/Tree-and-stack/VS-bracket-VS-tree/">
+      
+      
+        <meta name="author" content="DengKing">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>VS-bracket-VS-tree - data-structure</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.1b62728e.css">
+      
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-27795084-5", "mkdocs.org")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#bracket_and_tree" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://dengking.github.io/data-structure" title="data-structure" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              data-structure
+            </span>
+            <span class="md-header-nav__topic">
+              
+                VS-bracket-VS-tree
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/dengking/data-structure" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://dengking.github.io/data-structure" title="data-structure" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    data-structure
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/dengking/data-structure" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Structure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Structure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Structure/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Structure/Structure/" title="Structure" class="md-nav__link">
+      Structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Structure/Hierarchy/" title="Hierarchy" class="md-nav__link">
+      Hierarchy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Structure/Relation/" title="Relation" class="md-nav__link">
+      Relation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Data-structure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Data-structure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Data-structure/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Data-structure/Data-structure/" title="Data-structure" class="md-nav__link">
+      Data-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Data-structure/Recursive-data-type/" title="Recursive-data-type" class="md-nav__link">
+      Recursive-data-type
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Data-structure/Abstract-data-type/" title="Abstract-data-type" class="md-nav__link">
+      Abstract-data-type
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Array
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Array
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Array/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Array/Array-data-structure/" title="Array-data-structure" class="md-nav__link">
+      Array-data-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
+    
+    <label class="md-nav__link" for="nav-4-3">
+      bit-array
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        bit-array
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Array/bit-array/Bit-array/" title="Bit-array" class="md-nav__link">
+      Bit-array
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+    
+    <label class="md-nav__link" for="nav-4-4">
+      circular-array
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        circular-array
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Array/circular-array/Circular-buffer/" title="Circular-buffer" class="md-nav__link">
+      Circular-buffer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Array/circular-array/circular-array/" title="Circular-array" class="md-nav__link">
+      Circular-array
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      List
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        List
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../List/List/" title="List" class="md-nav__link">
+      List
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../List/Chain/" title="Chain" class="md-nav__link">
+      Chain
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../List/VS-double-linked-list-VS-binary-tree/" title="VS-double-linked-list-VS-binary-tree" class="md-nav__link">
+      VS-double-linked-list-VS-binary-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../List/VS-Unrolled-linked list-VS-B-tree/" title="VS-Unrolled-linked list-VS-B-tree" class="md-nav__link">
+      VS-Unrolled-linked list-VS-B-tree
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+    
+    <label class="md-nav__link" for="nav-6-2">
+      01-Graph-and-Graph-theory
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-2">
+        01-Graph-and-Graph-theory
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/01-Graph-and-Graph-theory/01-Graph-and-Graph-theory/" title="Graph-and-Graph-theory.md" class="md-nav__link">
+      Graph-and-Graph-theory.md
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2-2" type="checkbox" id="nav-6-2-2">
+    
+    <label class="md-nav__link" for="nav-6-2-2">
+      Graph-representations
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-2-2">
+        Graph-representations
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/01-Graph-and-Graph-theory/Graph-representations/Graph-representations/" title="Graph-representations" class="md-nav__link">
+      Graph-representations
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2-3" type="checkbox" id="nav-6-2-3">
+    
+    <label class="md-nav__link" for="nav-6-2-3">
+      Directed-graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-2-3">
+        Directed-graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/01-Graph-and-Graph-theory/Directed-graph/Directed-graph/" title="Directed-graph" class="md-nav__link">
+      Directed-graph
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2-3-2" type="checkbox" id="nav-6-2-3-2">
+    
+    <label class="md-nav__link" for="nav-6-2-3-2">
+      Directed-acyclic-graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="4">
+      <label class="md-nav__title" for="nav-6-2-3-2">
+        Directed-acyclic-graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/01-Graph-and-Graph-theory/Directed-graph/Directed-acyclic-graph/Directed-acyclic-graph/" title="Directed-acyclic-graph" class="md-nav__link">
+      Directed-acyclic-graph
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      02-Graph-Model
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        02-Graph-Model
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/02-Graph-Model/Graph-Model/" title="Graph-Model" class="md-nav__link">
+      Graph-Model
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/02-Graph-Model/Application-of-graph/" title="Application-of-graph" class="md-nav__link">
+      Application-of-graph
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3-3" type="checkbox" id="nav-6-3-3">
+    
+    <label class="md-nav__link" for="nav-6-3-3">
+      Dependency-graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-3-3">
+        Dependency-graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/02-Graph-Model/Dependency-graph/Dependency-graph/" title="Dependency-graph" class="md-nav__link">
+      Dependency-graph
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/02-Graph-Model/Dependency-graph/Precedence-graph/" title="Precedence-graph" class="md-nav__link">
+      Precedence-graph
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/02-Graph-Model/Dependency-graph/Dependency-resolving-algorithm.md" title="Dependency-resolving-algorithm" class="md-nav__link">
+      Dependency-resolving-algorithm
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4">
+    
+    <label class="md-nav__link" for="nav-6-4">
+      03-Graph-operation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-4">
+        03-Graph-operation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/03-Graph-operation/Graph-operation/" title="Graph-operation" class="md-nav__link">
+      Graph-operation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5" type="checkbox" id="nav-6-5">
+    
+    <label class="md-nav__link" for="nav-6-5">
+      04-Computational-problems-in-graph-theory
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-5">
+        04-Computational-problems-in-graph-theory
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/04-Computational-problems-in-graph-theory/Computational-problems-in-graph-theory/" title="Computational-problems-in-graph-theory" class="md-nav__link">
+      Computational-problems-in-graph-theory
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-2" type="checkbox" id="nav-6-5-2">
+    
+    <label class="md-nav__link" for="nav-6-5-2">
+      Circular
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-2">
+        Circular
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/04-Computational-problems-in-graph-theory/Circular/Cycle-detection/" title="Cycle-detection" class="md-nav__link">
+      Cycle-detection
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/04-Computational-problems-in-graph-theory/Circular/Circular-dependency/" title="Circular-dependency" class="md-nav__link">
+      Circular-dependency
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-3" type="checkbox" id="nav-6-5-3">
+    
+    <label class="md-nav__link" for="nav-6-5-3">
+      Dominator
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-3">
+        Dominator
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/04-Computational-problems-in-graph-theory/Dominator/Dominator(graph-theory)/" title="Dominator" class="md-nav__link">
+      Dominator
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-4" type="checkbox" id="nav-6-5-4">
+    
+    <label class="md-nav__link" for="nav-6-5-4">
+      Sorting
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-4">
+        Sorting
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/04-Computational-problems-in-graph-theory/Sorting/Topological-sorting/" title="Topological-sorting" class="md-nav__link">
+      Topological-sorting
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-5" type="checkbox" id="nav-6-5-5">
+    
+    <label class="md-nav__link" for="nav-6-5-5">
+      Spanning-tree
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-5">
+        Spanning-tree
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/04-Computational-problems-in-graph-theory/Spanning-tree/Spanning-tree/" title="Spanning-tree" class="md-nav__link">
+      Spanning-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/04-Computational-problems-in-graph-theory/Spanning-tree/Minimum-spanning-tree/" title="Minimum-spanning-tree" class="md-nav__link">
+      Minimum-spanning-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/04-Computational-problems-in-graph-theory/Spanning-tree/Borůvka's-algorithm/" title="Borůvka's-algorithm" class="md-nav__link">
+      Borůvka's-algorithm
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
+    
+    <label class="md-nav__link" for="nav-7">
+      Tree
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Tree
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tree-structure/" title="Tree-structure" class="md-nav__link">
+      Tree-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Represent-tree/" title="Represent-tree" class="md-nav__link">
+      Represent-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tree(set-theory)/" title="Tree(set-theory)" class="md-nav__link">
+      Tree(set-theory)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tree(data-structure)/" title="Tree(data-structure)" class="md-nav__link">
+      Tree(data-structure)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../application-of-tree-data-structure.md" title="Application-of-tree-data-structure" class="md-nav__link">
+      Application-of-tree-data-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-7" type="checkbox" id="nav-7-7" checked>
+    
+    <label class="md-nav__link" for="nav-7-7">
+      Tree-and-stack
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-7">
+        Tree-and-stack
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        VS-bracket-VS-tree
+      </label>
+    
+    <a href="./" title="VS-bracket-VS-tree" class="md-nav__link md-nav__link--active">
+      VS-bracket-VS-tree
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tree" class="md-nav__link">
+    使用括号来表示tree
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#binary_tree_to_string_with_brackets" class="md-nav__link">
+    Binary tree to string with brackets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#construct_binary_tree_from_string_with_bracket_representation" class="md-nav__link">
+    Construct Binary Tree from String with bracket representation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parentheses_are_trees" class="md-nav__link">
+    Parentheses Are Trees
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bracket_tournament" class="md-nav__link">
+    Bracket (tournament)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abstract_syntax_tree_and_bracket" class="md-nav__link">
+    Abstract syntax tree and bracket
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Implicit-tree/" title="Implicit-tree" class="md-nav__link">
+      Implicit-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-9" type="checkbox" id="nav-7-9">
+    
+    <label class="md-nav__link" for="nav-7-9">
+      Tree-operation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-9">
+        Tree-operation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tree-operation/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../TODO/" title="TODO" class="md-nav__link">
+      TODO
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Hash
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Hash
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2">
+    
+    <label class="md-nav__link" for="nav-8-2">
+      Hash-function
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-2">
+        Hash-function
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash/Hash-function/Hash-function/" title="Hash-function" class="md-nav__link">
+      Hash-function
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash/Hash-function/Rolling-hash/" title="Rolling-hash" class="md-nav__link">
+      Rolling-hash
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash/Hash-function/SipHash/" title="SipHash" class="md-nav__link">
+      SipHash
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2-4" type="checkbox" id="nav-8-2-4">
+    
+    <label class="md-nav__link" for="nav-8-2-4">
+      Cryptographic-hash-functions
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-2-4">
+        Cryptographic-hash-functions
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash/Hash-function/Cryptographic-hash-functions/Cryptographic-hash-function/" title="Cryptographic-hash-function" class="md-nav__link">
+      Cryptographic-hash-function
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash/Hash-function/Cryptographic-hash-functions/Cipher/" title="Cipher" class="md-nav__link">
+      Cipher
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash/Hash-function/Cryptographic-hash-functions/Salt(cryptography)/" title="Salt(cryptography)" class="md-nav__link">
+      Salt(cryptography)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Set
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        Set
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Set/Set(abstract-data-type)/" title="Set" class="md-nav__link">
+      Set
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Probabilistic-data-structures
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        Probabilistic-data-structures
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Probabilistic-data-structures/Bloom-filter/" title="Bloom-filter" class="md-nav__link">
+      Bloom-filter
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Probabilistic-data-structures/Random-tree/" title="Random-tree" class="md-nav__link">
+      Random-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Probabilistic-data-structures/Skip-list/" title="Skip-list" class="md-nav__link">
+      Skip-list
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      Summary-of-data-structure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        Summary-of-data-structure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Summary-of-data-structure/index.md" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Summary-of-data-structure/List-of-data-structure/" title="List-of-data-structure" class="md-nav__link">
+      List-of-data-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Summary-of-data-structure/VS-of-tree.md" title="VS-of-trees" class="md-nav__link">
+      VS-of-trees
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Summary-of-data-structure/VS-of-graph-and-tree-and-list/" title="VS-of-graph-and-tree-and-list" class="md-nav__link">
+      VS-of-graph-and-tree-and-list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Summary-of-data-structure/VS-of-implementation-of-ADT.md" title="VS-of-implementation-of-ADT" class="md-nav__link">
+      VS-of-implementation-of-ADT
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Summary-of-data-structure/VS-of-search-tree-and-hash-table.md" title="VS-of-search-tree-and-hash-table" class="md-nav__link">
+      VS-of-search-tree-and-hash-table
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Summary-of-data-structure/VS-of-search-tree-and-skip-list.md" title="VS-of-search-tree-and-skip-list" class="md-nav__link">
+      VS-of-search-tree-and-skip-list
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../TODO/" title="TODO" class="md-nav__link">
+      TODO
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tree" class="md-nav__link">
+    使用括号来表示tree
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#binary_tree_to_string_with_brackets" class="md-nav__link">
+    Binary tree to string with brackets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#construct_binary_tree_from_string_with_bracket_representation" class="md-nav__link">
+    Construct Binary Tree from String with bracket representation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parentheses_are_trees" class="md-nav__link">
+    Parentheses Are Trees
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bracket_tournament" class="md-nav__link">
+    Bracket (tournament)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abstract_syntax_tree_and_bracket" class="md-nav__link">
+    Abstract syntax tree and bracket
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="bracket_and_tree">Bracket and tree<a class="headerlink" href="#bracket_and_tree" title="Permanent link">#</a></h1>
+<p>本文目前处于草稿状态。</p>
+<h2 id="tree">使用括号来表示tree<a class="headerlink" href="#tree" title="Permanent link">#</a></h2>
+<p>已经看到了有两个项目都是使用括号来表示tree的：</p>
+<ul>
+<li>nltk的<a href="http://www.nltk.org/book/ch07.html">Noun Phrase Chunking</a></li>
+<li>python的<a href="https://docs.python.org/3/library/language.html">Python Language Services</a>也使用括号来表示tree</li>
+</ul>
+<p>总的来说，在字符终端中，使用括号是非常适合来表示tree的。</p>
+<h2 id="binary_tree_to_string_with_brackets"><a href="https://www.geeksforgeeks.org/binary-tree-string-brackets/">Binary tree to string with brackets</a><a class="headerlink" href="#binary_tree_to_string_with_brackets" title="Permanent link">#</a></h2>
+<h2 id="construct_binary_tree_from_string_with_bracket_representation"><a href="https://www.geeksforgeeks.org/construct-binary-tree-string-bracket-representation/">Construct Binary Tree from String with bracket representation</a><a class="headerlink" href="#construct_binary_tree_from_string_with_bracket_representation" title="Permanent link">#</a></h2>
+<h2 id="parentheses_are_trees"><a href="https://www.i-programmer.info/programming/theory/3458-brackets-are-trees.html">Parentheses Are Trees</a><a class="headerlink" href="#parentheses_are_trees" title="Permanent link">#</a></h2>
+<p>Parentheses are at the heart of programming. Understand parentheses and you can rule the earth. No, seriously! Parentheses, trees and stacks are all interconnected in a very deep and fundamental way.</p>
+<p>Back in the early days of programming, long before Google started asking why manhole covers are round, one of the very common programming aptitude tests was to take a long mess of parentheses and ask the candidate if they were valid.</p>
+<p>Something like:</p>
+<p>Is:</p>
+<pre><code>(((((()))((()))))))((()))))))
+</code></pre>
+
+<p>a valid expression?</p>
+<p>So parentheses are fundamental to programming and being able to handle parentheses is a fundamental programming skill.</p>
+<p>But why?</p>
+<p>The simple reason why the humble parenthesis is so great is that it forms a <strong>tree</strong> structure as soon as you give it a chance.</p>
+<p>Hence the title - Parentheses Are Trees.</p>
+<p>The fact that <strong>parentheses</strong> are <strong>trees</strong> might not seem obvious so let's see how this works.</p>
+<p>A single parenthesis is a useless thing. It only comes into its own when paired with a parenthesis of the opposite handedness. The reason that a <strong>(</strong> goes with a <strong>)</strong> is simply that together they form a <strong>container</strong>.</p>
+<p>Put simply you can put something in between the parenthesis -</p>
+<pre><code>(data)
+</code></pre>
+
+<p>Usually the data that you put in the <strong>parenthesis</strong> has some sort of structure but this isn't really relevant to the key property of parenthesis. However even at this stage you can see that parenthesis can be used to represent an array:</p>
+<pre><code>(first) (second) (third) (fourth)
+</code></pre>
+
+<p>What makes parenthesis really useful is that the data that you place between a pair of parenthesis can be another pair of parenthesis. This is always the moment when a simple data structure turns into a complex one - let a one dimensional array element store another array and the result is a two dimensional and more array. Letting a data structure store other data structures is one way of getting brand new things. </p>
+<p>If you allow a parenthesis pair to store another pair of parenthesis then the result is a tree.</p>
+<p>For example:</p>
+<pre><code>(()())
+</code></pre>
+
+<p>corresponds to a binary tree with two terminal nodes:</p>
+<pre><code>   |
+  /\
+(()())
+</code></pre>
+
+<p>You can now construct examples as complicated as you care to make them. For example:</p>
+<pre><code>        |
+       / \
+      /\  \
+     /  \  \
+    /    \  \
+   /\    /\  \
+(((()())(()()))())
+</code></pre>
+
+<p>The nesting of parenthesis simply gives the structure of the tree that the parenthesis correspond to.</p>
+<p>Now you can see why many computer languages use a lot of parenthesis. Probably none more so than the infamous Lisp and at this point who could resist quoting the well known xkcd cartoon:</p>
+<p><img alt="Lisp Cycles" src="http://imgs.xkcd.com/comics/lisp_cycles.png" /></p>
+<p><em>For more xkcd cartoons click <a href="http://www.xkcd.com/297/">here</a>.</em></p>
+<p>Lisp can get away with adding very little additional machinery to the parenthesis to create a complete and powerful language.</p>
+<p>The fact that <strong>parenthesis</strong> form a tree structure also explains the strange and arbitrary rules that you had to learn in school concerning arithmetic.</p>
+<p>The rule of arithmetic expressions form a "little" language the grammar of which can be expressed as a very simple tree structure with the rule that you always work out the expression by doing a left to right depth first walk.</p>
+<p>Consider the expression 3+2*5. To make sense of this and evaluate it correctly we have to invoke the idea of operator precedence. In particular we have to say that multiply has a higher precedence than addition so that the expression is 2 times 5 plus 3.</p>
+<p>However if this expression had been written as ((3)+((2)*(5))) then no operator precedence rules need to be used.</p>
+<p>The parenthesised expression corresponds to the tree:</p>
+<pre><code>      +
+     /  \
+    /    *
+   /   /   \
+((3)+((2)*(5)))
+</code></pre>
+
+<blockquote>
+<p>NOTE: binary expression tree can also be used to demostrate the relavance between tree and parenthesis.</p>
+</blockquote>
+<p>and you can see that walking the tree in depth first either right to left or left to right and performing the operations indicated at each of the nodes gives you the correct evaluation. </p>
+<p>Here is a depth first left-to-right evaluation:</p>
+<p><img alt="traverse" src="http://www.i-programmer.info/images/stories/BabBag/GrammarandTorture/traverse.jpg" /></p>
+<p>In other words if you are prepared to put all the parenthesis needed into the expression to make the syntax tree of the expression clear and unambiguous you don't need to introduce the idea of operator precedence.</p>
+<p>Of course we prefer to leave out parenthesis and complicate things by claiming that multiplication has to be done before addition. In fact we leave out so many parenthesis that we have to use the "My Dear Aunt Sally" rule - i.e. Multiplication and Division before Addition and Subtraction. </p>
+<p>Perhaps the biggest use of <strong>parenthesis</strong> today is in the form of all those <strong>markup languages</strong> that generate hierarchies i.e. trees of visual objects.</p>
+<p>For example what is HTML other than a bracketing syntax -</p>
+<pre><code>&lt;open tab&gt;content&lt;/close tag&gt;
+</code></pre>
+
+<p>Just think of each open tag as a "(" and each closing tag as a ")". The same is true of XAML and all the other object instantiation languages. They all create tree structures.</p>
+<p>In a more general context XML is a <strong>bracketing system</strong> that generates general <strong>tree</strong> structures consisting of arbitrary data. For another example consider the nesting of control structures such as <code>for</code>, <code>if</code>, <code>do while</code> and so on. These too are a bracketing language, often using curly brackets <code>{}</code>, and they generate a tree structure which the compiler has to work out to successfully parse the language.</p>
+<p>Once you notice the way bracketing generates hierarchies and general tree structures you start noticing them more or less everywhere.</p>
+<p>Perhaps now you will agree that parenthesis are fundamental to programming and testing the ability to work with them is probably a good way to see if some one is going to make the grade as a programmer.</p>
+<p>We have one question remaining - what arrangements of parenthesis are legal?</p>
+<p>The simple answer is only those arrangements that correspond to <strong>complete tree structures</strong> and there are only two ways in which a set of parenthesis can fail to do so.</p>
+<p>The first is just not having the same number of opening and closing parenthesis. You can't have half a container and so all valid bracketing structures have to match numbers of opening and closing parenthesis. This is a minimal condition for legal parenthesis.</p>
+<p>The second condition is that the pairs of parenthesis always occur in the right order - that is you always have () and never )(. Put as simply as this you would think that this condition is trivial but it is very easy to hide a pair of parenthesis in the wrong order.</p>
+<p>For example,</p>
+<pre><code>())(()()
+</code></pre>
+
+<p>This structure is clearly wrong but there is no single answer to exactly what is wrong with it. For example you might say that it corresponds to any of the following groupings:</p>
+<pre><code>() )( ()()
+() )( ( )( )
+( ))(()( )
+</code></pre>
+
+<p>In other words there is no single correct way to parse an incorrect structure.</p>
+<p>So how do we check for a valid bracketing structure?</p>
+<p>There is more than one answer to this but the simplest is to see if it is possible to walk the tree that the parenthesis describe.</p>
+<p>To do this you need a <strong>stack</strong>.</p>
+<p>All you have to do is scan the expression from left-to-right. Each time you encounter an opening parenthesis push it on the stack. Each time you encounter a closing parenthesis pop the top of the stack - if there is nothing on the top of the stack to pop then you have an invalid set of parenthesis. If you reach the end of the scan without trying to pop an empty stack then the stack will be empty if the expression was valid.</p>
+<p>For example in the case of:</p>
+<pre><code>((()()))
+</code></pre>
+
+<p>the stack contents are:</p>
+<pre><code>
+ stack    remainder
+0 .       ((()())).
+1 .(       (()())).
+2 .((       ()())).
+3 .(((       )())).
+4 .((         ())).
+5 .(((         ))).
+6 .((           )).
+7 .(             ).
+8 .               .
+</code></pre>
+
+<p>As the stack is empty when the scan is complete the expression was valid.</p>
+<p>The real question is can you see that this algorithm works?</p>
+<p>The answer is that the <strong>stack algorithm</strong> performs a <strong>depth-first left-to-right</strong> tree walk and this can only be completed if the parenthesis really do specify a tree.</p>
+<p>Notice that we are only considering parenthesis that are unlabeled - that is any closing parenthesis will pair with any opening parenthesis .</p>
+<p>Things become a little more difficult if you allow <strong>named parenthesis</strong> as in HTML, XML or program language structures. Then there are other ways to get things wrong such as <code>&lt;div&gt;&lt;span&gt;&lt;/div&gt;&lt;/span&gt;</code>. You can easily modify the <strong>stack algorithm</strong> to detect such errors - all you have to do is make sure that the popped parenthesis matches the closing parenthesis that caused the pop operation.</p>
+<p><strong>Parenthesis</strong>, <strong>stacks</strong> and <strong>trees</strong> go together perfectly.</p>
+<p>The final word however should go to xkcd and the observation in its <a href="http://blog.xkcd.com/2011/03/08/parentheses/">blog </a>of a halcyon time when Wikipedia had a sense of humor. The blog quotes from the Wikipedia article on parenthesis:</p>
+<p>Parentheses may also be nested (with one set (such as this) inside another set). This is not commonly used in formal writing [though sometimes other brackets (especially parentheses) will be used for one or more inner set of parentheses (in other words, <em>secondary</em> {or even <em>tertiary</em>} phrases can be found within the main sentence)]</p>
+<p>Sadly the Wikipedia entry no longer contains this paragraph...</p>
+<p>Yes parenthesises are fundamental to programming so much so that some programmers can spot a malformed structure instinctively. It is as if their eyes had a developed a co-processor for walking the tree structure. This perhaps the source for the final final word from parenthesis obsessed xkcd:</p>
+<p>![<code>(</code>](https://imgs.xkcd.com/comics/(.png)</p>
+<p>Only if you are a programmer... </p>
+<p>完全加括号问题其实是可以使用树来进行表示的</p>
+<h2 id="bracket_tournament"><a href="https://en.wikipedia.org/wiki/Bracket_(tournament)">Bracket (tournament)</a><a class="headerlink" href="#bracket_tournament" title="Permanent link">#</a></h2>
+<p>A <strong>bracket</strong> or <strong>tournament bracket</strong> is a <a href="https://en.wikipedia.org/wiki/Tree_structure">tree diagram</a> that represents the series of games played during a <a href="https://en.wikipedia.org/wiki/Knockout_tournament">knockout tournament</a>. Different knockout tournament formats have different brackets; the simplest and most common is that of the <a href="https://en.wikipedia.org/wiki/Single-elimination_tournament">single-elimination tournament</a>. The name "bracket" is <a href="https://en.wikipedia.org/wiki/American_English">American English</a>, derived from the resemblance of the links in the tree diagram to the <a href="https://en.wikipedia.org/wiki/Bracket">bracket</a> punctuation symbol ] or [ (called a "square bracket" in <a href="https://en.wikipedia.org/wiki/British_English">British English</a>). The closest British term is <strong>draw</strong>, although this implies an element of chance, whereas some brackets are determined entirely by <a href="https://en.wikipedia.org/wiki/Seed_(sports)">seeding</a>.</p>
+<h2 id="abstract_syntax_tree_and_bracket"><a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">Abstract syntax tree</a> and bracket<a class="headerlink" href="#abstract_syntax_tree_and_bracket" title="Permanent link">#</a></h2>
+<blockquote>
+<p>For instance, grouping <a href="https://en.wikipedia.org/wiki/Bracket#Parentheses">parentheses</a> are implicit in the tree structure, so these do not have to be represented as separate nodes. Likewise, a syntactic construct like an if-condition-then expression may be denoted by means of a single node with three branches.</p>
+</blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation">Reverse Polish Notation</a> and bracket</p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../" title="Introduction" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Introduction
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../Implicit-tree/" title="Implicit-tree" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Implicit-tree
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.808e90bb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+    
+  </body>
+</html>

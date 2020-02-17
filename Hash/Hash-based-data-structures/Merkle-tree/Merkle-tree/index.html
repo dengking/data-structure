@@ -1,0 +1,1911 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Project documentation with Markdown.">
+      
+      
+        <link rel="canonical" href="https://dengking.github.io/data-structure/Hash/Hash-based-data-structures/Merkle-tree/Merkle-tree/">
+      
+      
+        <meta name="author" content="DengKing">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>前言 - data-structure</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/application.1b62728e.css">
+      
+      
+    
+    
+      <script src="../../../../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../../../css/extra.css">
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-27795084-5", "mkdocs.org")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://dengking.github.io/data-structure" title="data-structure" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              data-structure
+            </span>
+            <span class="md-header-nav__topic">
+              
+                前言
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/dengking/data-structure" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://dengking.github.io/data-structure" title="data-structure" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    data-structure
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/dengking/data-structure" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Structure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Structure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Structure/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Structure/Structure/" title="Structure" class="md-nav__link">
+      Structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Structure/Hierarchy/" title="Hierarchy" class="md-nav__link">
+      Hierarchy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Structure/Relation/" title="Relation" class="md-nav__link">
+      Relation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Data-structure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Data-structure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Data-structure/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Data-structure/Data-structure/" title="Data-structure" class="md-nav__link">
+      Data-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Data-structure/Recursive-data-type/" title="Recursive-data-type" class="md-nav__link">
+      Recursive-data-type
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Data-structure/Abstract-data-type/" title="Abstract-data-type" class="md-nav__link">
+      Abstract-data-type
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Array
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Array
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Array/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Array/Array-data-structure/" title="Array-data-structure" class="md-nav__link">
+      Array-data-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
+    
+    <label class="md-nav__link" for="nav-4-3">
+      bit-array
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        bit-array
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Array/bit-array/Bit-array/" title="Bit-array" class="md-nav__link">
+      Bit-array
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+    
+    <label class="md-nav__link" for="nav-4-4">
+      circular-array
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        circular-array
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Array/circular-array/Circular-buffer/" title="Circular-buffer" class="md-nav__link">
+      Circular-buffer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Array/circular-array/circular-array/" title="Circular-array" class="md-nav__link">
+      Circular-array
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      List
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        List
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../List/List/" title="List" class="md-nav__link">
+      List
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../List/Chain/" title="Chain" class="md-nav__link">
+      Chain
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../List/VS-double-linked-list-VS-binary-tree/" title="VS-double-linked-list-VS-binary-tree" class="md-nav__link">
+      VS-double-linked-list-VS-binary-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../List/VS-Unrolled-linked list-VS-B-tree/" title="VS-Unrolled-linked list-VS-B-tree" class="md-nav__link">
+      VS-Unrolled-linked list-VS-B-tree
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+    
+    <label class="md-nav__link" for="nav-6-2">
+      01-Graph-and-Graph-theory
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-2">
+        01-Graph-and-Graph-theory
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/01-Graph-and-Graph-theory/01-Graph-and-Graph-theory/" title="Graph-and-Graph-theory.md" class="md-nav__link">
+      Graph-and-Graph-theory.md
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2-2" type="checkbox" id="nav-6-2-2">
+    
+    <label class="md-nav__link" for="nav-6-2-2">
+      Graph-representations
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-2-2">
+        Graph-representations
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/01-Graph-and-Graph-theory/Graph-representations/Graph-representations/" title="Graph-representations" class="md-nav__link">
+      Graph-representations
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2-3" type="checkbox" id="nav-6-2-3">
+    
+    <label class="md-nav__link" for="nav-6-2-3">
+      Directed-graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-2-3">
+        Directed-graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/01-Graph-and-Graph-theory/Directed-graph/Directed-graph/" title="Directed-graph" class="md-nav__link">
+      Directed-graph
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2-3-2" type="checkbox" id="nav-6-2-3-2">
+    
+    <label class="md-nav__link" for="nav-6-2-3-2">
+      Directed-acyclic-graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="4">
+      <label class="md-nav__title" for="nav-6-2-3-2">
+        Directed-acyclic-graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/01-Graph-and-Graph-theory/Directed-graph/Directed-acyclic-graph/Directed-acyclic-graph/" title="Directed-acyclic-graph" class="md-nav__link">
+      Directed-acyclic-graph
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      02-Graph-Model
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        02-Graph-Model
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/02-Graph-Model/Graph-Model/" title="Graph-Model" class="md-nav__link">
+      Graph-Model
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/02-Graph-Model/Application-of-graph/" title="Application-of-graph" class="md-nav__link">
+      Application-of-graph
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3-3" type="checkbox" id="nav-6-3-3">
+    
+    <label class="md-nav__link" for="nav-6-3-3">
+      Dependency-graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-3-3">
+        Dependency-graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/02-Graph-Model/Dependency-graph/Dependency-graph/" title="Dependency-graph" class="md-nav__link">
+      Dependency-graph
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/02-Graph-Model/Dependency-graph/Precedence-graph/" title="Precedence-graph" class="md-nav__link">
+      Precedence-graph
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/02-Graph-Model/Dependency-graph/Dependency-resolving-algorithm.md" title="Dependency-resolving-algorithm" class="md-nav__link">
+      Dependency-resolving-algorithm
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4">
+    
+    <label class="md-nav__link" for="nav-6-4">
+      03-Graph-operation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-4">
+        03-Graph-operation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/03-Graph-operation/Graph-operation/" title="Graph-operation" class="md-nav__link">
+      Graph-operation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5" type="checkbox" id="nav-6-5">
+    
+    <label class="md-nav__link" for="nav-6-5">
+      04-Computational-problems-in-graph-theory
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-5">
+        04-Computational-problems-in-graph-theory
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/04-Computational-problems-in-graph-theory/Computational-problems-in-graph-theory/" title="Computational-problems-in-graph-theory" class="md-nav__link">
+      Computational-problems-in-graph-theory
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-2" type="checkbox" id="nav-6-5-2">
+    
+    <label class="md-nav__link" for="nav-6-5-2">
+      Circular
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-2">
+        Circular
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/04-Computational-problems-in-graph-theory/Circular/Cycle-detection/" title="Cycle-detection" class="md-nav__link">
+      Cycle-detection
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/04-Computational-problems-in-graph-theory/Circular/Circular-dependency/" title="Circular-dependency" class="md-nav__link">
+      Circular-dependency
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-3" type="checkbox" id="nav-6-5-3">
+    
+    <label class="md-nav__link" for="nav-6-5-3">
+      Dominator
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-3">
+        Dominator
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/04-Computational-problems-in-graph-theory/Dominator/Dominator(graph-theory)/" title="Dominator" class="md-nav__link">
+      Dominator
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-4" type="checkbox" id="nav-6-5-4">
+    
+    <label class="md-nav__link" for="nav-6-5-4">
+      Sorting
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-4">
+        Sorting
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/04-Computational-problems-in-graph-theory/Sorting/Topological-sorting/" title="Topological-sorting" class="md-nav__link">
+      Topological-sorting
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-5" type="checkbox" id="nav-6-5-5">
+    
+    <label class="md-nav__link" for="nav-6-5-5">
+      Spanning-tree
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-5">
+        Spanning-tree
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/04-Computational-problems-in-graph-theory/Spanning-tree/Spanning-tree/" title="Spanning-tree" class="md-nav__link">
+      Spanning-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/04-Computational-problems-in-graph-theory/Spanning-tree/Minimum-spanning-tree/" title="Minimum-spanning-tree" class="md-nav__link">
+      Minimum-spanning-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/04-Computational-problems-in-graph-theory/Spanning-tree/Borůvka's-algorithm/" title="Borůvka's-algorithm" class="md-nav__link">
+      Borůvka's-algorithm
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Tree
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Tree
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Tree/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Tree/Tree-structure/" title="Tree-structure" class="md-nav__link">
+      Tree-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Tree/Represent-tree/" title="Represent-tree" class="md-nav__link">
+      Represent-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Tree/Tree(set-theory)/" title="Tree(set-theory)" class="md-nav__link">
+      Tree(set-theory)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Tree/Tree(data-structure)/" title="Tree(data-structure)" class="md-nav__link">
+      Tree(data-structure)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Tree/application-of-tree-data-structure.md" title="Application-of-tree-data-structure" class="md-nav__link">
+      Application-of-tree-data-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-7" type="checkbox" id="nav-7-7">
+    
+    <label class="md-nav__link" for="nav-7-7">
+      Tree-and-stack
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-7">
+        Tree-and-stack
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Tree/Tree-and-stack/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Tree/Tree-and-stack/VS-bracket-VS-tree/" title="VS-bracket-VS-tree" class="md-nav__link">
+      VS-bracket-VS-tree
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Tree/Implicit-tree/" title="Implicit-tree" class="md-nav__link">
+      Implicit-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-9" type="checkbox" id="nav-7-9">
+    
+    <label class="md-nav__link" for="nav-7-9">
+      Tree-operation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-9">
+        Tree-operation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Tree/Tree-operation/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Tree/TODO/" title="TODO" class="md-nav__link">
+      TODO
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Hash
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Hash
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2">
+    
+    <label class="md-nav__link" for="nav-8-2">
+      Hash-function
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-2">
+        Hash-function
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash-function/Hash-function/" title="Hash-function" class="md-nav__link">
+      Hash-function
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash-function/Rolling-hash/" title="Rolling-hash" class="md-nav__link">
+      Rolling-hash
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash-function/SipHash/" title="SipHash" class="md-nav__link">
+      SipHash
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2-4" type="checkbox" id="nav-8-2-4">
+    
+    <label class="md-nav__link" for="nav-8-2-4">
+      Cryptographic-hash-functions
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-2-4">
+        Cryptographic-hash-functions
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash-function/Cryptographic-hash-functions/Cryptographic-hash-function/" title="Cryptographic-hash-function" class="md-nav__link">
+      Cryptographic-hash-function
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash-function/Cryptographic-hash-functions/Cipher/" title="Cipher" class="md-nav__link">
+      Cipher
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash-function/Cryptographic-hash-functions/Salt(cryptography)/" title="Salt(cryptography)" class="md-nav__link">
+      Salt(cryptography)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Set
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        Set
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Set/Set(abstract-data-type)/" title="Set" class="md-nav__link">
+      Set
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Probabilistic-data-structures
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        Probabilistic-data-structures
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Probabilistic-data-structures/Bloom-filter/" title="Bloom-filter" class="md-nav__link">
+      Bloom-filter
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Probabilistic-data-structures/Random-tree/" title="Random-tree" class="md-nav__link">
+      Random-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Probabilistic-data-structures/Skip-list/" title="Skip-list" class="md-nav__link">
+      Skip-list
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      Summary-of-data-structure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        Summary-of-data-structure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Summary-of-data-structure/index.md" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Summary-of-data-structure/List-of-data-structure/" title="List-of-data-structure" class="md-nav__link">
+      List-of-data-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Summary-of-data-structure/VS-of-tree.md" title="VS-of-trees" class="md-nav__link">
+      VS-of-trees
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Summary-of-data-structure/VS-of-graph-and-tree-and-list/" title="VS-of-graph-and-tree-and-list" class="md-nav__link">
+      VS-of-graph-and-tree-and-list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Summary-of-data-structure/VS-of-implementation-of-ADT.md" title="VS-of-implementation-of-ADT" class="md-nav__link">
+      VS-of-implementation-of-ADT
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Summary-of-data-structure/VS-of-search-tree-and-hash-table.md" title="VS-of-search-tree-and-hash-table" class="md-nav__link">
+      VS-of-search-tree-and-hash-table
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Summary-of-data-structure/VS-of-search-tree-and-skip-list.md" title="VS-of-search-tree-and-skip-list" class="md-nav__link">
+      VS-of-search-tree-and-skip-list
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../../TODO/" title="TODO" class="md-nav__link">
+      TODO
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">前言<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<p>是在学习<a href="https://en.wikipedia.org/wiki/Git">git</a>的时候，发现<a href="https://en.wikipedia.org/wiki/Merkle_tree">Merkle tree</a>的。在学习<a href="https://en.wikipedia.org/wiki/Merkle_tree">Merkle tree</a>之前，先学习<a href="https://en.wikipedia.org/wiki/Hash_list">Hash list</a>和<a href="https://en.wikipedia.org/wiki/Hash_chain">Hash chain</a>，两者是深刻掌握<a href="https://en.wikipedia.org/wiki/Merkle_tree">Merkle tree</a>的基础。</p>
+<h1 id="hash_list"><a href="https://en.wikipedia.org/wiki/Hash_list">Hash list</a><a class="headerlink" href="#hash_list" title="Permanent link">#</a></h1>
+<p>In <a href="https://en.wikipedia.org/wiki/Computer_science">computer science</a>, a <strong>hash list</strong> is typically a <a href="https://en.wikipedia.org/wiki/List_(computing)">list</a> of <a href="https://en.wikipedia.org/wiki/Hash_function">hashes</a> of the data blocks in a file or set of files. </p>
+<blockquote>
+<p>NOTE: hash list的含义其实非常简单，就是上面这段话所说的list of hash，仅此而已。当然可以在它上面再进行扩展，比如下面将要介绍的Root hash。</p>
+</blockquote>
+<h2 id="root_hash">Root hash<a class="headerlink" href="#root_hash" title="Permanent link">#</a></h2>
+<p>Often, an additional <strong>hash</strong> of the <strong>hash list</strong> itself (a <em>top hash</em>, also called <em>root hash</em> or <em>master hash</em>) is used. </p>
+<p><img alt="img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Hash_list.svg/350px-Hash_list.svg.png" /></p>
+<blockquote>
+<p>A hash list with a top hash</p>
+<p>上述就是一个带有root hash的hash list。</p>
+<p>NOTE: 思考：root hash的价值何在呢？如果将hash list中的每个hash都对应的是一个data block，而root hash则对应的是所有的data block，也就是说它其实所对应的是整体data，而非局部。下面的例子就描述的是这种含义。</p>
+</blockquote>
+<p>Before downloading a file on a p2p network, in most cases the top hash is acquired from a trusted source, for instance a friend or a web site that is known to have good recommendations of files to download. When the top hash is available, the hash list can be received from any non-trusted source, like any peer in the p2p network. Then the received hash list is checked against the trusted top hash, and if the hash list is damaged or fake, another hash list from another source will be tried until the program finds one that matches the top hash.</p>
+<h2 id="applications">Applications<a class="headerlink" href="#applications" title="Permanent link">#</a></h2>
+<p>Hash lists can be used to protect any kind of data stored, handled and transferred in and between computers. An important use of hash lists is to make sure that data blocks received from other peers in a <a href="https://en.wikipedia.org/wiki/Peer-to-peer">peer-to-peer network</a> are received undamaged and unaltered, and to check that the other peers do not "lie" and send fake blocks.</p>
+<p>Usually a <a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">cryptographic hash function</a> such as <a href="https://en.wikipedia.org/wiki/SHA-256">SHA-256</a> is used for the hashing. If the hash list only needs to protect against unintentional damage unsecured <a href="https://en.wikipedia.org/wiki/Checksum">checksums</a> such as <a href="https://en.wikipedia.org/wiki/Cyclic_redundancy_check">CRCs</a> can be used.</p>
+<blockquote>
+<p>NOTE: 上述其实是hash的常见用法，并无什么特殊之处。下面则强调hash list的特殊之处。</p>
+</blockquote>
+<p>Hash lists are better than a simple hash of the entire file since, in the case of a data block being damaged, this is noticed, and only the damaged block needs to be redownloaded. With only a hash of the file, many undamaged blocks would have to be redownloaded, and the file reconstructed and tested until the correct hash of the entire file is obtained. Hash lists also protect against nodes that try to sabotage by sending fake blocks, since in such a case the damaged block can be acquired from some other source.</p>
+<h1 id="hash_chain"><a href="https://en.wikipedia.org/wiki/Hash_chain">Hash chain</a><a class="headerlink" href="#hash_chain" title="Permanent link">#</a></h1>
+<p>A <strong>hash chain</strong> is the successive application of a <a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">cryptographic hash function</a> to a piece of data.</p>
+<h2 id="definition">Definition<a class="headerlink" href="#definition" title="Permanent link">#</a></h2>
+<p>A <strong>hash chain</strong> is a successive application of a <a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">cryptographic hash function</a> $ h $ to a string $ x $.</p>
+<p>For example,</p>
+<p>$ h(h(h(h(x)))) $ gives a hash chain of length 4, often denoted $ h^{4}(x) $</p>
+<blockquote>
+<p>NOTE:  显然，hash chain的定义所强调的是重复迭代地使用hash function。显然它所描述的其实是一个数学过程。</p>
+</blockquote>
+<h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">#</a></h2>
+<p>本文给出的hash chain的介绍是非常简单的， 运用hash chain还能够带来其他的非常优良的特性，这就使得hash chain有着非常广泛的应用，下面就来探讨运用hash chain可以带来的优良特性：</p>
+<h3 id="pre-image_resistance_one-way"><a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function#Properties">Pre-image resistance</a> / <a href="https://en.wikipedia.org/wiki/One-way_function">one-way</a><a class="headerlink" href="#pre-image_resistance_one-way" title="Permanent link">#</a></h3>
+<p>由于hash chain所使用的是<a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">cryptographic hash function</a>，<a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">cryptographic hash function</a>是<a href="https://en.wikipedia.org/wiki/One-way_function">one-way function</a>,所有hash chain就具备了<a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">cryptographic hash function</a>的<a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function#Properties">Pre-image resistance</a>特性，即根据函数值无法逆向计算出它的自变量的值，说的更加形象一些就是hash chain只能够顺推而不能够逆推。</p>
+<p>下面这段话是摘自<a href="https://github.com/DLTcollab/hashchain#hash-chain">Hash Chain</a>项目的文档，目的是帮助理解：</p>
+<p>The idea of a <strong>hash chain</strong> is simple: you start with a base (could be a password, or just a number, or some other data) and <strong>hash</strong>( <a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">cryptographic hash function</a> ) it. You then take the result and hash that too. You continue hashing the results repeatedly, till you have a series of hashes like this:</p>
+<pre><code>Base -&gt; Hash0 = H(Base) -&gt; Hash1 = H(Hash0) -&gt; ... -&gt; HashN = H(HashN-1)
+</code></pre>
+
+<p>The exciting property of these hash chains is that given the last hash in the chain, HashN, it is very difficult to determine any of the <strong>previous</strong> hashes, or the base. However, given the last hash, it is trivial to verify whether another hash is part of the chain.</p>
+<p>This means that a <strong>hash chain</strong> has the potential to be a limited source of authentication. You can deploy a resource in public along with the last hash of the chain. Then you can give commands to this resource, passing along each previous hash as authentication of your identity.</p>
+<h3 id="immutable">Immutable<a class="headerlink" href="#immutable" title="Permanent link">#</a></h3>
+<p>篡改<a href="https://en.wikipedia.org/wiki/Hash_chain">Hash chain</a>中的任何一个node（节点）的hash value都会导致这个节点后的所有的节点的hash value都必须重新计算一遍才能够重新组成链，否则就无法形成hash chain了。这意味中整个<a href="https://en.wikipedia.org/wiki/Hash_chain">Hash chain</a>是immutable的。</p>
+<p>下面是寻找到的一些与此相关的内容：</p>
+<p><a href="https://bitcoin.stackexchange.com/questions/43624/where-did-the-idea-of-blockchain-come-from-git-was-already-using-it-since-2005">Where did the idea of blockchain come from? Git was already using it since 2005</a></p>
+<blockquote>
+<p>With bitcoin's blockchain, each block's hash is computed with the previous block's hash. That makes all blocks an <strong>immutable chain</strong>.</p>
+<p>This is not the first time people used a hash-chain. As far as I know, Git was already used it since 2005 for the commit-hash computing.</p>
+<p>So, what is the earliest use of hash chains? Where did the idea of blockchain come from?</p>
+</blockquote>
+<p>这种immutable的特性有着非常重要的价值，比如：</p>
+<p><a href="https://bitcoin.stackexchange.com/a/43627">原文链接</a></p>
+<blockquote>
+<p>According to <a href="https://freedom-to-tinker.com/blog/randomwalker/the-princeton-bitcoin-textbook-is-now-freely-available/">Bitcoin and Cryptocurrency Technologies (BaCT)</a>, the Princeton Bitcoin textbook, the block chain dates back to a "paper by Haber and Stornetta in 1991. Their proposal was a method for <strong>secure</strong> timestamping of digitaldocuments, rather than a digital money scheme." (BaCT p.15)</p>
+<p>The chaining of Merkle trees instead of single documents was proposed in a later paper. (BaCT p.16)</p>
+</blockquote>
+<h2 id="applications_1"><a href="https://en.wikipedia.org/wiki/Hash_chain#Applications">Applications</a><a class="headerlink" href="#applications_1" title="Permanent link">#</a></h2>
+<h3 id="one-time_keys"><a href="https://en.wikipedia.org/wiki/One-time_password">one-time keys</a><a class="headerlink" href="#one-time_keys" title="Permanent link">#</a></h3>
+<p>In <a href="https://en.wikipedia.org/wiki/Computer_security">computer security</a>, a hash chain is a method to produce many <a href="https://en.wikipedia.org/wiki/One-time_password">one-time keys</a> from a single <a href="https://en.wikipedia.org/wiki/Key_(cryptography)">key</a> or <a href="https://en.wikipedia.org/wiki/Password">password</a>.  For <a href="https://en.wikipedia.org/wiki/Non-repudiation">non-repudiation</a>（不可抵赖） a hash function can be applied successively to additional pieces of data in order to record the chronology of data's existence.</p>
+<p>see also:  <a href="https://en.wikipedia.org/wiki/S/KEY">S/KEY</a></p>
+<h2 id="binary_hash_chains">Binary hash chains<a class="headerlink" href="#binary_hash_chains" title="Permanent link">#</a></h2>
+<p><em>Main article:</em> <a href="https://en.wikipedia.org/wiki/Merkle_tree">Merkle tree</a></p>
+<p><img alt="Hash tree and hash chain" src="https://upload.wikimedia.org/wikipedia/commons/2/28/Hashtreehashchainjux.png" /></p>
+<h2 id="hash_chain_vs_blockchain"><a href="https://en.wikipedia.org/wiki/Hash_chain#Hash_chain_vs._blockchain">Hash chain vs. blockchain</a><a class="headerlink" href="#hash_chain_vs_blockchain" title="Permanent link">#</a></h2>
+<p>A hash chain is similar to a <a href="https://en.wikipedia.org/wiki/Blockchain">blockchain</a>, as they both utilize a cryptographic hash function for creating a link between two nodes. However, a blockchain (as used by <a href="https://en.wikipedia.org/wiki/Bitcoin">Bitcoin</a> and related systems) is generally intended to support distributed consensus around a public ledger (data), and incorporates a set of rules for encapsulation of data and associated data permissions.</p>
+<blockquote>
+<p>NOTE:  <a href="https://en.wikipedia.org/wiki/Blockchain">Blockchain</a>肯定远比Hash chain复杂，关于两者的关联，有太多太多的文章进行剖析了。</p>
+<p><a href="https://en.wikipedia.org/wiki/Blockchain">Blockchain</a>运用了多种技术，其中之一就是Hash chain，<a href="https://en.wikipedia.org/wiki/Blockchain">Blockchain</a>使用Hash chain来将它的block链接起来。关于<a href="https://en.wikipedia.org/wiki/Blockchain">Blockchain</a>中Hash chain的应用，还需要参见<a href="https://en.wikipedia.org/wiki/Blockchain">Blockchain</a>文章。</p>
+<p>下面是检索到的关于两者的文章：</p>
+<p>https://www.researchgate.net/figure/The-Bitcoin-blockchain-is-a-hash-chain-of-blocks-Each-block-has-a-Merkle-tree-of_fig1_316789505</p>
+<p>The Bitcoin blockchain is a hash chain of blocks. Each block has a Merkle tree of transactions. Efficient membership proofs of transactions can be constructed with respect to the Merkle root. </p>
+<p>这篇文章将block chain的简单模型，通过这个简单模型可以看出hash chain在block chain中的使用。</p>
+<p>https://crypto.stackexchange.com/questions/68290/when-was-hash-chain-first-used</p>
+<p>Hash linking is used to prove the <strong>integrity</strong> of a blockchain, or similar systems. When was that technique first used? I would guess it was early, maybe 1950s/1960s?</p>
+</blockquote>
+<h2 id="hash_list_vs_hash_chain"><a href="https://en.wikipedia.org/wiki/Hash_list">Hash list</a> VS  <a href="https://en.wikipedia.org/wiki/Hash_chain">Hash chain</a><a class="headerlink" href="#hash_list_vs_hash_chain" title="Permanent link">#</a></h2>
+<p>在<a href="https://en.wikipedia.org/wiki/Hash_chain">Hash chain</a>中对两者进行了对比：</p>
+<blockquote>
+<p>In contrast to the recursive structure of hash chains, the elements of a hash list are independent of each other.</p>
+</blockquote>
+<p>TO READ</p>
+<p><a href="https://crypto.stackexchange.com/questions/68290/when-was-hash-chain-first-used">When was hash chain first used?</a></p>
+<p>https://www.techopedia.com/definition/32920/hash-chain</p>
+<p>https://link.springer.com/referenceworkentry/10.1007%2F978-1-4419-5906-5_780</p>
+<h1 id="merkle_tree"><a href="https://en.wikipedia.org/wiki/Merkle_tree">Merkle tree</a><a class="headerlink" href="#merkle_tree" title="Permanent link">#</a></h1>
+<p>In <a href="https://en.wikipedia.org/wiki/Cryptography">cryptography</a> and <a href="https://en.wikipedia.org/wiki/Computer_science">computer science</a>, a <strong>hash tree</strong> or <strong>Merkle tree</strong> is a <a href="https://en.wikipedia.org/wiki/Tree_(data_structure)">tree</a> in which every leaf node is labelled with the <a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">cryptographic hash</a> of a data block, and every non-leaf node is labelled with the <a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">hash</a> of the labels of its child nodes. </p>
+<p>Hash trees are a generalization of <a href="https://en.wikipedia.org/wiki/Hash_list">hash lists</a> and <a href="https://en.wikipedia.org/wiki/Hash_chain">hash chains</a>.</p>
+<blockquote>
+<p>NOTE: 有了前面<a href="https://en.wikipedia.org/wiki/Hash_list">Hash list</a>和<a href="https://en.wikipedia.org/wiki/Hash_chain">Hash chain</a>的基础现在来理解上面这段话其实就相对比较容易了。hash chain是线性结构，hash tree则是hierarchy结构。</p>
+</blockquote>
+<p><img alt="img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Hash_Tree.svg/310px-Hash_Tree.svg.png" /></p>
+<blockquote>
+<p>An example of a binary hash tree. Hashes 0-0 and 0-1 are the hash values of data blocks L1 and L2, respectively, and hash 0 is the hash of the concatenation of hashes 0-0 and 0-1.</p>
+</blockquote>
+<h2 id="uses">Uses<a class="headerlink" href="#uses" title="Permanent link">#</a></h2>
+<p>Hash trees can be used to verify any kind of data stored, handled and transferred in and between computers. They can help ensure that data blocks received from other peers in a <a href="https://en.wikipedia.org/wiki/Peer-to-peer">peer-to-peer network</a> are received undamaged and unaltered, and even to check that the other peers do not lie and send fake blocks.</p>
+<p>Hash trees are used in <a href="https://en.wikipedia.org/wiki/Hash-based_cryptography">hash-based cryptography</a>. Hash trees are also used in</p>
+<ul>
+<li>
+<p>file systems:  <a href="https://en.wikipedia.org/wiki/InterPlanetary_File_System">IPFS</a>, <a href="https://en.wikipedia.org/wiki/Btrfs">Btrfs</a> and <a href="https://en.wikipedia.org/wiki/ZFS">ZFS</a></p>
+</li>
+<li>
+<p>distributed revision control systems: <a href="https://en.wikipedia.org/wiki/Git_(software)">Git</a> and <a href="https://en.wikipedia.org/wiki/Mercurial">Mercurial</a> </p>
+</li>
+<li>peer-to-peer network: <a href="https://en.wikipedia.org/wiki/Bitcoin">Bitcoin</a></li>
+<li><a href="https://en.wikipedia.org/wiki/NoSQL">NoSQL</a> systems such as <a href="https://en.wikipedia.org/wiki/Apache_Cassandra">Apache Cassandra</a></li>
+</ul>
+<blockquote>
+<p>NOTE: 通过上述例子可以看出<a href="https://en.wikipedia.org/wiki/Merkle_tree">Merkle tree</a>在distributed application中有着广泛运用。</p>
+</blockquote>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
+<p>A hash tree is a <a href="https://en.wikipedia.org/wiki/Binary_tree">tree</a> of <a href="https://en.wikipedia.org/wiki/Hash_function">hashes</a> in which the leaves are hashes of data blocks in, for instance, a file or set of files. Nodes further up in the tree are the hashes of their respective children. For example, in the picture <em>hash 0</em> is the result of hashing the <a href="https://en.wikipedia.org/wiki/Concatenation">concatenation</a> of <em>hash 0-0</em> and <em>hash 0-1</em>. That is, <em>hash 0 = hash( hash(0-0) + hash(0-1) )</em> where <em>+</em> denotes <strong>concatenation</strong>.</p>
+<p>Usually, a <a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">cryptographic hash function</a> such as <a href="https://en.wikipedia.org/wiki/SHA-2">SHA-2</a> is used for the hashing. If the hash tree only needs to protect against unintentional damage, unsecured <a href="https://en.wikipedia.org/wiki/Checksum">checksums</a> such as <a href="https://en.wikipedia.org/wiki/Cyclic_redundancy_check">CRCs</a> can be used.</p>
+<p>In the top of a hash tree there is a <em>top hash</em> (or <em>root hash</em> or <em>master hash</em>). Before downloading a file on a p2p network, in most cases the top hash is acquired from a trusted source, for instance a friend or a web site that is known to have good recommendations of files to download. When the top hash is available, the hash tree can be received from any non-trusted source, like any peer in the p2p network. Then, the received <strong>hash tree</strong> is checked against the <strong>trusted top hash</strong>, and if the <strong>hash tree</strong> is damaged or fake, another hash tree from another source will be tried until the program finds one that matches the top hash.</p>
+<h1 id="merkel_dag">Merkel DAG<a class="headerlink" href="#merkel_dag" title="Permanent link">#</a></h1>
+<p>DAG的含义是directed acyclic graph。Merkel DAG是我在阅读<a href="https://news.ycombinator.com/item?id=9436847">Is Git a Block Chain?</a>发现它们提出的一个概念。</p>
+<h1 id="to_read">TO READ<a class="headerlink" href="#to_read" title="Permanent link">#</a></h1>
+<p>https://blockchainlabs.ai/the-merkle-tree/</p>
+<h1 id="linked_timestamping">Linked timestamping<a class="headerlink" href="#linked_timestamping" title="Permanent link">#</a></h1>
+<p>https://en.wikipedia.org/wiki/Linked_timestamping</p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../../assets/javascripts/application.808e90bb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../../.."}})</script>
+      
+    
+  </body>
+</html>

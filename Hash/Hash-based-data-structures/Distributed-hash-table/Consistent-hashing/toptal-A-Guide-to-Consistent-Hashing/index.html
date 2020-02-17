@@ -1,0 +1,2906 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Project documentation with Markdown.">
+      
+      
+        <link rel="canonical" href="https://dengking.github.io/data-structure/Hash/Hash-based-data-structures/Distributed-hash-table/Consistent-hashing/toptal-A-Guide-to-Consistent-Hashing/">
+      
+      
+        <meta name="author" content="DengKing">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>toptal A Guide to Consistent Hashing - data-structure</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/application.1b62728e.css">
+      
+      
+    
+    
+      <script src="../../../../../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../../../../css/extra.css">
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-27795084-5", "mkdocs.org")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#a_guide_to_consistent_hashing" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://dengking.github.io/data-structure" title="data-structure" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              data-structure
+            </span>
+            <span class="md-header-nav__topic">
+              
+                toptal A Guide to Consistent Hashing
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/dengking/data-structure" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://dengking.github.io/data-structure" title="data-structure" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    data-structure
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/dengking/data-structure" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Structure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Structure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Structure/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Structure/Structure/" title="Structure" class="md-nav__link">
+      Structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Structure/Hierarchy/" title="Hierarchy" class="md-nav__link">
+      Hierarchy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Structure/Relation/" title="Relation" class="md-nav__link">
+      Relation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Data-structure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Data-structure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Data-structure/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Data-structure/Data-structure/" title="Data-structure" class="md-nav__link">
+      Data-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Data-structure/Recursive-data-type/" title="Recursive-data-type" class="md-nav__link">
+      Recursive-data-type
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Data-structure/Abstract-data-type/" title="Abstract-data-type" class="md-nav__link">
+      Abstract-data-type
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Array
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Array
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Array/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Array/Array-data-structure/" title="Array-data-structure" class="md-nav__link">
+      Array-data-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
+    
+    <label class="md-nav__link" for="nav-4-3">
+      bit-array
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        bit-array
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Array/bit-array/Bit-array/" title="Bit-array" class="md-nav__link">
+      Bit-array
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+    
+    <label class="md-nav__link" for="nav-4-4">
+      circular-array
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        circular-array
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Array/circular-array/Circular-buffer/" title="Circular-buffer" class="md-nav__link">
+      Circular-buffer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Array/circular-array/circular-array/" title="Circular-array" class="md-nav__link">
+      Circular-array
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      List
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        List
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../List/List/" title="List" class="md-nav__link">
+      List
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../List/Chain/" title="Chain" class="md-nav__link">
+      Chain
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../List/VS-double-linked-list-VS-binary-tree/" title="VS-double-linked-list-VS-binary-tree" class="md-nav__link">
+      VS-double-linked-list-VS-binary-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../List/VS-Unrolled-linked list-VS-B-tree/" title="VS-Unrolled-linked list-VS-B-tree" class="md-nav__link">
+      VS-Unrolled-linked list-VS-B-tree
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Graph/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+    
+    <label class="md-nav__link" for="nav-6-2">
+      01-Graph-and-Graph-theory
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-2">
+        01-Graph-and-Graph-theory
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Graph/01-Graph-and-Graph-theory/01-Graph-and-Graph-theory/" title="Graph-and-Graph-theory.md" class="md-nav__link">
+      Graph-and-Graph-theory.md
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2-2" type="checkbox" id="nav-6-2-2">
+    
+    <label class="md-nav__link" for="nav-6-2-2">
+      Graph-representations
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-2-2">
+        Graph-representations
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Graph/01-Graph-and-Graph-theory/Graph-representations/Graph-representations/" title="Graph-representations" class="md-nav__link">
+      Graph-representations
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2-3" type="checkbox" id="nav-6-2-3">
+    
+    <label class="md-nav__link" for="nav-6-2-3">
+      Directed-graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-2-3">
+        Directed-graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Graph/01-Graph-and-Graph-theory/Directed-graph/Directed-graph/" title="Directed-graph" class="md-nav__link">
+      Directed-graph
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2-3-2" type="checkbox" id="nav-6-2-3-2">
+    
+    <label class="md-nav__link" for="nav-6-2-3-2">
+      Directed-acyclic-graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="4">
+      <label class="md-nav__title" for="nav-6-2-3-2">
+        Directed-acyclic-graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Graph/01-Graph-and-Graph-theory/Directed-graph/Directed-acyclic-graph/Directed-acyclic-graph/" title="Directed-acyclic-graph" class="md-nav__link">
+      Directed-acyclic-graph
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      02-Graph-Model
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        02-Graph-Model
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Graph/02-Graph-Model/Graph-Model/" title="Graph-Model" class="md-nav__link">
+      Graph-Model
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Graph/02-Graph-Model/Application-of-graph/" title="Application-of-graph" class="md-nav__link">
+      Application-of-graph
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3-3" type="checkbox" id="nav-6-3-3">
+    
+    <label class="md-nav__link" for="nav-6-3-3">
+      Dependency-graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-3-3">
+        Dependency-graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Graph/02-Graph-Model/Dependency-graph/Dependency-graph/" title="Dependency-graph" class="md-nav__link">
+      Dependency-graph
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Graph/02-Graph-Model/Dependency-graph/Precedence-graph/" title="Precedence-graph" class="md-nav__link">
+      Precedence-graph
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Graph/02-Graph-Model/Dependency-graph/Dependency-resolving-algorithm.md" title="Dependency-resolving-algorithm" class="md-nav__link">
+      Dependency-resolving-algorithm
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4">
+    
+    <label class="md-nav__link" for="nav-6-4">
+      03-Graph-operation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-4">
+        03-Graph-operation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Graph/03-Graph-operation/Graph-operation/" title="Graph-operation" class="md-nav__link">
+      Graph-operation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5" type="checkbox" id="nav-6-5">
+    
+    <label class="md-nav__link" for="nav-6-5">
+      04-Computational-problems-in-graph-theory
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-5">
+        04-Computational-problems-in-graph-theory
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Graph/04-Computational-problems-in-graph-theory/Computational-problems-in-graph-theory/" title="Computational-problems-in-graph-theory" class="md-nav__link">
+      Computational-problems-in-graph-theory
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-2" type="checkbox" id="nav-6-5-2">
+    
+    <label class="md-nav__link" for="nav-6-5-2">
+      Circular
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-2">
+        Circular
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Graph/04-Computational-problems-in-graph-theory/Circular/Cycle-detection/" title="Cycle-detection" class="md-nav__link">
+      Cycle-detection
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Graph/04-Computational-problems-in-graph-theory/Circular/Circular-dependency/" title="Circular-dependency" class="md-nav__link">
+      Circular-dependency
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-3" type="checkbox" id="nav-6-5-3">
+    
+    <label class="md-nav__link" for="nav-6-5-3">
+      Dominator
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-3">
+        Dominator
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Graph/04-Computational-problems-in-graph-theory/Dominator/Dominator(graph-theory)/" title="Dominator" class="md-nav__link">
+      Dominator
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-4" type="checkbox" id="nav-6-5-4">
+    
+    <label class="md-nav__link" for="nav-6-5-4">
+      Sorting
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-4">
+        Sorting
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Graph/04-Computational-problems-in-graph-theory/Sorting/Topological-sorting/" title="Topological-sorting" class="md-nav__link">
+      Topological-sorting
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-5" type="checkbox" id="nav-6-5-5">
+    
+    <label class="md-nav__link" for="nav-6-5-5">
+      Spanning-tree
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-5">
+        Spanning-tree
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Graph/04-Computational-problems-in-graph-theory/Spanning-tree/Spanning-tree/" title="Spanning-tree" class="md-nav__link">
+      Spanning-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Graph/04-Computational-problems-in-graph-theory/Spanning-tree/Minimum-spanning-tree/" title="Minimum-spanning-tree" class="md-nav__link">
+      Minimum-spanning-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Graph/04-Computational-problems-in-graph-theory/Spanning-tree/Borůvka's-algorithm/" title="Borůvka's-algorithm" class="md-nav__link">
+      Borůvka's-algorithm
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Tree
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Tree
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Tree/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Tree/Tree-structure/" title="Tree-structure" class="md-nav__link">
+      Tree-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Tree/Represent-tree/" title="Represent-tree" class="md-nav__link">
+      Represent-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Tree/Tree(set-theory)/" title="Tree(set-theory)" class="md-nav__link">
+      Tree(set-theory)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Tree/Tree(data-structure)/" title="Tree(data-structure)" class="md-nav__link">
+      Tree(data-structure)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Tree/application-of-tree-data-structure.md" title="Application-of-tree-data-structure" class="md-nav__link">
+      Application-of-tree-data-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-7" type="checkbox" id="nav-7-7">
+    
+    <label class="md-nav__link" for="nav-7-7">
+      Tree-and-stack
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-7">
+        Tree-and-stack
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Tree/Tree-and-stack/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Tree/Tree-and-stack/VS-bracket-VS-tree/" title="VS-bracket-VS-tree" class="md-nav__link">
+      VS-bracket-VS-tree
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Tree/Implicit-tree/" title="Implicit-tree" class="md-nav__link">
+      Implicit-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-9" type="checkbox" id="nav-7-9">
+    
+    <label class="md-nav__link" for="nav-7-9">
+      Tree-operation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-9">
+        Tree-operation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Tree/Tree-operation/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Tree/TODO/" title="TODO" class="md-nav__link">
+      TODO
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Hash
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Hash
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2">
+    
+    <label class="md-nav__link" for="nav-8-2">
+      Hash-function
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-2">
+        Hash-function
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Hash-function/Hash-function/" title="Hash-function" class="md-nav__link">
+      Hash-function
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Hash-function/Rolling-hash/" title="Rolling-hash" class="md-nav__link">
+      Rolling-hash
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Hash-function/SipHash/" title="SipHash" class="md-nav__link">
+      SipHash
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2-4" type="checkbox" id="nav-8-2-4">
+    
+    <label class="md-nav__link" for="nav-8-2-4">
+      Cryptographic-hash-functions
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-2-4">
+        Cryptographic-hash-functions
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Hash-function/Cryptographic-hash-functions/Cryptographic-hash-function/" title="Cryptographic-hash-function" class="md-nav__link">
+      Cryptographic-hash-function
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Hash-function/Cryptographic-hash-functions/Cipher/" title="Cipher" class="md-nav__link">
+      Cipher
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Hash-function/Cryptographic-hash-functions/Salt(cryptography)/" title="Salt(cryptography)" class="md-nav__link">
+      Salt(cryptography)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Set
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        Set
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Set/Set(abstract-data-type)/" title="Set" class="md-nav__link">
+      Set
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Probabilistic-data-structures
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        Probabilistic-data-structures
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Probabilistic-data-structures/Bloom-filter/" title="Bloom-filter" class="md-nav__link">
+      Bloom-filter
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Probabilistic-data-structures/Random-tree/" title="Random-tree" class="md-nav__link">
+      Random-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Probabilistic-data-structures/Skip-list/" title="Skip-list" class="md-nav__link">
+      Skip-list
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      Summary-of-data-structure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        Summary-of-data-structure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Summary-of-data-structure/index.md" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Summary-of-data-structure/List-of-data-structure/" title="List-of-data-structure" class="md-nav__link">
+      List-of-data-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Summary-of-data-structure/VS-of-tree.md" title="VS-of-trees" class="md-nav__link">
+      VS-of-trees
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Summary-of-data-structure/VS-of-graph-and-tree-and-list/" title="VS-of-graph-and-tree-and-list" class="md-nav__link">
+      VS-of-graph-and-tree-and-list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Summary-of-data-structure/VS-of-implementation-of-ADT.md" title="VS-of-implementation-of-ADT" class="md-nav__link">
+      VS-of-implementation-of-ADT
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Summary-of-data-structure/VS-of-search-tree-and-hash-table.md" title="VS-of-search-tree-and-hash-table" class="md-nav__link">
+      VS-of-search-tree-and-hash-table
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../Summary-of-data-structure/VS-of-search-tree-and-skip-list.md" title="VS-of-search-tree-and-skip-list" class="md-nav__link">
+      VS-of-search-tree-and-skip-list
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../../../TODO/" title="TODO" class="md-nav__link">
+      TODO
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what_is_hashing" class="md-nav__link">
+    What Is Hashing?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introducing_hash_tables_hash_maps" class="md-nav__link">
+    Introducing Hash Tables (Hash Maps)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scaling_out_distributed_hashing" class="md-nav__link">
+    Scaling Out: Distributed Hashing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the_rehashing_problem" class="md-nav__link">
+    The Rehashing Problem
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the_solution_consistent_hashing" class="md-nav__link">
+    The Solution: Consistent Hashing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what_next" class="md-nav__link">
+    What Next?
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <div class="toc">
+<ul>
+<li><a href="#a_guide_to_consistent_hashing">A Guide to Consistent Hashing</a><ul>
+<li><a href="#what_is_hashing">What Is Hashing?</a></li>
+<li><a href="#introducing_hash_tables_hash_maps">Introducing Hash Tables (Hash Maps)</a></li>
+<li><a href="#scaling_out_distributed_hashing">Scaling Out: Distributed Hashing</a></li>
+<li><a href="#the_rehashing_problem">The Rehashing Problem</a></li>
+<li><a href="#the_solution_consistent_hashing">The Solution: Consistent Hashing</a></li>
+<li><a href="#what_next">What Next?</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="a_guide_to_consistent_hashing"><a href="https://www.toptal.com/big-data/consistent-hashing">A Guide to Consistent Hashing</a><a class="headerlink" href="#a_guide_to_consistent_hashing" title="Permanent link">#</a></h1>
+<p>In recent years, with the advent of concepts such as cloud computing and big data, distributed systems have gained popularity and relevance.</p>
+<p>One such type of system, <a href="https://en.wikipedia.org/wiki/Distributed_cache">distributed caches</a> that power many high-traffic dynamic websites and web applications, typically consist of a particular case of <strong>distributed hashing</strong>. These take advantage of an algorithm known as <a href="https://en.wikipedia.org/wiki/Consistent_hashing">consistent hashing</a>.</p>
+<p>What is consistent hashing? What’s the motivation behind it, and why should you care?</p>
+<p>In this article, I’ll first review the general concept of hashing and its purpose, followed by a description of distributed hashing and the problems it entails. In turn, that will lead us to our title subject.</p>
+<h2 id="what_is_hashing">What Is Hashing?<a class="headerlink" href="#what_is_hashing" title="Permanent link">#</a></h2>
+<p>What is “hashing” all about? <a href="http://www.merriam-webster.com/dictionary/hash">Merriam-Webster</a> defines the noun <em>hash</em> as “chopped meat mixed with potatoes and browned,” and the verb as “to chop (as meat and potatoes) into small pieces.” So, culinary details aside, hash roughly means “chop and mix”—and that’s precisely where the technical term comes from.</p>
+<p>哈希是什么意思?《韦氏词典》将名词“hash”定义为“将碎肉与土豆混合并煎成褐色”，动词“将(肉和土豆)切成小块”。所以，撇开烹饪细节不谈，hash大致的意思是“切碎和混合”——这正是这个技术术语的来源。</p>
+<p>A hash function is a function that maps one piece of data—typically describing some kind of object, often of arbitrary size—to another piece of data, typically an integer, known as <em>hash code</em>, or simply <em>hash</em>.</p>
+<p>For instance, some hash function designed to hash strings, with an output range of <code>0 .. 100</code>, may map the string <code>Hello</code> to, say, the number <code>57</code>, <code>Hasta la vista, baby</code> to the number <code>33</code>, and any other possible string to some number within that range. Since there are way more possible inputs than outputs, any given number will have many different strings mapped to it, a phenomenon known as <em>collision</em>. Good hash functions should somehow “chop and mix” (hence the term) the input data in such a way that the outputs for different input values are spread as evenly as possible over the output range.</p>
+<p><strong>Hash functions</strong> have many uses and for each one, different properties may be desired. There is a type of <strong>hash function</strong> known as <strong><em>cryptographic hash functions</em></strong>, which must meet a restrictive set of properties and are used for <strong>security</strong> purposes—including applications such as password protection, integrity(完整性) checking and fingerprinting of messages, and data corruption detection, among others, but those are outside the scope of this article.</p>
+<p><strong>Non-cryptographic hash functions</strong> have several uses as well, the most common being their use in <em>hash tables</em>, which is the one that concerns us and which we’ll explore in more detail.</p>
+<h2 id="introducing_hash_tables_hash_maps">Introducing Hash Tables (Hash Maps)<a class="headerlink" href="#introducing_hash_tables_hash_maps" title="Permanent link">#</a></h2>
+<p>Imagine we needed to keep a list of all the members of some club while being able to search for any specific member. We could handle it by keeping the list in an array (or linked list) and, to perform a search, iterate the elements until we find the desired one (we might be searching based on their name, for instance). In the worst case, that would mean checking all members (if the one we’re searching for is last, or not present at all), or half of them on average. In complexity theory terms, the search would then have complexity <code>O(n)</code>, and it would be reasonably fast for a small list, but it would get slower and slower in direct proportion to the number of members.</p>
+<p>How could that be improved? Let’s suppose all these club members had a member <code>ID</code>, which happened to be a sequential number reflecting the order in which they joined the club.</p>
+<p>Assuming that searching by <code>ID</code> were acceptable, we could place all members in an array, with their indexes matching their <code>ID</code>s (for example, a member with <code>ID=10</code> would be at the index <code>10</code> in the array). This would allow us to access each member directly, with no search at all. That would be very efficient, in fact, as efficient as it can possibly be, corresponding to the lowest complexity possible, <code>O(1)</code>, also known as <em>constant time</em>.</p>
+<p>But, admittedly, our club member <code>ID</code> scenario is somewhat contrived. What if <code>ID</code>s were big, non-sequential or random numbers? Or, if searching by <code>ID</code> were not acceptable, and we needed to search by name (or some other field) instead? It would certainly be useful to keep our fast direct access (or something close) while at the same time being able to handle arbitrary datasets and less restrictive search criteria.</p>
+<p>Here’s where hash functions come to the rescue. A suitable hash function can be used to map an arbitrary piece of data to an integer, which will play a similar role to that of our club member <code>ID</code>, albeit with a few important differences.</p>
+<p>First, a good hash function generally has a wide output range (typically, the whole range of a 32 or 64-bit integer), so building an array for all possible indices would be either impractical or plain impossible, and a colossal waste of memory. To overcome that, we can have a reasonably sized array (say, just twice the number of elements we expect to store) and perform a <em>modulo</em> operation on the hash to get the array index. So, the index would be <code>index = hash(object) mod N</code>, where <code>N</code>is the size of the array.</p>
+<p>Second, object hashes will not be unique (unless we’re working with a fixed dataset and a custom-built <a href="https://en.wikipedia.org/wiki/Perfect_hash_function">perfect hash function</a>, but we won’t discuss that here). There will be <em>collisions</em> (further increased by the modulo operation), and therefore a simple direct index access won’t work. There are several ways to handle this, but a typical one is to attach a list, commonly known as a <em>bucket</em>, to each array index to hold all the objects sharing a given index.</p>
+<p>So, we have an array of size <code>N</code>, with each entry pointing to an object bucket. To add a new object, we need to calculate its <code>hash modulo N</code>, and check the bucket at the resulting index, adding the object if it’s not already there. To search for an object, we do the same, just looking into the bucket to check if the object is there. Such a structure is called a <em>hash table</em>, and although the searches within buckets are linear, a properly sized hash table should have a reasonably small number of objects per bucket, resulting in <em>almost</em> constant time access (an average complexity of <code>O(N/k)</code>, where <code>k</code> is the number of buckets).</p>
+<p>With complex objects, the hash function is typically not applied to the whole object, but to a <em>key</em>instead. In our club member example, each object might contain several fields (like name, age, address, email, phone), but we could pick, say, the email to act as the key so that the hash function would be applied to the email only. In fact, the key need not be part of the object; it is common to store key/value pairs, where the key is usually a relatively short string, and the value can be an arbitrary piece of data. In such cases, the hash table or hash map is used as a <em>dictionary</em>, and that’s the way some high-level languages implement objects or associative arrays.</p>
+<h2 id="scaling_out_distributed_hashing">Scaling Out: Distributed Hashing<a class="headerlink" href="#scaling_out_distributed_hashing" title="Permanent link">#</a></h2>
+<p>Now that we have discussed hashing, we’re ready to look into <em>distributed hashing</em>.</p>
+<p>In some situations, it may be necessary or desirable to split a <strong>hash table</strong> into several parts, hosted by different servers. One of the main motivations for this is to bypass the memory limitations of using a single computer, allowing for the construction of arbitrarily large <strong>hash tables</strong> (given enough servers).</p>
+<p>In such a scenario, the objects (and their keys) are <em>distributed</em> among several servers, hence the name.</p>
+<p>A typical use case for this is the implementation of in-memory caches, such as <a href="https://en.wikipedia.org/wiki/Memcached">Memcached</a>.</p>
+<p>Such setups consist of a pool of caching servers that host many key/value pairs and are used to provide fast access to data originally stored (or computed) elsewhere. For example, to reduce the load on a database server and at the same time improve performance, an application can be designed to first fetch data from the cache servers, and only if it’s not present there—a situation known as <em>cache miss</em>—resort to the database, running the relevant query and caching the results with an appropriate key, so that it can be found next time it’s needed.</p>
+<p>Now, how does distribution take place? What criteria are used to determine which keys to host in which servers?</p>
+<p>The simplest way is to take the hash <em>modulo</em> of the number of servers. That is, <code>server = hash(key) mod N</code>, where <code>N</code> is the size of the pool. To store or retrieve a key, the client first computes the hash, applies a <code>modulo N</code> operation, and uses the resulting index to contact the appropriate server (probably by using a lookup table of IP addresses). Note that the <strong>hash function</strong> used for key distribution must be the same one across all clients, but it need not be the same one used internally by the caching servers.</p>
+<p>Let’s see an example. Say we have three servers, <code>A</code>, <code>B</code> and <code>C</code>, and we have some string keys with their hashes:</p>
+<table>
+<thead>
+<tr>
+<th align="left">KEY</th>
+<th align="left">HASH</th>
+<th align="left">HASH mod 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">"john"</td>
+<td align="left">1633428562</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">"bill"</td>
+<td align="left">7594634739</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">"jane"</td>
+<td align="left">5000799124</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">"steve"</td>
+<td align="left">9787173343</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">"kate"</td>
+<td align="left">3421657995</td>
+<td align="left">2</td>
+</tr>
+</tbody>
+</table>
+<p>A client wants to retrieve the value for key <code>john</code>. Its <code>hash modulo 3</code> is <code>2</code>, so it must contact server <code>C</code>. The key is not found there, so the client fetches the data from the source and adds it. The pool looks like this:</p>
+<table>
+<thead>
+<tr>
+<th align="left">A</th>
+<th align="left">B</th>
+<th align="left">C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">"john"</td>
+</tr>
+</tbody>
+</table>
+<p>Next another client (or the same one) wants to retrieve the value for key <code>bill</code>. Its <code>hash modulo 3</code>is <code>0</code>, so it must contact server <code>A</code>. The key is not found there, so the client fetches the data from the source and adds it. The pool looks like this now:</p>
+<table>
+<thead>
+<tr>
+<th align="left">A</th>
+<th align="left">B</th>
+<th align="left">C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">"bill"</td>
+<td align="left"></td>
+<td align="left">"john"</td>
+</tr>
+</tbody>
+</table>
+<p>After the remaining keys are added, the pool looks like this:</p>
+<table>
+<thead>
+<tr>
+<th align="left">A</th>
+<th align="left">B</th>
+<th align="left">C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">"bill"</td>
+<td align="left">"jane"</td>
+<td align="left">"john"</td>
+</tr>
+<tr>
+<td align="left">"steve"</td>
+<td align="left"></td>
+<td align="left">"kate"</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the_rehashing_problem">The Rehashing Problem<a class="headerlink" href="#the_rehashing_problem" title="Permanent link">#</a></h2>
+<p>This distribution scheme is simple, intuitive, and works fine. That is, until the number of servers changes. What happens if one of the servers crashes or becomes unavailable? Keys need to be redistributed to account for the missing server（key需要重新分发，以弥补丢失的服务器）, of course. The same applies if one or more new servers are added to the pool;keys need to be redistributed to include the new servers. This is true for any distribution scheme, but the problem with our simple modulo distribution is that when the number of servers changes, most <code>hashes modulo N</code> will change, so most keys will need to be moved to a different server. So, even if a single server is removed or added, all keys will likely need to be rehashed into a different server.</p>
+<p><strong><em>SUMMARY</em></strong> : 上述对问题的总结非常的好；</p>
+<p>From our previous example, if we removed server <code>C</code>, we’d have to <strong>rehash</strong> all the keys using <code>hash modulo 2</code> instead of <code>hash modulo 3</code>, and the new locations for the keys would become:</p>
+<table>
+<thead>
+<tr>
+<th align="left">KEY</th>
+<th align="left">HASH</th>
+<th align="left">HASH mod 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">"john"</td>
+<td align="left">1633428562</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">"bill"</td>
+<td align="left">7594634739</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">"jane"</td>
+<td align="left">5000799124</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">"steve"</td>
+<td align="left">9787173343</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">"kate"</td>
+<td align="left">3421657995</td>
+<td align="left">1</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">A</th>
+<th align="left">B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">"john"</td>
+<td align="left">"bill"</td>
+</tr>
+<tr>
+<td align="left">"jane"</td>
+<td align="left">"steve"</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">"kate"</td>
+</tr>
+</tbody>
+</table>
+<p>Note that all key locations changed, not only the ones from server <code>C</code>.</p>
+<p>In the typical use case we mentioned before (caching), this would mean that, all of a sudden, the keys won’t be found because they won’t yet be present at their new location.</p>
+<p>So, most queries will result in misses, and the original data will likely need retrieving again from the source to be rehashed, thus placing a heavy load on the origin server(s) (typically a database). This may very well degrade performance severely and possibly crash the origin servers.</p>
+<h2 id="the_solution_consistent_hashing">The Solution: Consistent Hashing<a class="headerlink" href="#the_solution_consistent_hashing" title="Permanent link">#</a></h2>
+<p>So, how can this problem be solved? We need a <strong>distribution scheme</strong> that does <em>not</em> depend directly on <strong>the number of servers</strong>, so that, when adding or removing servers, the number of keys that need to be relocated is minimized. One such scheme—a clever, yet surprisingly simple one—is called <em>consistent hashing</em>, and was first described by <a href="http://courses.cse.tamu.edu/caverlee/csce438/readings/consistent-hashing.pdf">Karger et al. at MIT</a> in an academic paper from 1997 (according to Wikipedia).</p>
+<p><strong>Consistent Hashing</strong> is a distributed hashing scheme that operates independently of the number of servers or objects in a distributed <em>hash table</em> by assigning them a position on an <strong>abstract circle</strong>, or <em>hash ring</em>. This allows servers and objects to scale without affecting the overall system.</p>
+<p>Imagine we mapped the hash output range onto the edge of a circle（将hash输出值的值域映射到circle上）. That means that <strong>the minimum possible hash value</strong>, zero, would correspond to <strong>an angle of zero</strong>, <strong>the maximum possible value</strong> (some big integer we’ll call <code>INT_MAX</code>) would correspond to an angle of 2𝝅 radians (or 360 degrees), and all other <strong>hash values</strong> would linearly fit somewhere in between. So, we could take a key, compute its hash, and find out where it lies on the circle’s edge. Assuming an <code>INT_MAX</code> of 1010 (for example’s sake), the keys from our previous example would look like this:</p>
+<p><img alt="Consistent Hashing Example: Keys" src="https://uploads.toptal.io/blog/image/129306/toptal-blog-image-1551794695039-9efe52bc4a7265c5c7abac5056707db8.png" /></p>
+<table>
+<thead>
+<tr>
+<th align="left">KEY</th>
+<th align="left">HASH</th>
+<th align="left">ANGLE (DEG)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">"john"</td>
+<td align="left">1633428562</td>
+<td align="left">58.8</td>
+</tr>
+<tr>
+<td align="left">"bill"</td>
+<td align="left">7594634739</td>
+<td align="left">273.4</td>
+</tr>
+<tr>
+<td align="left">"jane"</td>
+<td align="left">5000799124</td>
+<td align="left">180</td>
+</tr>
+<tr>
+<td align="left">"steve"</td>
+<td align="left">9787173343</td>
+<td align="left">352.3</td>
+</tr>
+<tr>
+<td align="left">"kate"</td>
+<td align="left">3421657995</td>
+<td align="left">123.2</td>
+</tr>
+</tbody>
+</table>
+<p>Now imagine we also placed the <strong>servers</strong> on the edge of the <strong>circle</strong>, by pseudo-randomly assigning them <strong>angles</strong> too. This should be done in a repeatable（可重复的） way (or at least in such a way that all clients agree on the servers’ angles). A convenient way of doing this is by <strong>hashing</strong> the <strong>server name</strong> (or IP address, or some ID)—as we’d do with any other key—to come up with its angle.</p>
+<p>In our example, things might look like this:</p>
+<p><img alt="Consistent Hashing Example: Servers" src="https://uploads.toptal.io/blog/image/129307/toptal-blog-image-1551794709335-5f3f4305aa539e9e544b9fef5fd513cf.png" /></p>
+<table>
+<thead>
+<tr>
+<th align="left">KEY</th>
+<th align="left">HASH</th>
+<th align="left">ANGLE (DEG)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">"john"</td>
+<td align="left">1633428562</td>
+<td align="left">58.8</td>
+</tr>
+<tr>
+<td align="left">"bill"</td>
+<td align="left">7594634739</td>
+<td align="left">273.4</td>
+</tr>
+<tr>
+<td align="left">"jane"</td>
+<td align="left">5000799124</td>
+<td align="left">180</td>
+</tr>
+<tr>
+<td align="left">"steve"</td>
+<td align="left">9787173343</td>
+<td align="left">352.3</td>
+</tr>
+<tr>
+<td align="left">"kate"</td>
+<td align="left">3421657995</td>
+<td align="left">123.2</td>
+</tr>
+<tr>
+<td align="left">"A"</td>
+<td align="left">5572014558</td>
+<td align="left">200.6</td>
+</tr>
+<tr>
+<td align="left">"B"</td>
+<td align="left">8077113362</td>
+<td align="left">290.8</td>
+</tr>
+<tr>
+<td align="left">"C"</td>
+<td align="left">2269549488</td>
+<td align="left">81.7</td>
+</tr>
+</tbody>
+</table>
+<p>Since we have the keys for both the <strong>objects</strong> and the <strong>servers</strong> on the same <strong>circle</strong>, we may define a simple rule to <strong>associate</strong> the former with the latter: Each <strong>object key</strong> will belong in the <strong>server</strong> whose key is <strong>closest</strong>, in a counterclockwise direction (or clockwise, depending on the conventions used). In other words, to find out which server to ask for a given key, we need to locate the key on the circle and move in the ascending angle direction until we find a server.</p>
+<p>In our example:</p>
+<p><img alt="Consistent Hashing Example: Objects" src="https://uploads.toptal.io/blog/image/129308/toptal-blog-image-1551794723809-3b70e8ff86f1510ad4c24a09bcd3942c.png" /></p>
+<table>
+<thead>
+<tr>
+<th align="left">KEY</th>
+<th align="left">HASH</th>
+<th align="left">ANGLE (DEG)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">"john"</td>
+<td align="left">1633428562</td>
+<td align="left">58.7</td>
+</tr>
+<tr>
+<td align="left">"C"</td>
+<td align="left">2269549488</td>
+<td align="left">81.7</td>
+</tr>
+<tr>
+<td align="left">"kate"</td>
+<td align="left">3421657995</td>
+<td align="left">123.1</td>
+</tr>
+<tr>
+<td align="left">"jane"</td>
+<td align="left">5000799124</td>
+<td align="left">180</td>
+</tr>
+<tr>
+<td align="left">"A"</td>
+<td align="left">5572014557</td>
+<td align="left">200.5</td>
+</tr>
+<tr>
+<td align="left">"bill"</td>
+<td align="left">7594634739</td>
+<td align="left">273.4</td>
+</tr>
+<tr>
+<td align="left">"B"</td>
+<td align="left">8077113361</td>
+<td align="left">290.7</td>
+</tr>
+<tr>
+<td align="left">"steve"</td>
+<td align="left">787173343</td>
+<td align="left">352.3</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">KEY</th>
+<th align="left">HASH</th>
+<th align="left">ANGLE (DEG)</th>
+<th align="left">LABEL</th>
+<th align="left">SERVER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">"john"</td>
+<td align="left">1632929716</td>
+<td align="left">58.7</td>
+<td align="left">"C"</td>
+<td align="left">C</td>
+</tr>
+<tr>
+<td align="left">"kate"</td>
+<td align="left">3421831276</td>
+<td align="left">123.1</td>
+<td align="left">"A"</td>
+<td align="left">A</td>
+</tr>
+<tr>
+<td align="left">"jane"</td>
+<td align="left">5000648311</td>
+<td align="left">180</td>
+<td align="left">"A"</td>
+<td align="left">A</td>
+</tr>
+<tr>
+<td align="left">"bill"</td>
+<td align="left">7594873884</td>
+<td align="left">273.4</td>
+<td align="left">"B"</td>
+<td align="left">B</td>
+</tr>
+<tr>
+<td align="left">"steve"</td>
+<td align="left">9786437450</td>
+<td align="left">352.3</td>
+<td align="left">"C"</td>
+<td align="left">C</td>
+</tr>
+</tbody>
+</table>
+<p>From a programming perspective, what we would do is keep a <strong>sorted list of server values</strong> (which could be angles or numbers in any real interval), and walk this list (or use a binary search) to find the first server with a value greater than, or equal to, that of the desired key. If no such value is found, we need to wrap around, taking the first one from the list.</p>
+<p>To ensure <strong>object keys</strong> are evenly distributed among servers, we need to apply a simple trick: To assign not one, but many <strong>labels</strong> (angles) to each <strong>server</strong>. So instead of having labels <code>A</code>, <code>B</code> and <code>C</code>, we could have, say, <code>A0 .. A9</code>, <code>B0 .. B9</code> and <code>C0 .. C9</code>, all interspersed along the circle. The factor by which to increase the number of labels (server keys), known as <em>weight</em>, depends on the situation (and may even be different for each server) to adjust the probability of keys ending up on each. For example, if server <code>B</code> were twice as powerful as the rest, it could be assigned twice as many labels, and as a result, it would end up holding twice as many objects (on average).</p>
+<p>For our example we’ll assume all three servers have an equal weight of 10 (this works well for three servers, for 10 to 50 servers, a weight in the range 100 to 500 would work better, and bigger pools may need even higher weights):</p>
+<p><img alt="Content Hashing Example 5" src="https://uploads.toptal.io/blog/image/129309/toptal-blog-image-1551794743400-9a6fd84dca83745f8b6ca95a2890cdc2.png" /></p>
+<table>
+<thead>
+<tr>
+<th align="left">KEY</th>
+<th align="left">HASH</th>
+<th align="left">ANGLE (DEG)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">"C6"</td>
+<td align="left">408965526</td>
+<td align="left">14.7</td>
+</tr>
+<tr>
+<td align="left">"A1"</td>
+<td align="left">473914830</td>
+<td align="left">17</td>
+</tr>
+<tr>
+<td align="left">"A2"</td>
+<td align="left">548798874</td>
+<td align="left">19.7</td>
+</tr>
+<tr>
+<td align="left">"A3"</td>
+<td align="left">1466730567</td>
+<td align="left">52.8</td>
+</tr>
+<tr>
+<td align="left">"C4"</td>
+<td align="left">1493080938</td>
+<td align="left">53.7</td>
+</tr>
+<tr>
+<td align="left">"john"</td>
+<td align="left">1633428562</td>
+<td align="left">58.7</td>
+</tr>
+<tr>
+<td align="left">"B2"</td>
+<td align="left">1808009038</td>
+<td align="left">65</td>
+</tr>
+<tr>
+<td align="left">"C0"</td>
+<td align="left">1982701318</td>
+<td align="left">71.3</td>
+</tr>
+<tr>
+<td align="left">"B3"</td>
+<td align="left">2058758486</td>
+<td align="left">74.1</td>
+</tr>
+<tr>
+<td align="left">"A7"</td>
+<td align="left">2162578920</td>
+<td align="left">77.8</td>
+</tr>
+<tr>
+<td align="left">"B4"</td>
+<td align="left">2660265921</td>
+<td align="left">95.7</td>
+</tr>
+<tr>
+<td align="left">"C9"</td>
+<td align="left">3359725419</td>
+<td align="left">120.9</td>
+</tr>
+<tr>
+<td align="left">"kate"</td>
+<td align="left">3421657995</td>
+<td align="left">123.1</td>
+</tr>
+<tr>
+<td align="left">"A5"</td>
+<td align="left">3434972143</td>
+<td align="left">123.6</td>
+</tr>
+<tr>
+<td align="left">"C1"</td>
+<td align="left">3672205973</td>
+<td align="left">132.1</td>
+</tr>
+<tr>
+<td align="left">"C8"</td>
+<td align="left">3750588567</td>
+<td align="left">135</td>
+</tr>
+<tr>
+<td align="left">"B0"</td>
+<td align="left">4049028775</td>
+<td align="left">145.7</td>
+</tr>
+<tr>
+<td align="left">"B8"</td>
+<td align="left">4755525684</td>
+<td align="left">171.1</td>
+</tr>
+<tr>
+<td align="left">"A9"</td>
+<td align="left">4769549830</td>
+<td align="left">171.7</td>
+</tr>
+<tr>
+<td align="left">"jane"</td>
+<td align="left">5000799124</td>
+<td align="left">180</td>
+</tr>
+<tr>
+<td align="left">"C7"</td>
+<td align="left">5014097839</td>
+<td align="left">180.5</td>
+</tr>
+<tr>
+<td align="left">"B1"</td>
+<td align="left">5444659173</td>
+<td align="left">196</td>
+</tr>
+<tr>
+<td align="left">"A6"</td>
+<td align="left">6210502707</td>
+<td align="left">223.5</td>
+</tr>
+<tr>
+<td align="left">"A0"</td>
+<td align="left">6511384141</td>
+<td align="left">234.4</td>
+</tr>
+<tr>
+<td align="left">"B9"</td>
+<td align="left">7292819872</td>
+<td align="left">262.5</td>
+</tr>
+<tr>
+<td align="left">"C3"</td>
+<td align="left">7330467663</td>
+<td align="left">263.8</td>
+</tr>
+<tr>
+<td align="left">"C5"</td>
+<td align="left">7502566333</td>
+<td align="left">270</td>
+</tr>
+<tr>
+<td align="left">"bill"</td>
+<td align="left">7594634739</td>
+<td align="left">273.4</td>
+</tr>
+<tr>
+<td align="left">"A4"</td>
+<td align="left">8047401090</td>
+<td align="left">289.7</td>
+</tr>
+<tr>
+<td align="left">"C2"</td>
+<td align="left">8605012288</td>
+<td align="left">309.7</td>
+</tr>
+<tr>
+<td align="left">"A8"</td>
+<td align="left">8997397092</td>
+<td align="left">323.9</td>
+</tr>
+<tr>
+<td align="left">"B7"</td>
+<td align="left">9038880553</td>
+<td align="left">325.3</td>
+</tr>
+<tr>
+<td align="left">"B5"</td>
+<td align="left">9368225254</td>
+<td align="left">337.2</td>
+</tr>
+<tr>
+<td align="left">"B6"</td>
+<td align="left">9379713761</td>
+<td align="left">337.6</td>
+</tr>
+<tr>
+<td align="left">"steve"</td>
+<td align="left">9787173343</td>
+<td align="left">352.3</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">KEY</th>
+<th align="left">HASH</th>
+<th align="left">ANGLE (DEG)</th>
+<th align="left">LABEL</th>
+<th align="left">SERVER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">"john"</td>
+<td align="left">1632929716</td>
+<td align="left">58.7</td>
+<td align="left">"B2"</td>
+<td align="left">B</td>
+</tr>
+<tr>
+<td align="left">"kate"</td>
+<td align="left">3421831276</td>
+<td align="left">123.1</td>
+<td align="left">"A5"</td>
+<td align="left">A</td>
+</tr>
+<tr>
+<td align="left">"jane"</td>
+<td align="left">5000648311</td>
+<td align="left">180</td>
+<td align="left">"C7"</td>
+<td align="left">C</td>
+</tr>
+<tr>
+<td align="left">"bill"</td>
+<td align="left">7594873884</td>
+<td align="left">273.4</td>
+<td align="left">"A4"</td>
+<td align="left">A</td>
+</tr>
+<tr>
+<td align="left">"steve"</td>
+<td align="left">9786437450</td>
+<td align="left">352.3</td>
+<td align="left">"C6"</td>
+<td align="left">C</td>
+</tr>
+</tbody>
+</table>
+<p>So, what’s the benefit of all this <strong>circle</strong> approach? Imagine server <code>C</code> is removed. To account for（弥补） this, we must remove labels <code>C0 .. C9</code> from the circle. This results in the object keys formerly adjacent to the deleted labels now being randomly labeled <code>Ax</code> and <code>Bx</code>, reassigning them to servers <code>A</code> and <code>B</code>.</p>
+<p>But what happens with the other object keys, the ones that originally belonged in <code>A</code> and <code>B</code>? Nothing! That’s the beauty of it: The absence of <code>Cx</code> labels does not affect those keys in any way. So, removing a server results in its object keys being randomly reassigned to the rest of the servers, <strong>leaving all other keys untouched</strong>:</p>
+<p><img alt="Consistent Hashing Example 6" src="https://uploads.toptal.io/blog/image/129310/toptal-blog-image-1551794764808-260dc8495f15e76a523f52a512d48acb.png" /></p>
+<table>
+<thead>
+<tr>
+<th align="left">KEY</th>
+<th align="left">HASH</th>
+<th align="left">ANGLE (DEG)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">"A1"</td>
+<td align="left">473914830</td>
+<td align="left">17</td>
+</tr>
+<tr>
+<td align="left">"A2"</td>
+<td align="left">548798874</td>
+<td align="left">19.7</td>
+</tr>
+<tr>
+<td align="left">"A3"</td>
+<td align="left">1466730567</td>
+<td align="left">52.8</td>
+</tr>
+<tr>
+<td align="left">"john"</td>
+<td align="left">1633428562</td>
+<td align="left">58.7</td>
+</tr>
+<tr>
+<td align="left">"B2"</td>
+<td align="left">1808009038</td>
+<td align="left">65</td>
+</tr>
+<tr>
+<td align="left">"B3"</td>
+<td align="left">2058758486</td>
+<td align="left">74.1</td>
+</tr>
+<tr>
+<td align="left">"A7"</td>
+<td align="left">2162578920</td>
+<td align="left">77.8</td>
+</tr>
+<tr>
+<td align="left">"B4"</td>
+<td align="left">2660265921</td>
+<td align="left">95.7</td>
+</tr>
+<tr>
+<td align="left">"kate"</td>
+<td align="left">3421657995</td>
+<td align="left">123.1</td>
+</tr>
+<tr>
+<td align="left">"A5"</td>
+<td align="left">3434972143</td>
+<td align="left">123.6</td>
+</tr>
+<tr>
+<td align="left">"B0"</td>
+<td align="left">4049028775</td>
+<td align="left">145.7</td>
+</tr>
+<tr>
+<td align="left">"B8"</td>
+<td align="left">4755525684</td>
+<td align="left">171.1</td>
+</tr>
+<tr>
+<td align="left">"A9"</td>
+<td align="left">4769549830</td>
+<td align="left">171.7</td>
+</tr>
+<tr>
+<td align="left">"jane"</td>
+<td align="left">5000799124</td>
+<td align="left">180</td>
+</tr>
+<tr>
+<td align="left">"B1"</td>
+<td align="left">5444659173</td>
+<td align="left">196</td>
+</tr>
+<tr>
+<td align="left">"A6"</td>
+<td align="left">6210502707</td>
+<td align="left">223.5</td>
+</tr>
+<tr>
+<td align="left">"A0"</td>
+<td align="left">6511384141</td>
+<td align="left">234.4</td>
+</tr>
+<tr>
+<td align="left">"B9"</td>
+<td align="left">7292819872</td>
+<td align="left">262.5</td>
+</tr>
+<tr>
+<td align="left">"bill"</td>
+<td align="left">7594634739</td>
+<td align="left">273.4</td>
+</tr>
+<tr>
+<td align="left">"A4"</td>
+<td align="left">8047401090</td>
+<td align="left">289.7</td>
+</tr>
+<tr>
+<td align="left">"A8"</td>
+<td align="left">8997397092</td>
+<td align="left">323.9</td>
+</tr>
+<tr>
+<td align="left">"B7"</td>
+<td align="left">9038880553</td>
+<td align="left">325.3</td>
+</tr>
+<tr>
+<td align="left">"B5"</td>
+<td align="left">9368225254</td>
+<td align="left">337.2</td>
+</tr>
+<tr>
+<td align="left">"B6"</td>
+<td align="left">9379713761</td>
+<td align="left">337.6</td>
+</tr>
+<tr>
+<td align="left">"steve"</td>
+<td align="left">9787173343</td>
+<td align="left">352.3</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">KEY</th>
+<th align="left">HASH</th>
+<th align="left">ANGLE (DEG)</th>
+<th align="left">LABEL</th>
+<th align="left">SERVER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">"john"</td>
+<td align="left">1632929716</td>
+<td align="left">58.7</td>
+<td align="left">"B2"</td>
+<td align="left">B</td>
+</tr>
+<tr>
+<td align="left">"kate"</td>
+<td align="left">3421831276</td>
+<td align="left">123.1</td>
+<td align="left">"A5"</td>
+<td align="left">A</td>
+</tr>
+<tr>
+<td align="left">"jane"</td>
+<td align="left">5000648311</td>
+<td align="left">180</td>
+<td align="left">"B1"</td>
+<td align="left">B</td>
+</tr>
+<tr>
+<td align="left">"bill"</td>
+<td align="left">7594873884</td>
+<td align="left">273.4</td>
+<td align="left">"A4"</td>
+<td align="left">A</td>
+</tr>
+<tr>
+<td align="left">"steve"</td>
+<td align="left">9786437450</td>
+<td align="left">352.3</td>
+<td align="left">"A1"</td>
+<td align="left">A</td>
+</tr>
+</tbody>
+</table>
+<p>Something similar happens if, instead of removing a server, we add one. If we wanted to add server <code>D</code> to our example (say, as a replacement for <code>C</code>), we would need to add labels <code>D0 .. D9</code>. The result would be that roughly one-third of the existing keys (all belonging to <code>A</code> or <code>B</code>) would be reassigned to <code>D</code>, and, again, the rest would stay the same:</p>
+<p><img alt="Consistent Hashing Example 7" src="https://uploads.toptal.io/blog/image/129311/toptal-blog-image-1551794781664-ce4274caf801db26b828400a8cfde967.png" /></p>
+<table>
+<thead>
+<tr>
+<th align="left">KEY</th>
+<th align="left">HASH</th>
+<th align="left">ANGLE (DEG)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">"D2"</td>
+<td align="left">439890723</td>
+<td align="left">15.8</td>
+</tr>
+<tr>
+<td align="left">"A1"</td>
+<td align="left">473914830</td>
+<td align="left">17</td>
+</tr>
+<tr>
+<td align="left">"A2"</td>
+<td align="left">548798874</td>
+<td align="left">19.7</td>
+</tr>
+<tr>
+<td align="left">"D8"</td>
+<td align="left">796709216</td>
+<td align="left">28.6</td>
+</tr>
+<tr>
+<td align="left">"D1"</td>
+<td align="left">1008580939</td>
+<td align="left">36.3</td>
+</tr>
+<tr>
+<td align="left">"A3"</td>
+<td align="left">1466730567</td>
+<td align="left">52.8</td>
+</tr>
+<tr>
+<td align="left">"D5"</td>
+<td align="left">1587548309</td>
+<td align="left">57.1</td>
+</tr>
+<tr>
+<td align="left">"john"</td>
+<td align="left">1633428562</td>
+<td align="left">58.7</td>
+</tr>
+<tr>
+<td align="left">"B2"</td>
+<td align="left">1808009038</td>
+<td align="left">65</td>
+</tr>
+<tr>
+<td align="left">"B3"</td>
+<td align="left">2058758486</td>
+<td align="left">74.1</td>
+</tr>
+<tr>
+<td align="left">"A7"</td>
+<td align="left">2162578920</td>
+<td align="left">77.8</td>
+</tr>
+<tr>
+<td align="left">"B4"</td>
+<td align="left">2660265921</td>
+<td align="left">95.7</td>
+</tr>
+<tr>
+<td align="left">"D4"</td>
+<td align="left">2909395217</td>
+<td align="left">104.7</td>
+</tr>
+<tr>
+<td align="left">"kate"</td>
+<td align="left">3421657995</td>
+<td align="left">123.1</td>
+</tr>
+<tr>
+<td align="left">"A5"</td>
+<td align="left">3434972143</td>
+<td align="left">123.6</td>
+</tr>
+<tr>
+<td align="left">"D7"</td>
+<td align="left">3567129743</td>
+<td align="left">128.4</td>
+</tr>
+<tr>
+<td align="left">"B0"</td>
+<td align="left">4049028775</td>
+<td align="left">145.7</td>
+</tr>
+<tr>
+<td align="left">"B8"</td>
+<td align="left">4755525684</td>
+<td align="left">171.1</td>
+</tr>
+<tr>
+<td align="left">"A9"</td>
+<td align="left">4769549830</td>
+<td align="left">171.7</td>
+</tr>
+<tr>
+<td align="left">"jane"</td>
+<td align="left">5000799124</td>
+<td align="left">180</td>
+</tr>
+<tr>
+<td align="left">"B1"</td>
+<td align="left">5444659173</td>
+<td align="left">196</td>
+</tr>
+<tr>
+<td align="left">"D6"</td>
+<td align="left">5703092354</td>
+<td align="left">205.3</td>
+</tr>
+<tr>
+<td align="left">"A6"</td>
+<td align="left">6210502707</td>
+<td align="left">223.5</td>
+</tr>
+<tr>
+<td align="left">"A0"</td>
+<td align="left">6511384141</td>
+<td align="left">234.4</td>
+</tr>
+<tr>
+<td align="left">"B9"</td>
+<td align="left">7292819872</td>
+<td align="left">262.5</td>
+</tr>
+<tr>
+<td align="left">"bill"</td>
+<td align="left">7594634739</td>
+<td align="left">273.4</td>
+</tr>
+<tr>
+<td align="left">"A4"</td>
+<td align="left">8047401090</td>
+<td align="left">289.7</td>
+</tr>
+<tr>
+<td align="left">"D0"</td>
+<td align="left">8272587142</td>
+<td align="left">297.8</td>
+</tr>
+<tr>
+<td align="left">"A8"</td>
+<td align="left">8997397092</td>
+<td align="left">323.9</td>
+</tr>
+<tr>
+<td align="left">"B7"</td>
+<td align="left">9038880553</td>
+<td align="left">325.3</td>
+</tr>
+<tr>
+<td align="left">"D3"</td>
+<td align="left">9048608874</td>
+<td align="left">325.7</td>
+</tr>
+<tr>
+<td align="left">"D9"</td>
+<td align="left">9314459653</td>
+<td align="left">335.3</td>
+</tr>
+<tr>
+<td align="left">"B5"</td>
+<td align="left">9368225254</td>
+<td align="left">337.2</td>
+</tr>
+<tr>
+<td align="left">"B6"</td>
+<td align="left">9379713761</td>
+<td align="left">337.6</td>
+</tr>
+<tr>
+<td align="left">"steve"</td>
+<td align="left">9787173343</td>
+<td align="left">352.3</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">KEY</th>
+<th align="left">HASH</th>
+<th align="left">ANGLE (DEG)</th>
+<th align="left">LABEL</th>
+<th align="left">SERVER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">"john"</td>
+<td align="left">1632929716</td>
+<td align="left">58.7</td>
+<td align="left">"B2"</td>
+<td align="left">B</td>
+</tr>
+<tr>
+<td align="left">"kate"</td>
+<td align="left">3421831276</td>
+<td align="left">123.1</td>
+<td align="left">"A5"</td>
+<td align="left">A</td>
+</tr>
+<tr>
+<td align="left">"jane"</td>
+<td align="left">5000648311</td>
+<td align="left">180</td>
+<td align="left">"B1"</td>
+<td align="left">B</td>
+</tr>
+<tr>
+<td align="left">"bill"</td>
+<td align="left">7594873884</td>
+<td align="left">273.4</td>
+<td align="left">"A4"</td>
+<td align="left">A</td>
+</tr>
+<tr>
+<td align="left">"steve"</td>
+<td align="left">9786437450</td>
+<td align="left">352.3</td>
+<td align="left">"D2"</td>
+<td align="left">D</td>
+</tr>
+</tbody>
+</table>
+<p>This is how <strong>consistent hashing</strong> solves the <strong>rehashing</strong> problem.</p>
+<p>In general, only <code>k/N</code> keys need to be remapped when <code>k</code> is the number of keys and <code>N</code> is the number of servers (more specifically, the maximum of the initial and final number of servers).</p>
+<h2 id="what_next">What Next?<a class="headerlink" href="#what_next" title="Permanent link">#</a></h2>
+<p>We observed that when using distributed caching to optimize performance, it may happen that the number of caching servers changes (reasons for this may be a server crashing, or the need to add or remove a server to increase or decrease overall capacity). By using consistent hashing to distribute keys between the servers, we can rest assured that should that happen, the number of keys being rehashed—and therefore, the impact on origin servers—will be minimized, preventing potential downtime or performance issues.</p>
+<p>There are clients for several systems, such as Memcached and Redis, that include support for <strong>consistent hashing</strong> out of the box.</p>
+<p>Alternatively, you can implement the algorithm yourself, in your language of choice, and that should be relatively easy once the concept is understood.</p>
+<p>If data science interests you, Toptal has some of the best articles on the subject at the <a href="https://www.toptal.com/developers/blog/data-science-and-databases">blog</a></p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../../../assets/javascripts/application.808e90bb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../../../.."}})</script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2319 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Project documentation with Markdown.">
+      
+      
+        <link rel="canonical" href="https://dengking.github.io/data-structure/Graph/01-Graph-and-Graph-theory/01-Graph-and-Graph-theory/">
+      
+      
+        <meta name="author" content="DengKing">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>Graph-and-Graph-theory.md - data-structure</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.1b62728e.css">
+      
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-27795084-5", "mkdocs.org")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#graph_discrete_mathematics_and_graph_theory" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://dengking.github.io/data-structure" title="data-structure" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              data-structure
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Graph-and-Graph-theory.md
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/dengking/data-structure" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://dengking.github.io/data-structure" title="data-structure" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    data-structure
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/dengking/data-structure" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Structure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Structure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Structure/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Structure/Structure/" title="Structure" class="md-nav__link">
+      Structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Structure/Hierarchy/" title="Hierarchy" class="md-nav__link">
+      Hierarchy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Structure/Relation/" title="Relation" class="md-nav__link">
+      Relation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Data-structure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Data-structure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Data-structure/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Data-structure/Data-structure/" title="Data-structure" class="md-nav__link">
+      Data-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Data-structure/Recursive-data-type/" title="Recursive-data-type" class="md-nav__link">
+      Recursive-data-type
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Data-structure/Abstract-data-type/" title="Abstract-data-type" class="md-nav__link">
+      Abstract-data-type
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Array
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Array
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Array/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Array/Array-data-structure/" title="Array-data-structure" class="md-nav__link">
+      Array-data-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
+    
+    <label class="md-nav__link" for="nav-4-3">
+      bit-array
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        bit-array
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Array/bit-array/Bit-array/" title="Bit-array" class="md-nav__link">
+      Bit-array
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+    
+    <label class="md-nav__link" for="nav-4-4">
+      circular-array
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        circular-array
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Array/circular-array/Circular-buffer/" title="Circular-buffer" class="md-nav__link">
+      Circular-buffer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Array/circular-array/circular-array/" title="Circular-array" class="md-nav__link">
+      Circular-array
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      List
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        List
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../List/List/" title="List" class="md-nav__link">
+      List
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../List/Chain/" title="Chain" class="md-nav__link">
+      Chain
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../List/VS-double-linked-list-VS-binary-tree/" title="VS-double-linked-list-VS-binary-tree" class="md-nav__link">
+      VS-double-linked-list-VS-binary-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../List/VS-Unrolled-linked list-VS-B-tree/" title="VS-Unrolled-linked list-VS-B-tree" class="md-nav__link">
+      VS-Unrolled-linked list-VS-B-tree
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      Graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2" checked>
+    
+    <label class="md-nav__link" for="nav-6-2">
+      01-Graph-and-Graph-theory
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-2">
+        01-Graph-and-Graph-theory
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Graph-and-Graph-theory.md
+      </label>
+    
+    <a href="./" title="Graph-and-Graph-theory.md" class="md-nav__link md-nav__link--active">
+      Graph-and-Graph-theory.md
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#graph_terminology" class="md-nav__link">
+    graph terminology
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#undirected_graph" class="md-nav__link">
+    undirected graph
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definition" class="md-nav__link">
+    DEFINITION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definition_1" class="md-nav__link">
+    DEFINITION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definition_2" class="md-nav__link">
+    DEFINITION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the_handshaking_theorem" class="md-nav__link">
+    THE HANDSHAKING THEOREM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theorem" class="md-nav__link">
+    THEOREM
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directed_graph" class="md-nav__link">
+    directed graph
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definition_3" class="md-nav__link">
+    DEFINITION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definition_4" class="md-nav__link">
+    DEFINITION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theorem_1" class="md-nav__link">
+    THEOREM
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#some_special_simple_graphs" class="md-nav__link">
+    Some Special Simple Graphs
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#complete_graphs" class="md-nav__link">
+    Complete Graphs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cycles" class="md-nav__link">
+    Cycles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wheels" class="md-nav__link">
+    Wheels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#n-cubes" class="md-nav__link">
+    n-Cubes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bipartite_graphs" class="md-nav__link">
+    Bipartite Graphs
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definition_5" class="md-nav__link">
+    DEFINITION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theorem_4" class="md-nav__link">
+    THEOREM 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete_bipartite_graphs" class="md-nav__link">
+    Complete Bipartite Graphs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bipartite_graphs_and_matchings" class="md-nav__link">
+    Bipartite Graphs and Matchings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2-2" type="checkbox" id="nav-6-2-2">
+    
+    <label class="md-nav__link" for="nav-6-2-2">
+      Graph-representations
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-2-2">
+        Graph-representations
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Graph-representations/Graph-representations/" title="Graph-representations" class="md-nav__link">
+      Graph-representations
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2-3" type="checkbox" id="nav-6-2-3">
+    
+    <label class="md-nav__link" for="nav-6-2-3">
+      Directed-graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-2-3">
+        Directed-graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Directed-graph/Directed-graph/" title="Directed-graph" class="md-nav__link">
+      Directed-graph
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2-3-2" type="checkbox" id="nav-6-2-3-2">
+    
+    <label class="md-nav__link" for="nav-6-2-3-2">
+      Directed-acyclic-graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="4">
+      <label class="md-nav__title" for="nav-6-2-3-2">
+        Directed-acyclic-graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Directed-graph/Directed-acyclic-graph/Directed-acyclic-graph/" title="Directed-acyclic-graph" class="md-nav__link">
+      Directed-acyclic-graph
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      02-Graph-Model
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        02-Graph-Model
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../02-Graph-Model/Graph-Model/" title="Graph-Model" class="md-nav__link">
+      Graph-Model
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../02-Graph-Model/Application-of-graph/" title="Application-of-graph" class="md-nav__link">
+      Application-of-graph
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3-3" type="checkbox" id="nav-6-3-3">
+    
+    <label class="md-nav__link" for="nav-6-3-3">
+      Dependency-graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-3-3">
+        Dependency-graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../02-Graph-Model/Dependency-graph/Dependency-graph/" title="Dependency-graph" class="md-nav__link">
+      Dependency-graph
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../02-Graph-Model/Dependency-graph/Precedence-graph/" title="Precedence-graph" class="md-nav__link">
+      Precedence-graph
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../02-Graph-Model/Dependency-graph/Dependency-resolving-algorithm.md" title="Dependency-resolving-algorithm" class="md-nav__link">
+      Dependency-resolving-algorithm
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4">
+    
+    <label class="md-nav__link" for="nav-6-4">
+      03-Graph-operation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-4">
+        03-Graph-operation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../03-Graph-operation/Graph-operation/" title="Graph-operation" class="md-nav__link">
+      Graph-operation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5" type="checkbox" id="nav-6-5">
+    
+    <label class="md-nav__link" for="nav-6-5">
+      04-Computational-problems-in-graph-theory
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-5">
+        04-Computational-problems-in-graph-theory
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../04-Computational-problems-in-graph-theory/Computational-problems-in-graph-theory/" title="Computational-problems-in-graph-theory" class="md-nav__link">
+      Computational-problems-in-graph-theory
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-2" type="checkbox" id="nav-6-5-2">
+    
+    <label class="md-nav__link" for="nav-6-5-2">
+      Circular
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-2">
+        Circular
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../04-Computational-problems-in-graph-theory/Circular/Cycle-detection/" title="Cycle-detection" class="md-nav__link">
+      Cycle-detection
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../04-Computational-problems-in-graph-theory/Circular/Circular-dependency/" title="Circular-dependency" class="md-nav__link">
+      Circular-dependency
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-3" type="checkbox" id="nav-6-5-3">
+    
+    <label class="md-nav__link" for="nav-6-5-3">
+      Dominator
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-3">
+        Dominator
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../04-Computational-problems-in-graph-theory/Dominator/Dominator(graph-theory)/" title="Dominator" class="md-nav__link">
+      Dominator
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-4" type="checkbox" id="nav-6-5-4">
+    
+    <label class="md-nav__link" for="nav-6-5-4">
+      Sorting
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-4">
+        Sorting
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../04-Computational-problems-in-graph-theory/Sorting/Topological-sorting/" title="Topological-sorting" class="md-nav__link">
+      Topological-sorting
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-5" type="checkbox" id="nav-6-5-5">
+    
+    <label class="md-nav__link" for="nav-6-5-5">
+      Spanning-tree
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-5">
+        Spanning-tree
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../04-Computational-problems-in-graph-theory/Spanning-tree/Spanning-tree/" title="Spanning-tree" class="md-nav__link">
+      Spanning-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../04-Computational-problems-in-graph-theory/Spanning-tree/Minimum-spanning-tree/" title="Minimum-spanning-tree" class="md-nav__link">
+      Minimum-spanning-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../04-Computational-problems-in-graph-theory/Spanning-tree/Borůvka's-algorithm/" title="Borůvka's-algorithm" class="md-nav__link">
+      Borůvka's-algorithm
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Tree
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Tree
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tree/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tree/Tree-structure/" title="Tree-structure" class="md-nav__link">
+      Tree-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tree/Represent-tree/" title="Represent-tree" class="md-nav__link">
+      Represent-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tree/Tree(set-theory)/" title="Tree(set-theory)" class="md-nav__link">
+      Tree(set-theory)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tree/Tree(data-structure)/" title="Tree(data-structure)" class="md-nav__link">
+      Tree(data-structure)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tree/application-of-tree-data-structure.md" title="Application-of-tree-data-structure" class="md-nav__link">
+      Application-of-tree-data-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-7" type="checkbox" id="nav-7-7">
+    
+    <label class="md-nav__link" for="nav-7-7">
+      Tree-and-stack
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-7">
+        Tree-and-stack
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tree/Tree-and-stack/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tree/Tree-and-stack/VS-bracket-VS-tree/" title="VS-bracket-VS-tree" class="md-nav__link">
+      VS-bracket-VS-tree
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tree/Implicit-tree/" title="Implicit-tree" class="md-nav__link">
+      Implicit-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-9" type="checkbox" id="nav-7-9">
+    
+    <label class="md-nav__link" for="nav-7-9">
+      Tree-operation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-9">
+        Tree-operation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tree/Tree-operation/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tree/TODO/" title="TODO" class="md-nav__link">
+      TODO
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Hash
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Hash
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2">
+    
+    <label class="md-nav__link" for="nav-8-2">
+      Hash-function
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-2">
+        Hash-function
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash/Hash-function/Hash-function/" title="Hash-function" class="md-nav__link">
+      Hash-function
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash/Hash-function/Rolling-hash/" title="Rolling-hash" class="md-nav__link">
+      Rolling-hash
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash/Hash-function/SipHash/" title="SipHash" class="md-nav__link">
+      SipHash
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2-4" type="checkbox" id="nav-8-2-4">
+    
+    <label class="md-nav__link" for="nav-8-2-4">
+      Cryptographic-hash-functions
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-2-4">
+        Cryptographic-hash-functions
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash/Hash-function/Cryptographic-hash-functions/Cryptographic-hash-function/" title="Cryptographic-hash-function" class="md-nav__link">
+      Cryptographic-hash-function
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash/Hash-function/Cryptographic-hash-functions/Cipher/" title="Cipher" class="md-nav__link">
+      Cipher
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash/Hash-function/Cryptographic-hash-functions/Salt(cryptography)/" title="Salt(cryptography)" class="md-nav__link">
+      Salt(cryptography)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Set
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        Set
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Set/Set(abstract-data-type)/" title="Set" class="md-nav__link">
+      Set
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Probabilistic-data-structures
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        Probabilistic-data-structures
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Probabilistic-data-structures/Bloom-filter/" title="Bloom-filter" class="md-nav__link">
+      Bloom-filter
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Probabilistic-data-structures/Random-tree/" title="Random-tree" class="md-nav__link">
+      Random-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Probabilistic-data-structures/Skip-list/" title="Skip-list" class="md-nav__link">
+      Skip-list
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      Summary-of-data-structure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        Summary-of-data-structure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Summary-of-data-structure/index.md" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Summary-of-data-structure/List-of-data-structure/" title="List-of-data-structure" class="md-nav__link">
+      List-of-data-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Summary-of-data-structure/VS-of-tree.md" title="VS-of-trees" class="md-nav__link">
+      VS-of-trees
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Summary-of-data-structure/VS-of-graph-and-tree-and-list/" title="VS-of-graph-and-tree-and-list" class="md-nav__link">
+      VS-of-graph-and-tree-and-list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Summary-of-data-structure/VS-of-implementation-of-ADT.md" title="VS-of-implementation-of-ADT" class="md-nav__link">
+      VS-of-implementation-of-ADT
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Summary-of-data-structure/VS-of-search-tree-and-hash-table.md" title="VS-of-search-tree-and-hash-table" class="md-nav__link">
+      VS-of-search-tree-and-hash-table
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Summary-of-data-structure/VS-of-search-tree-and-skip-list.md" title="VS-of-search-tree-and-skip-list" class="md-nav__link">
+      VS-of-search-tree-and-skip-list
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../TODO/" title="TODO" class="md-nav__link">
+      TODO
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#graph_terminology" class="md-nav__link">
+    graph terminology
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#undirected_graph" class="md-nav__link">
+    undirected graph
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definition" class="md-nav__link">
+    DEFINITION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definition_1" class="md-nav__link">
+    DEFINITION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definition_2" class="md-nav__link">
+    DEFINITION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the_handshaking_theorem" class="md-nav__link">
+    THE HANDSHAKING THEOREM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theorem" class="md-nav__link">
+    THEOREM
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directed_graph" class="md-nav__link">
+    directed graph
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definition_3" class="md-nav__link">
+    DEFINITION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definition_4" class="md-nav__link">
+    DEFINITION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theorem_1" class="md-nav__link">
+    THEOREM
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#some_special_simple_graphs" class="md-nav__link">
+    Some Special Simple Graphs
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#complete_graphs" class="md-nav__link">
+    Complete Graphs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cycles" class="md-nav__link">
+    Cycles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wheels" class="md-nav__link">
+    Wheels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#n-cubes" class="md-nav__link">
+    n-Cubes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bipartite_graphs" class="md-nav__link">
+    Bipartite Graphs
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definition_5" class="md-nav__link">
+    DEFINITION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theorem_4" class="md-nav__link">
+    THEOREM 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete_bipartite_graphs" class="md-nav__link">
+    Complete Bipartite Graphs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bipartite_graphs_and_matchings" class="md-nav__link">
+    Bipartite Graphs and Matchings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="graph_discrete_mathematics_and_graph_theory"><a href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)">Graph (discrete mathematics)</a> and <a href="https://en.wikipedia.org/wiki/Graph_theory">Graph theory</a><a class="headerlink" href="#graph_discrete_mathematics_and_graph_theory" title="Permanent link">#</a></h1>
+<h2 id="graph_terminology">graph terminology<a class="headerlink" href="#graph_terminology" title="Permanent link">#</a></h2>
+<p><img alt="" src="../TABLE1-Graph-Terminology.jpg" /></p>
+<h3 id="undirected_graph">undirected graph<a class="headerlink" href="#undirected_graph" title="Permanent link">#</a></h3>
+<p>First, we give some terminology that describes the vertices and edges of <strong>undirected graphs</strong>.</p>
+<h4 id="definition">DEFINITION<a class="headerlink" href="#definition" title="Permanent link">#</a></h4>
+<blockquote>
+<p>Two vertices <code>u</code> and <code>v</code> in an undirected graph <code>G</code> are called <em>adjacent</em> (or <em>neighbors</em>) in <code>G</code> if <code>u</code> and <code>v</code> are endpoints of an edge <code>e</code> of <code>G</code>. Such an edge <code>e</code> is called <em>incident</em> with the vertices <code>u</code> and <code>v</code> and <code>e</code> is said to <em>connect</em> <code>u</code> and <code>v</code>.</p>
+</blockquote>
+<h4 id="definition_1">DEFINITION<a class="headerlink" href="#definition_1" title="Permanent link">#</a></h4>
+<blockquote>
+<p>The set of all <strong>neighbors</strong> of a vertex <code>v</code> of <code>G = (V,E)</code>, denoted by <code>N(v)</code>, is called the <em>neighborhood</em> of <code>v</code>. If <code>A</code> is a subset of <code>V</code>, we denote by <code>N(A)</code> the set of all vertices in <code>G</code> that are adjacent to at least one vertex in <code>A</code>. So, <code>N(A) =U v∈A N(v)</code>.</p>
+<p>NOTE: 上诉定义其实定义的是一个点的<em>neighborhood</em>和一个点集的<em>neighborhood</em>。</p>
+</blockquote>
+<h4 id="definition_2">DEFINITION<a class="headerlink" href="#definition_2" title="Permanent link">#</a></h4>
+<blockquote>
+<p>The degree of a vertex in an undirected graph is the number of edges incident with it, except that a loop at a vertex contributes twice to the degree of that vertex. The degree of the vertex <code>v</code> is denoted by <code>deg(v)</code>.</p>
+</blockquote>
+<h4 id="the_handshaking_theorem">THE HANDSHAKING THEOREM<a class="headerlink" href="#the_handshaking_theorem" title="Permanent link">#</a></h4>
+<blockquote>
+<p>Let <code>G = (V,E)</code> be an undirected graph with <code>m</code> edges. Then
+$$
+2m = \sum_{v \in V} deg(v)
+$$
+(Note that this applies even if multiple edges and loops are present.)</p>
+</blockquote>
+<h4 id="theorem">THEOREM<a class="headerlink" href="#theorem" title="Permanent link">#</a></h4>
+<blockquote>
+<p>An undirected graph has an even number of vertices of odd degree.</p>
+<p>NOTE: 翻译成中文是：一个无向图有偶数个奇数度的点。</p>
+</blockquote>
+<h3 id="directed_graph">directed graph<a class="headerlink" href="#directed_graph" title="Permanent link">#</a></h3>
+<p>Terminology for graphs with directed edges reflects the fact that edges in directed graphs have directions.</p>
+<h4 id="definition_3">DEFINITION<a class="headerlink" href="#definition_3" title="Permanent link">#</a></h4>
+<blockquote>
+<p>When <code>(u,v)</code> is an edge of the graph <code>G</code> with directed edges, <code>u</code> is said to be <em>adjacent to</em> <code>v</code> and <code>v</code> is said to be <em>adjacent from</em> <code>u</code>. The vertex <code>u</code> is called the <em>initial vertex</em> of <code>(u,v)</code>, and <code>v</code> is called the <em>terminal</em> or <em>end</em> vertex of <code>(u,v)</code>. The initial vertex and terminal vertex of a loop are the same.</p>
+</blockquote>
+<h4 id="definition_4">DEFINITION<a class="headerlink" href="#definition_4" title="Permanent link">#</a></h4>
+<blockquote>
+<p>In a graph with directed edges the <em>in-degree of a vertex v</em>, denoted by <code>deg − (v)</code>, is the number
+of edges with <code>v</code> as their terminal vertex. The <em>out-degree of v</em>, denoted by <code>deg + (v)</code>, is the number of edges with <code>v</code> as their initial vertex. (Note that a loop at a vertex contributes 1 to both the <strong>in-degree</strong> and the <strong>out-degree</strong> of this vertex.)</p>
+</blockquote>
+<h4 id="theorem_1">THEOREM<a class="headerlink" href="#theorem_1" title="Permanent link">#</a></h4>
+<blockquote>
+<p>Let <code>G = (V,E)</code> be a graph with directed edges. Then
+$$
+\sum_{v \in V} deg^-(v) = \sum_{v \in V} deg^+(v)=|E|
+$$</p>
+</blockquote>
+<p>There are many properties of a graph with directed edges that do not depend on the direction of its edges.Consequently, it is often useful to ignore these directions. The undirected graph that results from ignoring directions of edges is called the <em>underlying undirected graph</em>. A graph with directed edges and its underlying undirected graph have the same number of edges.</p>
+<blockquote>
+<p>NOTE: 这些属于在后文中会大量出现，有必要先熟悉熟悉。</p>
+</blockquote>
+<h2 id="some_special_simple_graphs">Some Special Simple Graphs<a class="headerlink" href="#some_special_simple_graphs" title="Permanent link">#</a></h2>
+<h3 id="complete_graphs">Complete Graphs<a class="headerlink" href="#complete_graphs" title="Permanent link">#</a></h3>
+<blockquote>
+<p>A <em>complete graph</em> on <code>n</code> vertices, denoted by $K_n$ , is a simple graph that contains exactly one edge between each pair of distinct vertices. The graphs $K_n$ , for n = 1,2,3,4,5,6, are displayed in Figure 3. A simple graph for which there is at least one pair of distinct vertex not connected by an edge is called <strong>noncomplete</strong>.</p>
+</blockquote>
+<p><img alt="" src="../FIGURE3-The-Graphs-K_n-for-1≤n≤6..jpg" /></p>
+<h3 id="cycles">Cycles<a class="headerlink" href="#cycles" title="Permanent link">#</a></h3>
+<blockquote>
+<p>A cycle $C_n$ , n ≥ 3, consists of <code>n</code> vertices $v_1 ,v_2 ,...,v_n$ and edges ${v_1 ,v_2 }$, ${v_2 ,v_3 }$,...,${v_{n−1} ,v_n }$, and ${v_n ,v_1 }$. The cycles $C_3$ , $C_4$ , $C_5$ , and $C_6$ are displayed in Figure 4.</p>
+</blockquote>
+<p><img alt="" src="../FIGURE4The-Cycles-C3-C4-C5-and-C6.jpg" /></p>
+<h3 id="wheels">Wheels<a class="headerlink" href="#wheels" title="Permanent link">#</a></h3>
+<blockquote>
+<p>We obtain a wheel $W_n$ when we add an additional vertex to a cycle $C_n$ , for n ≥ 3, and connect this new vertex to each of the n vertices in $C_n$ , by new edges. The wheels $W_3$ , $W_4$ , $W_5$ , and $W_6$ are displayed in Figure 5.</p>
+</blockquote>
+<p><img alt="" src="../FIGURE5The-Wheels-W3-W4-W5-and-W6.jpg" /></p>
+<h3 id="n-cubes">n-Cubes<a class="headerlink" href="#n-cubes" title="Permanent link">#</a></h3>
+<blockquote>
+<p>An n-dimensional hypercube,or n-cube,denoted by $Q_n$ ,is a graph that has vertices representing the $2^n$ bit strings of length <code>n</code>. Two vertices are adjacent if and only if the bit strings that they represent differ in exactly one bit position. We display $Q_1$ ,$ Q_2$ , and $Q_3$ in Figure 6.</p>
+</blockquote>
+<p>Note that you can construct the (n + 1)-cube $Q_{n+1}$ from the n-cube $Q_n$ by making two copies of $Q_n$ , prefacing the labels on the vertices with a 0 in one copy of $Q_n$ and with a 1 in the other copy of $Q_n$ , and adding edges connecting two vertices that have labels differing only in the first bit. In Figure 6, $Q_ 3$ is constructed from $Q_2$ by drawing two copies of $Q_2$ as the top and bottom faces of $Q_3$ , adding 0 at the beginning of the label of each vertex in the bottom face and 1 at the beginning of the label of each vertex in the top face. (Here, by face we mean a face of a cube in three-dimensional space. Think of drawing the graph $Q_3$ in three-dimensional space with copies of $Q_2$ as the top and bottom faces of a cube and then drawing the projection of the resulting depiction in the plane.)</p>
+<p><img alt="" src="../FIGURE6The-n-cube Q_n.jpg" /></p>
+<blockquote>
+<p>NOTE: How about $Q_4$? see the wikipedia entry <a href="https://en.wikipedia.org/wiki/Hypercube">Hypercube</a>.</p>
+</blockquote>
+<h3 id="bipartite_graphs">Bipartite Graphs<a class="headerlink" href="#bipartite_graphs" title="Permanent link">#</a></h3>
+<p>Sometimes a graph has the property that its vertex set can be divided into two disjoint subsets such that each edge connects a vertex in one of these subsets to a vertex in the other subset. For example, consider the graph representing marriages between men and women in a village, where each person is represented by a vertex and a marriage is represented by an edge. In this graph, each edge connects a vertex in the subset of vertices representing males and a vertex in the subset of vertices representing females. This leads us to Definition 5.</p>
+<h4 id="definition_5">DEFINITION<a class="headerlink" href="#definition_5" title="Permanent link">#</a></h4>
+<blockquote>
+<p>A simple graph <code>G</code> is called <em>bipartite</em> if its vertex set <code>V</code> can be partitioned into two disjoint sets $V_1$ and $V_2$ such that every edge in the graph connects a vertex in $V_1$ and a vertex in $V_2$ (so that no edge in <code>G</code> connects either two vertices in $V_1$ or two vertices in $V_2$ ). When this condition holds, we call the pair $(V_1 ,V_2 )$ a bipartition of the vertex set V of G.</p>
+</blockquote>
+<p>In Example 9 we will show that $C_6$ is bipartite, and in Example 10 we will show that $K_3$ is not bipartite.</p>
+<p><img alt="" src="../FIGURE7Showing-That-C_6-Is-bipartite.jpg" /></p>
+<p><img alt="" src="../FIGURE8The-Undirected-Graphs-G-and-H.jpg" /></p>
+<p>Theorem below provides a useful criterion for determining whether a graph is bipartite.</p>
+<h4 id="theorem_4">THEOREM 4<a class="headerlink" href="#theorem_4" title="Permanent link">#</a></h4>
+<blockquote>
+<p>A simple graph is bipartite if and only if it is possible to assign one of two different colors to
+each vertex of the graph so that no two adjacent vertices are assigned the same color.</p>
+</blockquote>
+<p>Theorem 4 is an example of a result in the part of graph theory known as <strong>graph colorings</strong>. <strong>Graph colorings</strong> is an important part of graph theory with important applications. We will study graph colorings further in Section 10.8.</p>
+<p>Another useful criterion for determining whether a graph is bipartite is based on the notion of a <strong>path</strong>, a topic we study in Section 10.4. A graph is bipartite if and only if it is not possible to start at a vertex and return to this vertex by traversing an odd number of distinct edges. We will make this notion more precise when we discuss paths and circuits in graphs in Section 10.4 (see Exercise 63 in that section).</p>
+<h4 id="complete_bipartite_graphs">Complete Bipartite Graphs<a class="headerlink" href="#complete_bipartite_graphs" title="Permanent link">#</a></h4>
+<h4 id="bipartite_graphs_and_matchings">Bipartite Graphs and Matchings<a class="headerlink" href="#bipartite_graphs_and_matchings" title="Permanent link">#</a></h4>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../" title="Introduction" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Introduction
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../Graph-representations/Graph-representations/" title="Graph-representations" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Graph-representations
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.808e90bb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+    
+  </body>
+</html>
