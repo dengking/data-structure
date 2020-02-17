@@ -13,7 +13,7 @@
         <meta name="description" content="Project documentation with Markdown.">
       
       
-        <link rel="canonical" href="https://dengking.github.io/data-structure/summary-of-data-structure/VS-of-implementation-of-ADT/">
+        <link rel="canonical" href="https://dengking.github.io/data-structure/Summary-of-data-structure/VS-of-search-tree-and-hash-table/">
       
       
         <meta name="author" content="DengKing">
@@ -42,7 +42,7 @@
     
     
       
-        <title>VS of implementation of ADT - data-structure</title>
+        <title>VS-of-search-tree-and-hash-table - data-structure</title>
       
     
     
@@ -110,7 +110,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#adt" tabindex="1" class="md-skip">
+      <a href="#binary_search_tree_vs_hash_table" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -136,7 +136,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                VS of implementation of ADT
+                VS-of-search-tree-and-hash-table
               
             </span>
           
@@ -1601,10 +1601,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11" checked>
     
     <label class="md-nav__link" for="nav-11">
       Summary-of-data-structure
@@ -1622,7 +1624,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Summary-of-data-structure/index.md" title="Introduction" class="md-nav__link">
+    <a href="../" title="Introduction" class="md-nav__link">
       Introduction
     </a>
   </li>
@@ -1634,7 +1636,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Summary-of-data-structure/List-of-data-structure/" title="List-of-data-structure" class="md-nav__link">
+    <a href="../List-of-data-structure/" title="List-of-data-structure" class="md-nav__link">
       List-of-data-structure
     </a>
   </li>
@@ -1646,7 +1648,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Summary-of-data-structure/VS-of-tree.md" title="VS-of-trees" class="md-nav__link">
+    <a href="../VS-of-tree/" title="VS-of-trees" class="md-nav__link">
       VS-of-trees
     </a>
   </li>
@@ -1658,7 +1660,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Summary-of-data-structure/VS-of-graph-and-tree-and-list/" title="VS-of-graph-and-tree-and-list" class="md-nav__link">
+    <a href="../VS-of-graph-and-tree-and-list/" title="VS-of-graph-and-tree-and-list" class="md-nav__link">
       VS-of-graph-and-tree-and-list
     </a>
   </li>
@@ -1670,7 +1672,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Summary-of-data-structure/VS-of-implementation-of-ADT.md" title="VS-of-implementation-of-ADT" class="md-nav__link">
+    <a href="../VS-of-implementation-of-ADT/" title="VS-of-implementation-of-ADT" class="md-nav__link">
       VS-of-implementation-of-ADT
     </a>
   </li>
@@ -1680,11 +1682,20 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../Summary-of-data-structure/VS-of-search-tree-and-hash-table.md" title="VS-of-search-tree-and-hash-table" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" title="VS-of-search-tree-and-hash-table" class="md-nav__link md-nav__link--active">
       VS-of-search-tree-and-hash-table
     </a>
+    
   </li>
 
         
@@ -1694,7 +1705,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Summary-of-data-structure/VS-of-search-tree-and-skip-list.md" title="VS-of-search-tree-and-skip-list" class="md-nav__link">
+    <a href="../VS-of-search-tree-and-skip-list/" title="VS-of-search-tree-and-skip-list" class="md-nav__link">
       VS-of-search-tree-and-skip-list
     </a>
   </li>
@@ -1734,29 +1745,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#associative_array" class="md-nav__link">
-    Associative array的实现
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#set" class="md-nav__link">
-    set的实现
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1768,21 +1756,26 @@
               
                 
                 
-                <div class="toc">
+                <h1 id="binary_search_tree_vs_hash_table">binary search tree VS hash table<a class="headerlink" href="#binary_search_tree_vs_hash_table" title="Permanent link">#</a></h1>
+<p>在<a href="https://en.wikipedia.org/wiki/Binary_search_tree">Binary search tree</a>中，有如下对比：</p>
+<blockquote>
+<p>Binary search trees keep their keys in sorted order, so that lookup and other operations can use the principle of <a href="https://en.wikipedia.org/wiki/Binary_search">binary search</a>: when looking for a key in a tree (or a place to insert a new key), they traverse the tree from root to leaf, making comparisons to keys stored in the nodes of the tree and deciding, on the basis of the comparison, to continue searching in the left or right subtrees. On average, this means that each comparison allows the operations to skip about half of the tree, so that each lookup, insertion or deletion takes <a href="https://en.wikipedia.org/wiki/Time_complexity">time proportional to</a> the <a href="https://en.wikipedia.org/wiki/Logarithm">logarithm</a> of the number of items stored in the tree. This is much better than the <a href="https://en.wikipedia.org/wiki/Linear_time">linear time</a> required to find items by key in an (unsorted) array, but slower than the corresponding operations on <a href="https://en.wikipedia.org/wiki/Hash_table">hash tables</a>.</p>
+</blockquote>
+<h1 id="b_tree_vs_hash_table">B tree VS hash table<a class="headerlink" href="#b_tree_vs_hash_table" title="Permanent link">#</a></h1>
+<h2 id="introduction_to_the_b-tree"><a href="https://cstack.github.io/db_tutorial/parts/part7.html">Introduction to the B-Tree</a><a class="headerlink" href="#introduction_to_the_b-tree" title="Permanent link">#</a></h2>
+<blockquote>
+<p>Why is a tree a good data structure for a database?</p>
 <ul>
-<li><a href="#adt">ADT的实现</a><ul>
-<li><a href="#associative_array">Associative array的实现</a></li>
-<li><a href="#set">set的实现</a></li>
+<li>Searching for a particular value is fast (logarithmic time)</li>
+<li>Inserting / deleting a value you’ve already found is fast (constant-ish time to rebalance)</li>
+<li>Traversing a range of values is fast (unlike a hash map)</li>
 </ul>
-</li>
-</ul>
-</div>
-<h1 id="adt">ADT的实现<a class="headerlink" href="#adt" title="Permanent link">#</a></h1>
-<h2 id="associative_array"><a href="https://en.wikipedia.org/wiki/Associative_array">Associative array</a>的实现<a class="headerlink" href="#associative_array" title="Permanent link">#</a></h2>
-<p>The two major solutions to the dictionary problem are a <a href="https://en.wikipedia.org/wiki/Hash_table">hash table</a> or a <a href="https://en.wikipedia.org/wiki/Search_tree">search tree</a>.[<a href="https://en.wikipedia.org/wiki/Associative_array#cite_note-gt-1">1]</a>[<a href="https://en.wikipedia.org/wiki/Associative_array#cite_note-ms-2">2]</a>[<a href="https://en.wikipedia.org/wiki/Associative_array#cite_note-clrs-4">4]</a>[<a href="https://en.wikipedia.org/wiki/Associative_array#cite_note-dietzfelbinger-5">5]</a>  b</p>
-<h2 id="set">set的实现<a class="headerlink" href="#set" title="Permanent link">#</a></h2>
-<p>使用tree来实现</p>
-<p>使用skip list来实现</p>
+</blockquote>
+<h1 id="self-balancing_binary_search_tree_vs_hash_table">Self-balancing binary search tree VS hash table<a class="headerlink" href="#self-balancing_binary_search_tree_vs_hash_table" title="Permanent link">#</a></h1>
+<h2 id="self-balancing_binary_search_tree"><a href="https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree">Self-balancing binary search tree</a><a class="headerlink" href="#self-balancing_binary_search_tree" title="Permanent link">#</a></h2>
+<blockquote>
+<p>Self-balancing binary search trees can be used in a natural way to construct and maintain ordered lists, such as <a href="https://en.wikipedia.org/wiki/Priority_queue">priority queues</a>. They can also be used for <a href="https://en.wikipedia.org/wiki/Associative_array">associative arrays</a>; key-value pairs are simply inserted with an ordering based on the key alone. In this capacity, self-balancing BSTs have <a href="https://en.wikipedia.org/wiki/Associative_array#Efficient_representations">a number of advantages and disadvantages</a> over their main competitor, <a href="https://en.wikipedia.org/wiki/Hash_table">hash tables</a>. One advantage of self-balancing BSTs is that they allow fast (indeed, asymptotically optimal) enumeration of the items <em>in key order</em>, which hash tables do not provide. One disadvantage is that their lookup algorithms get more complicated when there may be multiple items with the same key. Self-balancing BSTs have better worst-case lookup performance than hash tables (O(log n) compared to O(n)), but have worse average-case performance (O(log n) compared to O(1)).</p>
+</blockquote>
                 
                   
                 
@@ -1800,6 +1793,41 @@
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../VS-of-implementation-of-ADT/" title="VS-of-implementation-of-ADT" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                VS-of-implementation-of-ADT
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../VS-of-search-tree-and-skip-list/" title="VS-of-search-tree-and-skip-list" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                VS-of-search-tree-and-skip-list
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
