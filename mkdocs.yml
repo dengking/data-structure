@@ -40,7 +40,7 @@ nav:
   - VS-double-linked-list-VS-binary-tree: List/VS-double-linked-list-VS-binary-tree.md
   - VS-Unrolled-linked list-VS-B-tree: List/VS-Unrolled-linked list-VS-B-tree.md
 - Stack:
-  - Stack: Stack/wikipedia-Stack(abstract-data-type).md
+  - Stack: Stack/Stack(abstract-data-type).md
   - Application-of-stack: Stack/Application-of-stack.md
 - Graph:
   - Introduction: Graph/index.md
