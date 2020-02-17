@@ -4,7 +4,7 @@
 
 - docs：描述[data structure](https://en.wikipedia.org/wiki/Data_structure)的理论知识，这部分的目录组织结构是基于[Wikipedia Data structures](https://en.wikipedia.org/wiki/Data_structure)的组织结构，并结合我的实践，进行了一定的扩充。
 
-  首先从[structure](./structure.md)谈起，然后讨论计算机科学中的[data structure](https://en.wikipedia.org/wiki/Data_structure)；
+  首先从[Structure](./Structure/Structure.md)谈起，然后讨论计算机科学中的[data structure](https://en.wikipedia.org/wiki/Data_structure)；
 
   然后讨论各种具体的data structure，如[tree](https://en.wikipedia.org/wiki/Tree_(data_structure))，[graph](https://en.wikipedia.org/wiki/Graph_(abstract_data_type))等，对于每种data structure，会对它的各方面（描述、表示、实现、操作）进行总结。
 
