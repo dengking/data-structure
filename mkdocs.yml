@@ -78,7 +78,7 @@ nav:
   - Represent-tree: Tree/Represent-tree.md
   - Tree(set-theory): Tree/Tree(set-theory).md
   - Tree(data-structure): Tree/Tree(data-structure).md
-  - Application-of-tree-data-structure: Tree/application-of-tree-data-structure.md
+  - Application-of-tree-data-structure: Tree/Application-of-tree-data-structure.md
   - Tree-and-stack:
     - Introduction: Tree/Tree-and-stack/index.md
     - VS-bracket-VS-tree: Tree/Tree-and-stack/VS-bracket-VS-tree.md
