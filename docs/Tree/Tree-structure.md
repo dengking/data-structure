@@ -41,6 +41,14 @@ A **tree structure** or **tree diagram** is a way of representing the [hierarchi
 
 Formal grammar的production的head可以derive得到body，这个过程其实非常类似于expand，其实expand就是包含，也就是nesting 关系。更多关于推导关系参见[推导关系分析](#推导关系分析)。
 
+#### [Constituency relation](https://en.wikipedia.org/wiki/Phrase_structure_grammar#Constituency_relation)
+
+这是[Phrase structure grammar](https://en.wikipedia.org/wiki/Phrase_structure_grammar)在描述语言结构时所采用的关系，这种关系本质上也是nesting关系。它描述的语言的结构是一棵树，如下：
+
+![Constituency and dependency relations](https://upload.wikimedia.org/wikipedia/commons/8/8e/Thistreeisillustratingtherelation%28PSG%29.png)
+
+
+
 ### Example: Parent-child关系
 
 一个parent可以有多个children，一个child只能够有一个parent。其实Parent-child关系也可以归入到nesting关系中。
