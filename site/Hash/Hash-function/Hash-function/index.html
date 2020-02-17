@@ -1,0 +1,2108 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Project documentation with Markdown.">
+      
+      
+        <link rel="canonical" href="https://dengking.github.io/data-structure/Hash/Hash-function/Hash-function/">
+      
+      
+        <meta name="author" content="DengKing">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>Hash-function - data-structure</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.1b62728e.css">
+      
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-27795084-5", "mkdocs.org")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://dengking.github.io/data-structure" title="data-structure" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              data-structure
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Hash-function
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/dengking/data-structure" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://dengking.github.io/data-structure" title="data-structure" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    data-structure
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/dengking/data-structure" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Structure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Structure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Structure/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Structure/Structure/" title="Structure" class="md-nav__link">
+      Structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Structure/Hierarchy/" title="Hierarchy" class="md-nav__link">
+      Hierarchy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Structure/Relation/" title="Relation" class="md-nav__link">
+      Relation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Data-structure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Data-structure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Data-structure/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Data-structure/Data-structure/" title="Data-structure" class="md-nav__link">
+      Data-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Data-structure/Recursive-data-type/" title="Recursive-data-type" class="md-nav__link">
+      Recursive-data-type
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Data-structure/Abstract-data-type/" title="Abstract-data-type" class="md-nav__link">
+      Abstract-data-type
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Array
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Array
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Array/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Array/Array-data-structure/" title="Array-data-structure" class="md-nav__link">
+      Array-data-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
+    
+    <label class="md-nav__link" for="nav-4-3">
+      bit-array
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        bit-array
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Array/bit-array/Bit-array/" title="Bit-array" class="md-nav__link">
+      Bit-array
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+    
+    <label class="md-nav__link" for="nav-4-4">
+      circular-array
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        circular-array
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Array/circular-array/Circular-buffer/" title="Circular-buffer" class="md-nav__link">
+      Circular-buffer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Array/circular-array/circular-array/" title="Circular-array" class="md-nav__link">
+      Circular-array
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      List
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        List
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../List/List/" title="List" class="md-nav__link">
+      List
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../List/Chain/" title="Chain" class="md-nav__link">
+      Chain
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../List/VS-double-linked-list-VS-binary-tree/" title="VS-double-linked-list-VS-binary-tree" class="md-nav__link">
+      VS-double-linked-list-VS-binary-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../List/VS-Unrolled-linked list-VS-B-tree/" title="VS-Unrolled-linked list-VS-B-tree" class="md-nav__link">
+      VS-Unrolled-linked list-VS-B-tree
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+    
+    <label class="md-nav__link" for="nav-6-2">
+      01-Graph-and-Graph-theory
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-2">
+        01-Graph-and-Graph-theory
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/01-Graph-and-Graph-theory/01-Graph-and-Graph-theory/" title="Graph-and-Graph-theory.md" class="md-nav__link">
+      Graph-and-Graph-theory.md
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2-2" type="checkbox" id="nav-6-2-2">
+    
+    <label class="md-nav__link" for="nav-6-2-2">
+      Graph-representations
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-2-2">
+        Graph-representations
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/01-Graph-and-Graph-theory/Graph-representations/Graph-representations/" title="Graph-representations" class="md-nav__link">
+      Graph-representations
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2-3" type="checkbox" id="nav-6-2-3">
+    
+    <label class="md-nav__link" for="nav-6-2-3">
+      Directed-graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-2-3">
+        Directed-graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/01-Graph-and-Graph-theory/Directed-graph/Directed-graph/" title="Directed-graph" class="md-nav__link">
+      Directed-graph
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2-3-2" type="checkbox" id="nav-6-2-3-2">
+    
+    <label class="md-nav__link" for="nav-6-2-3-2">
+      Directed-acyclic-graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="4">
+      <label class="md-nav__title" for="nav-6-2-3-2">
+        Directed-acyclic-graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/01-Graph-and-Graph-theory/Directed-graph/Directed-acyclic-graph/Directed-acyclic-graph/" title="Directed-acyclic-graph" class="md-nav__link">
+      Directed-acyclic-graph
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      02-Graph-Model
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        02-Graph-Model
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/02-Graph-Model/Graph-Model/" title="Graph-Model" class="md-nav__link">
+      Graph-Model
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/02-Graph-Model/Application-of-graph/" title="Application-of-graph" class="md-nav__link">
+      Application-of-graph
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3-3" type="checkbox" id="nav-6-3-3">
+    
+    <label class="md-nav__link" for="nav-6-3-3">
+      Dependency-graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-3-3">
+        Dependency-graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/02-Graph-Model/Dependency-graph/Dependency-graph/" title="Dependency-graph" class="md-nav__link">
+      Dependency-graph
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/02-Graph-Model/Dependency-graph/Precedence-graph/" title="Precedence-graph" class="md-nav__link">
+      Precedence-graph
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/02-Graph-Model/Dependency-graph/Dependency-resolving-algorithm/" title="Dependency-resolving-algorithm" class="md-nav__link">
+      Dependency-resolving-algorithm
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4">
+    
+    <label class="md-nav__link" for="nav-6-4">
+      03-Graph-operation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-4">
+        03-Graph-operation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/03-Graph-operation/Graph-operation/" title="Graph-operation" class="md-nav__link">
+      Graph-operation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5" type="checkbox" id="nav-6-5">
+    
+    <label class="md-nav__link" for="nav-6-5">
+      04-Computational-problems-in-graph-theory
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-5">
+        04-Computational-problems-in-graph-theory
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/04-Computational-problems-in-graph-theory/Computational-problems-in-graph-theory/" title="Computational-problems-in-graph-theory" class="md-nav__link">
+      Computational-problems-in-graph-theory
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-2" type="checkbox" id="nav-6-5-2">
+    
+    <label class="md-nav__link" for="nav-6-5-2">
+      Circular
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-2">
+        Circular
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/04-Computational-problems-in-graph-theory/Circular/Cycle-detection/" title="Cycle-detection" class="md-nav__link">
+      Cycle-detection
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/04-Computational-problems-in-graph-theory/Circular/Circular-dependency/" title="Circular-dependency" class="md-nav__link">
+      Circular-dependency
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-3" type="checkbox" id="nav-6-5-3">
+    
+    <label class="md-nav__link" for="nav-6-5-3">
+      Dominator
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-3">
+        Dominator
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/04-Computational-problems-in-graph-theory/Dominator/Dominator(graph-theory)/" title="Dominator" class="md-nav__link">
+      Dominator
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-4" type="checkbox" id="nav-6-5-4">
+    
+    <label class="md-nav__link" for="nav-6-5-4">
+      Sorting
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-4">
+        Sorting
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/04-Computational-problems-in-graph-theory/Sorting/Topological-sorting/" title="Topological-sorting" class="md-nav__link">
+      Topological-sorting
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-5" type="checkbox" id="nav-6-5-5">
+    
+    <label class="md-nav__link" for="nav-6-5-5">
+      Spanning-tree
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-5">
+        Spanning-tree
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/04-Computational-problems-in-graph-theory/Spanning-tree/Spanning-tree/" title="Spanning-tree" class="md-nav__link">
+      Spanning-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/04-Computational-problems-in-graph-theory/Spanning-tree/Minimum-spanning-tree/" title="Minimum-spanning-tree" class="md-nav__link">
+      Minimum-spanning-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Graph/04-Computational-problems-in-graph-theory/Spanning-tree/Borůvka's-algorithm/" title="Borůvka's-algorithm" class="md-nav__link">
+      Borůvka's-algorithm
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Tree
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Tree
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tree/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tree/Tree-structure/" title="Tree-structure" class="md-nav__link">
+      Tree-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tree/Represent-tree/" title="Represent-tree" class="md-nav__link">
+      Represent-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tree/Tree(set-theory)/" title="Tree(set-theory)" class="md-nav__link">
+      Tree(set-theory)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tree/Tree(data-structure)/" title="Tree(data-structure)" class="md-nav__link">
+      Tree(data-structure)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tree/application-of-tree-data-structure.md" title="Application-of-tree-data-structure" class="md-nav__link">
+      Application-of-tree-data-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-7" type="checkbox" id="nav-7-7">
+    
+    <label class="md-nav__link" for="nav-7-7">
+      Tree-and-stack
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-7">
+        Tree-and-stack
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tree/Tree-and-stack/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tree/Tree-and-stack/VS-bracket-VS-tree/" title="VS-bracket-VS-tree" class="md-nav__link">
+      VS-bracket-VS-tree
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tree/Implicit-tree/" title="Implicit-tree" class="md-nav__link">
+      Implicit-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-9" type="checkbox" id="nav-7-9">
+    
+    <label class="md-nav__link" for="nav-7-9">
+      Tree-operation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-9">
+        Tree-operation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tree/Tree-operation/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Tree/TODO/" title="TODO" class="md-nav__link">
+      TODO
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
+    
+    <label class="md-nav__link" for="nav-8">
+      Hash
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Hash
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2" checked>
+    
+    <label class="md-nav__link" for="nav-8-2">
+      Hash-function
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-2">
+        Hash-function
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" title="Hash-function" class="md-nav__link md-nav__link--active">
+      Hash-function
+    </a>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Rolling-hash/" title="Rolling-hash" class="md-nav__link">
+      Rolling-hash
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../SipHash/" title="SipHash" class="md-nav__link">
+      SipHash
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2-4" type="checkbox" id="nav-8-2-4">
+    
+    <label class="md-nav__link" for="nav-8-2-4">
+      Cryptographic-hash-functions
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-2-4">
+        Cryptographic-hash-functions
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Cryptographic-hash-functions/Cryptographic-hash-function/" title="Cryptographic-hash-function" class="md-nav__link">
+      Cryptographic-hash-function
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Cryptographic-hash-functions/Cipher/" title="Cipher" class="md-nav__link">
+      Cipher
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Cryptographic-hash-functions/Salt(cryptography)/" title="Salt(cryptography)" class="md-nav__link">
+      Salt(cryptography)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Set
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        Set
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Set/Set(abstract-data-type)/" title="Set" class="md-nav__link">
+      Set
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Probabilistic-data-structures
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        Probabilistic-data-structures
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Probabilistic-data-structures/Bloom-filter/" title="Bloom-filter" class="md-nav__link">
+      Bloom-filter
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Probabilistic-data-structures/Random-tree/" title="Random-tree" class="md-nav__link">
+      Random-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Probabilistic-data-structures/Skip-list/" title="Skip-list" class="md-nav__link">
+      Skip-list
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      Summary-of-data-structure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        Summary-of-data-structure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Summary-of-data-structure/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Summary-of-data-structure/List-of-data-structure/" title="List-of-data-structure" class="md-nav__link">
+      List-of-data-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Summary-of-data-structure/VS-of-tree/" title="VS-of-trees" class="md-nav__link">
+      VS-of-trees
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Summary-of-data-structure/VS-of-graph-and-tree-and-list/" title="VS-of-graph-and-tree-and-list" class="md-nav__link">
+      VS-of-graph-and-tree-and-list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Summary-of-data-structure/VS-of-implementation-of-ADT/" title="VS-of-implementation-of-ADT" class="md-nav__link">
+      VS-of-implementation-of-ADT
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Summary-of-data-structure/VS-of-search-tree-and-hash-table/" title="VS-of-search-tree-and-hash-table" class="md-nav__link">
+      VS-of-search-tree-and-hash-table
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Summary-of-data-structure/VS-of-search-tree-and-skip-list/" title="VS-of-search-tree-and-skip-list" class="md-nav__link">
+      VS-of-search-tree-and-skip-list
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../TODO/" title="TODO" class="md-nav__link">
+      TODO
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">综述<a class="headerlink" href="#_1" title="Permanent link">#</a></h1>
+<p>正如在<a href="https://en.wikipedia.org/wiki/List_of_hash_functions">List of hash functions</a>中所罗列的，有着形形色色的hash function。那我们应该如何来把我hash function呢？我觉得从数学上对<a href="https://en.wikipedia.org/wiki/Function_(mathematics)">function</a>的定义入手较好。</p>
+<ul>
+<li>
+<p>hash function和普通的function一样，有<a href="https://en.wikipedia.org/wiki/Domain_of_a_function">domain</a> 和<a href="https://en.wikipedia.org/wiki/Codomain">codomain</a>。在hash function中，domain的同义词有：key space</p>
+</li>
+<li>
+<p>在设计一个hash function的时候，需要考虑它的<a href="https://en.wikipedia.org/wiki/Domain_of_a_function">domain</a>要容纳哪些数据。比如：</p>
+</li>
+<li>
+<p>对于使用<a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">cryptographic hash function</a>来加密密码的function，它的<a href="https://en.wikipedia.org/wiki/Domain_of_a_function">domain</a>要容纳就是所有可以用于密码的字符的组合而成的字符串</p>
+</li>
+<li>
+<p>可能hash数字</p>
+</li>
+<li>
+<p>在设计一个hash function的时候，需要考虑它的<a href="https://en.wikipedia.org/wiki/Domain_of_a_function">domain</a>中数据的特征，比如：</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Hash_function#Identity_hash_function">identity hash function</a>就是使用的<a href="https://en.wikipedia.org/wiki/Domain_of_a_function">domain</a>中数据是identity的特征</p>
+</li>
+<li><a href="https://en.wikipedia.org/wiki/Hash_function#Trivial_hash_function">trivial hash function</a>就是使用domain中的数据是uniformly or sufficiently uniformly distributed 的特征</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Hash_function#Hashing_integer_data_types">modulo division hash function</a>一般选择一个big prime来作为<a href="https://en.wikipedia.org/wiki/Modulo_operation"><strong>modulo</strong></a> ，具体原因，参见<a href="https://cs.stackexchange.com/questions/11029/why-is-it-best-to-use-a-prime-number-as-a-mod-in-a-hashing-function">Why is it best to use a prime number as a mod in a hashing function?</a>。</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Domain_of_a_function">domain</a> 和<a href="https://en.wikipedia.org/wiki/Codomain">codomain</a>之间的映射关系：</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Injective_function">Injective function</a>，显然<a href="https://en.wikipedia.org/wiki/Perfect_hash_function">perfect hash function</a>具备这种性质。</p>
+</li>
+</ul>
+<h1 id="hash_function"><a href="https://en.wikipedia.org/wiki/Hash_function">Hash function</a><a class="headerlink" href="#hash_function" title="Permanent link">#</a></h1>
+<p>A <strong>hash function</strong> is any <a href="https://en.wikipedia.org/wiki/Function_(mathematics)">function</a> that can be used to map <a href="https://en.wikipedia.org/wiki/Data_(computing)">data</a> of arbitrary size to fixed-size values. The values returned by a hash function are called <em>hash values</em>, <em>hash codes</em>, <em>digests</em>, or simply <em>hashes</em>. </p>
+<blockquote>
+<p>NOTE: "digests" means 摘要 in Chinese.</p>
+</blockquote>
+<p>Use of hash functions relies on statistical properties of key and function interaction: worst case behavior is intolerably bad with a vanishingly small probability, and average case behavior can be nearly optimal (minimal collisions).</p>
+<p>Hash functions are related to (and often confused with) <a href="https://en.wikipedia.org/wiki/Checksums">checksums</a>, <a href="https://en.wikipedia.org/wiki/Check_digit">check digits</a>, <a href="https://en.wikipedia.org/wiki/Fingerprint_(computing)">fingerprints</a>, <a href="https://en.wikipedia.org/wiki/Lossy_compression">lossy compression</a>, <a href="https://en.wikipedia.org/wiki/Randomization_function">randomization functions</a>, <a href="https://en.wikipedia.org/wiki/Error_correction_code">error-correcting codes</a>, and <a href="https://en.wikipedia.org/wiki/Cipher">ciphers</a>. Although the concepts overlap to some extent, each one has its own uses and requirements and is designed and optimized differently.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
+<blockquote>
+<p>NOTE: Although this article is named <a href="https://en.wikipedia.org/wiki/Hash_function">Hash function</a>, what this chapter talks about is hash table. </p>
+</blockquote>
+<p>A <strong>hash function</strong> takes as input a key, which is associated with a datum or record and used to identify it to the data storage and retrieval application. The keys may be <strong>fixed length</strong>, like an integer, or <strong>variable length</strong>, like a name. In some cases, the key is the datum itself. The output is a hash code used to index a hash table holding the data or records, or pointers to them.</p>
+<p>A hash function <strong>may be</strong> considered to perform three functions:</p>
+<ul>
+<li>Convert variable length keys into <strong>fixed length</strong> (usually machine word length or less) values, by folding them by words or other units using a <strong>parity-preserving operator</strong> like ADD or XOR.</li>
+</ul>
+<blockquote>
+<p>NOTE: Folding means bitwise operation.</p>
+<p>NOTE: What is parity-preserving operator?</p>
+<p><a href="https://en.wikipedia.org/wiki/Parity_bit">Parity bit</a></p>
+</blockquote>
+<ul>
+<li>Scramble the bits of the key so that the resulting values are uniformly distributed over the <strong>key space</strong>.</li>
+</ul>
+<blockquote>
+<p>NOTE: What is the key space? ASCII code?</p>
+</blockquote>
+<ul>
+<li>Map the key values into ones less than or equal to the size of the table</li>
+</ul>
+<blockquote>
+<p>NOTE: This function will be used only when it is used as index of the table in <a href="https://en.wikipedia.org/wiki/Hash_table">hash table</a>. In other applications, this function may be omitted.</p>
+</blockquote>
+<p>A good hash function satisfies two basic properties: </p>
+<p>1) it should be very fast to compute; </p>
+<blockquote>
+<p>NOTE: This is <a href="#Efficiency">efficiency</a></p>
+</blockquote>
+<p>2) it should minimize duplication of output values (collisions). </p>
+<blockquote>
+<p>NOTE: This is <a href="#Uniformity">uniformity</a></p>
+</blockquote>
+<p>Hash functions rely on generating favorable probability distributions for their effectiveness, reducing access time to nearly constant. High table loading factors, <a href="https://en.wikipedia.org/wiki/Pathological_(mathematics)">pathological</a> key sets and poorly designed hash functions can result in access times approaching linear in the number of items in the table. Hash functions can be designed to give best worst-case performance, good performance under high table loading factors, and in special cases, perfect (collisionless) mapping of keys into hash codes. Implementation is based on parity-preserving bit operations (XOR and ADD), multiply, or divide. A necessary adjunct to the hash function is a collision-resolution method that employs an auxiliary data structure like <a href="https://en.wikipedia.org/wiki/Linked_list">linked lists</a>, or systematic probing of the table to find an empty slot.</p>
+<h2 id="application">Application<a class="headerlink" href="#application" title="Permanent link">#</a></h2>
+<ul>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Hash_table">Hash table</a>， which is also used to implement <a href="https://en.wikipedia.org/wiki/Associative_array">associative arrays</a> and <a href="https://en.wikipedia.org/wiki/Set_(abstract_data_type)">dynamic sets</a>.</p>
+</li>
+<li>
+<p>Hash functions are also used to build <a href="https://en.wikipedia.org/wiki/Cache_(computing)">caches</a> for large data sets stored in slow media. A cache is generally simpler than a hashed search table, since any collision can be resolved by discarding or writing back the older of the two colliding items.</p>
+</li>
+</ul>
+<blockquote>
+<p>NOTE: <a href="https://en.wikipedia.org/wiki/B-tree">B-tree</a></p>
+</blockquote>
+<ul>
+<li>
+<p>Hash functions are an essential ingredient of the <a href="https://en.wikipedia.org/wiki/Bloom_filter">Bloom filter</a>, a space-efficient <a href="https://en.wikipedia.org/wiki/Probability">probabilistic</a> <a href="https://en.wikipedia.org/wiki/Data_structure">data structure</a> that is used to test whether an <a href="https://en.wikipedia.org/wiki/Element_(mathematics)">element</a> is a member of a <a href="https://en.wikipedia.org/wiki/Set_(computer_science)">set</a>.</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Geometric_hashing">geometric hashing</a>. In these applications, the set of all inputs is some sort of <a href="https://en.wikipedia.org/wiki/Metric_space">metric space</a>, and the hashing function can be interpreted as a <a href="https://en.wikipedia.org/wiki/Partition_(mathematics)">partition</a> of that space into a grid of <em>cells</em>. The table is often an array with two or more indices (called a <em><a href="https://en.wikipedia.org/wiki/Grid_file">grid file</a></em>, <em>grid index</em>, <em>bucket grid</em>, and similar names), and the hash function returns an index <a href="https://en.wikipedia.org/wiki/Tuple">tuple</a>. This principle is widely used in <a href="https://en.wikipedia.org/wiki/Computer_graphics">computer graphics</a>, <a href="https://en.wikipedia.org/wiki/Computational_geometry">computational geometry</a> and many other disciplines, to solve many <a href="https://en.wikipedia.org/wiki/Proximity_problem">proximity problems</a> in the <a href="https://en.wikipedia.org/wiki/Plane_(geometry)">plane</a> or in <a href="https://en.wikipedia.org/wiki/Three-dimensional_space">three-dimensional space</a>, such as finding <a href="https://en.wikipedia.org/wiki/Closest_pair_problem">closest pairs</a> in a set of points, similar shapes in a list of shapes, similar <a href="https://en.wikipedia.org/wiki/Image_processing">images</a> in an <a href="https://en.wikipedia.org/wiki/Image_retrieval">image database</a>, and so on.</p>
+</li>
+</ul>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">#</a></h2>
+<blockquote>
+<p>Note: Properties determine their usage, it is necessary to know the properties a hash function possess. </p>
+</blockquote>
+<h3 id="uniformity">Uniformity<a class="headerlink" href="#uniformity" title="Permanent link">#</a></h3>
+<blockquote>
+<p>Note: 均匀性</p>
+</blockquote>
+<p>A good hash function should map the expected inputs as evenly as possible over its output range. That is, every <strong>hash value</strong> in the <strong>output range</strong> should be generated with roughly the same <a href="https://en.wikipedia.org/wiki/Probability">probability</a>. The reason for this last requirement is that the cost of hashing-based methods goes up sharply as the number of <em>collisions</em>—pairs of inputs that are mapped to the same <strong>hash value</strong>—increases. If some hash values are more likely to occur than others, a larger fraction of the lookup operations will have to search through a larger set of colliding table entries.</p>
+<p>Note that this criterion only requires the value to be <em>uniformly distributed</em>, not <em>random</em> in any sense. A good <strong>randomizing function</strong> is (barring computational efficiency concerns) generally a good choice as a <strong>hash function</strong>, but the converse need not be true.</p>
+<blockquote>
+<p>NOTE: hash function VS <strong>randomizing function</strong></p>
+</blockquote>
+<p>Hash tables often contain only a small subset of the valid inputs. For instance, a club membership list may contain only a hundred or so member names, out of the very large set of all possible names. In these cases, the uniformity criterion should hold for almost all <strong>typical subsets</strong> of entries that may be found in the table, not just for the global set of all possible entries.</p>
+<blockquote>
+<p>NOTE: <strong>Typical subset</strong> VS <strong>global set</strong></p>
+</blockquote>
+<p>In special cases when the keys are known in advance and the key set is static, a hash function can be found that achieves absolute (or collisionless) uniformity. Such a hash function is said to be <em><a href="https://en.wikipedia.org/wiki/Perfect_hash_function">perfect</a></em>. There is no algorithmic way of constructing such a function - searching for one is a <a href="https://en.wikipedia.org/wiki/Factorial">factorial</a> function of the number of keys to be mapped versus the number of table slots they're mapped into. Finding a perfect hash function over more than a very small set of keys is usually computationally infeasible; the resulting function is likely to be more computationally complex than a standard hash function, and provides only a marginal advantage over a function with good statistical properties that yields a minimum number of collisions. See <strong><a href="https://en.wikipedia.org/wiki/Universal_hashing">universal hash function</a></strong>.</p>
+<h3 id="efficiency">Efficiency<a class="headerlink" href="#efficiency" title="Permanent link">#</a></h3>
+<p>In most applications, it is highly desirable that the hash function be computable with minimum latency and secondarily in a minimum number of instructions.</p>
+<p>Computational complexity varies with the number of instructions required and latency of individual instructions, with the simplest being the bitwise methods (folding), followed by the multiplicative methods, and the most complex (slowest) are the division-based methods.</p>
+<p>Because collisions should be infrequent, and cause a marginal delay but are otherwise harmless, it's usually preferable to choose a faster hash function over one that needs more computation but saves a few collisions.</p>
+<p>Division-based implementations can be of particular concern, because division is microprogrammed on nearly all chip architectures. Divide (modulo) by a constant can be inverted to become a multiply by the word-size multiplicative-inverse of the constant. This can be done by the programmer, or by the compiler. Divide can also be reduced directly into a series of shift-subtracts and shift-adds, though minimizing the number of such operations required is a daunting problem; the number of assembly instructions resulting may be more than a dozen, and swamp the pipeline. If the architecture has a hardware multiply functional unit, the multiply-by-inverse is likely a better approach.</p>
+<blockquote>
+<p>Note: There is a special introduction of computer-arithmetic in repository computer-arithmetic.</p>
+</blockquote>
+<p>We can allow the table size <em>n</em> to not be a power of 2 and still not have to perform any remainder or division operation, as these computations are sometimes costly. For example, let <em>n</em> be significantly less than $2^b$. Consider a <a href="https://en.wikipedia.org/wiki/Pseudorandom_number_generator">pseudorandom number generator</a> function <em>P</em>(key) that is uniform on the interval $[0, 2^b − 1]$. A hash function uniform on the interval [0, n-1] is $n * P(key)/2^b$. We can replace the division by a (possibly faster) right <a href="https://en.wikipedia.org/wiki/Bit_shifting">bit shift</a>: <em>nP</em>(key) &gt;&gt; <em>b</em>.</p>
+<blockquote>
+<p>Note: I do not understand the last paragraph.</p>
+</blockquote>
+<p>If keys are being hashed repeatedly, and the hash function is costly, computing time can be saved by precomputing the hash codes and storing them with the keys. Matching hash codes almost certainly mean the keys are identical. This technique is used for the <a href="https://en.wikipedia.org/wiki/Transposition_table">transposition table</a> in game-playing programs, which stores a 64-bit hashed representation of the board position.</p>
+<h3 id="universality">Universality<a class="headerlink" href="#universality" title="Permanent link">#</a></h3>
+<p><a href="https://en.wikipedia.org/wiki/Universal_hashing">Universal hashing</a></p>
+<h3 id="applicability">Applicability<a class="headerlink" href="#applicability" title="Permanent link">#</a></h3>
+<p>A hash function should be applicable to all situations in which a hash function might be used. A hash function that allows only certain table sizes, strings only up to a certain length, or can't accept a seed (i.e. allow double hashing) isn't as useful as one that does.</p>
+<blockquote>
+<p>NOTE: The seed in the paragraph is <a href="https://en.wikipedia.org/wiki/Salt_(cryptography)">salt (cryptography)</a>. Reference the <a href="#Deterministic">Deterministic</a> to see the value of the seed.</p>
+</blockquote>
+<h3 id="deterministic">Deterministic<a class="headerlink" href="#deterministic" title="Permanent link">#</a></h3>
+<p>A hash procedure must be <a href="https://en.wikipedia.org/wiki/Deterministic_algorithm">deterministic</a>—meaning that for a given input value it <strong>must</strong> always generate the same hash value. In other words, it must be a <a href="https://en.wikipedia.org/wiki/Function_(mathematics)">function</a> of the data to be hashed, in the mathematical sense of the term. This requirement excludes hash functions that depend on external variable parameters, such as <a href="https://en.wikipedia.org/wiki/Pseudo-random_number_generator">pseudo-random number generators</a> or the time of day. It also excludes functions that depend on the memory address of the object being hashed in cases that the address may change during execution (as may happen on systems that use certain methods of <a href="https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)">garbage collection</a>), although sometimes rehashing of the item is possible.</p>
+<p>The determinism is in the <strong>context</strong> of the reuse of the function. For example, <a href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> adds the feature that hash functions make use of a randomized seed that is generated once when the Python process starts in addition to the input to be hashed. The Python hash is still a valid hash function when used within a single run. But if the values are persisted (for example, written to disk) they can no longer be treated as valid hash values, since in the next run the random value might differ.</p>
+<blockquote>
+<p>Note: Reference python doc: <code>object.__hash__</code>(<em>self</em>)<a href="https://docs.python.org/3/reference/datamodel.html#object.__hash__">¶</a></p>
+</blockquote>
+<h3 id="defined_range">Defined range<a class="headerlink" href="#defined_range" title="Permanent link">#</a></h3>
+<h4 id="fixed-length_hash">Fixed-length hash<a class="headerlink" href="#fixed-length_hash" title="Permanent link">#</a></h4>
+<p>It is often desirable that the output of a hash function have fixed size (but see below). If, for example, the output is constrained to 32-bit integer values, the hash values can be used to index into an array. Such hashing is commonly used to accelerate data searches. Producing <strong>fixed-length</strong> output from <strong>variable length</strong> input can be accomplished by breaking the input data into chunks of specific size. Hash functions used for data searches use some arithmetic expression which iteratively processes chunks of the input (such as the characters in a string) to produce the hash value. </p>
+<h4 id="variable_range">Variable range<a class="headerlink" href="#variable_range" title="Permanent link">#</a></h4>
+<p>In many applications, the range of hash values may be different for each run of the program, or may change along the same run (for instance, when a hash table needs to be expanded). In those situations, one needs a hash function which takes two parameters—the input data <em>z</em>, and the number <em>n</em> of allowed hash values.</p>
+<blockquote>
+<p>NOTE: <code>n</code>是<a href="https://en.wikipedia.org/wiki/Codomain">codomain</a>的<a href="https://en.wikipedia.org/wiki/Cardinality">cardinality</a></p>
+</blockquote>
+<p>A common solution is to compute a fixed hash function with a very large range (say, 0 to $2^{32} − 1$), divide the result by <em>n</em>, and use the division's <a href="https://en.wikipedia.org/wiki/Modulo_operation">remainder</a>. If <em>n</em> is itself a power of 2, this can be done by <a href="https://en.wikipedia.org/wiki/Mask_(computing)">bit masking</a> and <a href="https://en.wikipedia.org/wiki/Bit_shifting">bit shifting</a>. When this approach is used, the hash function must be chosen so that the result has fairly uniform distribution between 0 and <em>n</em> − 1, for any value of <em>n</em> that may occur in the application. Depending on the function, the remainder may be uniform only for certain values of <em>n</em>, e.g. <a href="https://en.wikipedia.org/wiki/Odd_number">odd</a> or <a href="https://en.wikipedia.org/wiki/Prime_number">prime numbers</a>.</p>
+<h4 id="variable_range_with_minimal_movement_dynamic_hash_function">Variable range with minimal movement (dynamic hash function)<a class="headerlink" href="#variable_range_with_minimal_movement_dynamic_hash_function" title="Permanent link">#</a></h4>
+<p>When the hash function is used to store values in a hash table that outlives the run of the program, and the hash table needs to be expanded or shrunk, the hash table is referred to as a <strong>dynamic hash table</strong>.</p>
+<p>A hash function that will relocate the minimum number of records when the table is resized is desirable. What is needed is a hash function <em>H</em>(<em>z</em>,<em>n</em>) – where <em>z</em> is the key being hashed and <em>n</em> is the number of allowed hash values – such that <em>H</em>(<em>z</em>,<em>n</em> + 1) = <em>H</em>(<em>z</em>,<em>n</em>) with probability close to <em>n</em>/(<em>n</em> + 1).</p>
+<p><a href="https://en.wikipedia.org/wiki/Linear_hashing">Linear hashing</a> and spiral storage are examples of dynamic hash functions that execute in constant time but relax the property of uniformity to achieve the minimal movement property. <a href="https://en.wikipedia.org/wiki/Extendible_hashing">Extendible hashing</a> uses a dynamic hash function that requires space proportional to <em>n</em> to compute the hash function, and it becomes a function of the previous keys that have been inserted. Several algorithms that preserve the uniformity property but require time proportional to <em>n</em> to compute the value of <em>H</em>(<em>z</em>,<em>n</em>) have been invented.</p>
+<p>A hash function with minimal movement is especially useful in <a href="https://en.wikipedia.org/wiki/Distributed_hash_table">distributed hash tables</a>.</p>
+<h2 id="hashing_integer_data_types"><a href="https://en.wikipedia.org/wiki/Hash_function#Hashing_integer_data_types">Hashing integer data types</a><a class="headerlink" href="#hashing_integer_data_types" title="Permanent link">#</a></h2>
+<h4 id="identity_hash_function"><a href="https://en.wikipedia.org/wiki/Hash_function#Identity_hash_function">Identity hash function</a><a class="headerlink" href="#identity_hash_function" title="Permanent link">#</a></h4>
+<p><a href="https://en.wikipedia.org/wiki/Identity_function">identity function</a> </p>
+<h4 id="trivial_hash_function"><a href="https://en.wikipedia.org/wiki/Hash_function#Trivial_hash_function">Trivial hash function</a><a class="headerlink" href="#trivial_hash_function" title="Permanent link">#</a></h4>
+<h4 id="folding"><a href="https://en.wikipedia.org/wiki/Hash_function#Folding">Folding</a><a class="headerlink" href="#folding" title="Permanent link">#</a></h4>
+<blockquote>
+<p>NOTE: 到底在哪个级别进行fold？是在bit级别还是digit级别？在<a href="https://stackoverflow.com/questions/36565101/what-is-folding-technique-in-hashing-and-how-to-implement-it">What is Folding technique in hashing and how to implement it?</a>中给出的解释是在digit级别进行fold的。但是Wikipedia给出的解释是在bit级别进行fold的。</p>
+<p>这其实是由hash function的domain决定的，如果要hash的是数字，则就在digit级别进行fold；如果要hash的是字符串，则就在bit级别进行fold。</p>
+</blockquote>
+<h2 id="hashing_variable-length_dat">Hashing variable-length dat<a class="headerlink" href="#hashing_variable-length_dat" title="Permanent link">#</a></h2>
+<h1 id="perfect_hash_function"><a href="https://en.wikipedia.org/wiki/Perfect_hash_function">Perfect hash function</a><a class="headerlink" href="#perfect_hash_function" title="Permanent link">#</a></h1>
+<h1 id="implementation_of_hash_function">Implementation of hash function<a class="headerlink" href="#implementation_of_hash_function" title="Permanent link">#</a></h1>
+<p>非常多的programming language中都支持Customizing hash，比如</p>
+<ul>
+<li>python <code>object.__hash__</code>(<em>self</em>)<a href="https://docs.python.org/3/reference/datamodel.html#object.__hash__">¶</a></li>
+<li>java <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/Object.html">hashCode</a></li>
+<li>c# <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=netframework-4.8">Object.GetHashCode Method</a></li>
+</ul>
+<p>所以了解一下实现hash function的一些细节是比较重要的。</p>
+<h2 id="why_is_it_best_to_use_a_prime_number_as_a_mod_in_a_hashing_function"><a href="https://cs.stackexchange.com/questions/11029/why-is-it-best-to-use-a-prime-number-as-a-mod-in-a-hashing-function">Why is it best to use a prime number as a mod in a hashing function?</a><a class="headerlink" href="#why_is_it_best_to_use_a_prime_number_as_a_mod_in_a_hashing_function" title="Permanent link">#</a></h2>
+<p><a href="https://cs.stackexchange.com/a/64191">A</a></p>
+<p>Consider the set of keys <code>K={0,1,...,100}</code> and a hash table where the number of buckets is <code>m=12</code>. Since 3 is a factor of 12, the keys that are multiples of 3 will be hashed to buckets that are multiples of 3:</p>
+<ul>
+<li>Keys {0,12,24,36,...} will be hashed to bucket 0.</li>
+<li>Keys {3,15,27,39,...} will be hashed to bucket 3.</li>
+<li>Keys {6,18,30,42,...} will be hashed to bucket 6.</li>
+<li>Keys {9,21,33,45,...} will be hashed to bucket 9.</li>
+</ul>
+<p>If <code>K</code> is uniformly distributed (i.e., every key in <code>K</code> is equally likely to occur), then the choice of <code>m</code> is not so critical. But, what happens if <code>K</code> is not uniformly distributed? Imagine that the keys that are most likely to occur are the multiples of 3. In this case, all of the buckets that are not multiples of 3 will be empty with high probability (which is really bad in terms of hash table performance).</p>
+<p>This situation is more common that it may seem. Imagine, for instance, that you are keeping track of objects based on where they are stored in memory. If your computer's <strong>word size</strong> is four bytes, then you will be hashing keys that are multiples of 4. Needless to say that choosing <code>m</code> to be a multiple of 4 would be a terrible choice: you would have <code>3m/4</code> buckets completely empty, and all of your keys colliding in the remaining <code>m/4</code> buckets.</p>
+<blockquote>
+<p>NOTE:</p>
+<p>key：<code>0=4*0</code>、<code>4=4*1</code>、<code>8=4*2</code>、<code>12=4*3</code>、<code>16=4*4</code>、<code>20=4*5</code>、<code>24=4*6</code>、<code>28=4*7</code></p>
+<p>bracket：<code>12=4*3</code></p>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>bracket</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2</td>
+</tr>
+<tr>
+<td>12</td>
+<td>0</td>
+</tr>
+<tr>
+<td>16</td>
+<td>1</td>
+</tr>
+<tr>
+<td>20</td>
+<td>2</td>
+</tr>
+<tr>
+<td>24</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>也就是说提供了12个bracket，但是实际上只会有<code>12/4=3</code>个bracket会被使用，剩余的<code>12-3=(12*4)/4 - 12/4= 12 * 3 /4</code>个bracket不会被使用，这就是上述的<code>3m/4</code> buckets completely empty。</p>
+</blockquote>
+<p>In general:</p>
+<blockquote>
+<p>Every key in K that shares a common factor with the number of buckets m will be hashed to a bucket that is a multiple of this factor.</p>
+</blockquote>
+<p>Therefore, to minimize collisions, it is important to reduce the number of common factors between m and the elements of K. How can this be achieved? By choosing m to be a number that has very few factors: a <strong>prime number</strong>.</p>
+<blockquote>
+<p><strong><em>SUMMARY</em></strong> : 上述验证了在<a href="#综述">综述</a>中提出的：</p>
+<p>在设计一个hash function的时候，需要考虑它的<a href="https://en.wikipedia.org/wiki/Domain_of_a_function">domain</a>中数据的特征</p>
+</blockquote>
+<h2 id="why_is_xor_the_default_way_to_combine_hashes"><a href="https://stackoverflow.com/questions/5889238/why-is-xor-the-default-way-to-combine-hashes">Why is XOR the default way to combine hashes?</a><a class="headerlink" href="#why_is_xor_the_default_way_to_combine_hashes" title="Permanent link">#</a></h2>
+<p><a href="https://stackoverflow.com/a/5889254">A</a></p>
+<p>Assuming uniformly random (1-bit) inputs, the AND function output probability distribution is 75% <code>0</code> and 25% <code>1</code>. Conversely, OR is 25% <code>0</code> and 75% <code>1</code>.</p>
+<p>The XOR function is 50% <code>0</code> and 50% <code>1</code>, therefore it is good for combining uniform probability distributions.</p>
+<p>This can be seen by writing out truth tables:</p>
+<pre><code> a | b | a AND b
+---+---+--------
+ 0 | 0 |    0
+ 0 | 1 |    0
+ 1 | 0 |    0
+ 1 | 1 |    1
+
+ a | b | a OR b
+---+---+--------
+ 0 | 0 |    0
+ 0 | 1 |    1
+ 1 | 0 |    1
+ 1 | 1 |    1
+
+ a | b | a XOR b
+---+---+--------
+ 0 | 0 |    0
+ 0 | 1 |    1
+ 1 | 0 |    1
+ 1 | 1 |    0
+</code></pre>
+
+<p>Exercise: How many logical functions of two 1-bit inputs <code>a</code> and <code>b</code> have this uniform output distribution? Why is XOR the most suitable for the purpose stated in your question?</p>
+<h2 id="what_is_the_best_algorithm_for_overriding_gethashcode"><a href="https://stackoverflow.com/questions/263400/what-is-the-best-algorithm-for-overriding-gethashcode">What is the best algorithm for overriding GetHashCode?</a><a class="headerlink" href="#what_is_the_best_algorithm_for_overriding_gethashcode" title="Permanent link">#</a></h2>
+<h2 id="writing_a_hash_function_in_java_a_practical_guide_to_implementing_hashcode"><a href="https://www.javamex.com/tutorials/collections/hash_function_guidelines.shtml">Writing a hash function in Java: a practical guide to implementing <code>hashCode()</code></a><a class="headerlink" href="#writing_a_hash_function_in_java_a_practical_guide_to_implementing_hashcode" title="Permanent link">#</a></h2>
+<h2 id="cpython_hashlib">CPython <a href="https://docs.python.org/3/library/hashlib.html#module-hashlib"><code>hashlib</code></a><a class="headerlink" href="#cpython_hashlib" title="Permanent link">#</a></h2>
+<h2 id="redis_hash">redis hash<a class="headerlink" href="#redis_hash" title="Permanent link">#</a></h2>
+<p>https://github.com/antirez/redis/blob/unstable/src/sha1.h</p>
+<p>https://github.com/antirez/redis/blob/unstable/src/sha256.h</p>
+<p>https://github.com/antirez/redis/blob/unstable/src/siphash.c</p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../" title="Introduction" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Introduction
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../Rolling-hash/" title="Rolling-hash" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Rolling-hash
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.808e90bb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+    
+  </body>
+</html>

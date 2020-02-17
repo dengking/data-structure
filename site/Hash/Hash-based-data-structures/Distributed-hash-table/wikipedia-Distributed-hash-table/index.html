@@ -1,0 +1,2047 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Project documentation with Markdown.">
+      
+      
+        <link rel="canonical" href="https://dengking.github.io/data-structure/Hash/Hash-based-data-structures/Distributed-hash-table/wikipedia-Distributed-hash-table/">
+      
+      
+        <meta name="author" content="DengKing">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>wikipedia Distributed hash table - data-structure</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/application.1b62728e.css">
+      
+      
+    
+    
+      <script src="../../../../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../../../css/extra.css">
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-27795084-5", "mkdocs.org")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#distributed_hash_table" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://dengking.github.io/data-structure" title="data-structure" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              data-structure
+            </span>
+            <span class="md-header-nav__topic">
+              
+                wikipedia Distributed hash table
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/dengking/data-structure" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://dengking.github.io/data-structure" title="data-structure" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    data-structure
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/dengking/data-structure" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Structure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Structure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Structure/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Structure/Structure/" title="Structure" class="md-nav__link">
+      Structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Structure/Hierarchy/" title="Hierarchy" class="md-nav__link">
+      Hierarchy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Structure/Relation/" title="Relation" class="md-nav__link">
+      Relation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Data-structure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Data-structure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Data-structure/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Data-structure/Data-structure/" title="Data-structure" class="md-nav__link">
+      Data-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Data-structure/Recursive-data-type/" title="Recursive-data-type" class="md-nav__link">
+      Recursive-data-type
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Data-structure/Abstract-data-type/" title="Abstract-data-type" class="md-nav__link">
+      Abstract-data-type
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Array
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Array
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Array/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Array/Array-data-structure/" title="Array-data-structure" class="md-nav__link">
+      Array-data-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
+    
+    <label class="md-nav__link" for="nav-4-3">
+      bit-array
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        bit-array
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Array/bit-array/Bit-array/" title="Bit-array" class="md-nav__link">
+      Bit-array
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+    
+    <label class="md-nav__link" for="nav-4-4">
+      circular-array
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        circular-array
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Array/circular-array/Circular-buffer/" title="Circular-buffer" class="md-nav__link">
+      Circular-buffer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Array/circular-array/circular-array/" title="Circular-array" class="md-nav__link">
+      Circular-array
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      List
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        List
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../List/List/" title="List" class="md-nav__link">
+      List
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../List/Chain/" title="Chain" class="md-nav__link">
+      Chain
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../List/VS-double-linked-list-VS-binary-tree/" title="VS-double-linked-list-VS-binary-tree" class="md-nav__link">
+      VS-double-linked-list-VS-binary-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../List/VS-Unrolled-linked list-VS-B-tree/" title="VS-Unrolled-linked list-VS-B-tree" class="md-nav__link">
+      VS-Unrolled-linked list-VS-B-tree
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+    
+    <label class="md-nav__link" for="nav-6-2">
+      01-Graph-and-Graph-theory
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-2">
+        01-Graph-and-Graph-theory
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/01-Graph-and-Graph-theory/01-Graph-and-Graph-theory/" title="Graph-and-Graph-theory.md" class="md-nav__link">
+      Graph-and-Graph-theory.md
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2-2" type="checkbox" id="nav-6-2-2">
+    
+    <label class="md-nav__link" for="nav-6-2-2">
+      Graph-representations
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-2-2">
+        Graph-representations
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/01-Graph-and-Graph-theory/Graph-representations/Graph-representations/" title="Graph-representations" class="md-nav__link">
+      Graph-representations
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2-3" type="checkbox" id="nav-6-2-3">
+    
+    <label class="md-nav__link" for="nav-6-2-3">
+      Directed-graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-2-3">
+        Directed-graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/01-Graph-and-Graph-theory/Directed-graph/Directed-graph/" title="Directed-graph" class="md-nav__link">
+      Directed-graph
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2-3-2" type="checkbox" id="nav-6-2-3-2">
+    
+    <label class="md-nav__link" for="nav-6-2-3-2">
+      Directed-acyclic-graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="4">
+      <label class="md-nav__title" for="nav-6-2-3-2">
+        Directed-acyclic-graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/01-Graph-and-Graph-theory/Directed-graph/Directed-acyclic-graph/Directed-acyclic-graph/" title="Directed-acyclic-graph" class="md-nav__link">
+      Directed-acyclic-graph
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      02-Graph-Model
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        02-Graph-Model
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/02-Graph-Model/Graph-Model/" title="Graph-Model" class="md-nav__link">
+      Graph-Model
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/02-Graph-Model/Application-of-graph/" title="Application-of-graph" class="md-nav__link">
+      Application-of-graph
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3-3" type="checkbox" id="nav-6-3-3">
+    
+    <label class="md-nav__link" for="nav-6-3-3">
+      Dependency-graph
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-3-3">
+        Dependency-graph
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/02-Graph-Model/Dependency-graph/Dependency-graph/" title="Dependency-graph" class="md-nav__link">
+      Dependency-graph
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/02-Graph-Model/Dependency-graph/Precedence-graph/" title="Precedence-graph" class="md-nav__link">
+      Precedence-graph
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/02-Graph-Model/Dependency-graph/Dependency-resolving-algorithm/" title="Dependency-resolving-algorithm" class="md-nav__link">
+      Dependency-resolving-algorithm
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4">
+    
+    <label class="md-nav__link" for="nav-6-4">
+      03-Graph-operation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-4">
+        03-Graph-operation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/03-Graph-operation/Graph-operation/" title="Graph-operation" class="md-nav__link">
+      Graph-operation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5" type="checkbox" id="nav-6-5">
+    
+    <label class="md-nav__link" for="nav-6-5">
+      04-Computational-problems-in-graph-theory
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-5">
+        04-Computational-problems-in-graph-theory
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/04-Computational-problems-in-graph-theory/Computational-problems-in-graph-theory/" title="Computational-problems-in-graph-theory" class="md-nav__link">
+      Computational-problems-in-graph-theory
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-2" type="checkbox" id="nav-6-5-2">
+    
+    <label class="md-nav__link" for="nav-6-5-2">
+      Circular
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-2">
+        Circular
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/04-Computational-problems-in-graph-theory/Circular/Cycle-detection/" title="Cycle-detection" class="md-nav__link">
+      Cycle-detection
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/04-Computational-problems-in-graph-theory/Circular/Circular-dependency/" title="Circular-dependency" class="md-nav__link">
+      Circular-dependency
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-3" type="checkbox" id="nav-6-5-3">
+    
+    <label class="md-nav__link" for="nav-6-5-3">
+      Dominator
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-3">
+        Dominator
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/04-Computational-problems-in-graph-theory/Dominator/Dominator(graph-theory)/" title="Dominator" class="md-nav__link">
+      Dominator
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-4" type="checkbox" id="nav-6-5-4">
+    
+    <label class="md-nav__link" for="nav-6-5-4">
+      Sorting
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-4">
+        Sorting
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/04-Computational-problems-in-graph-theory/Sorting/Topological-sorting/" title="Topological-sorting" class="md-nav__link">
+      Topological-sorting
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-5" type="checkbox" id="nav-6-5-5">
+    
+    <label class="md-nav__link" for="nav-6-5-5">
+      Spanning-tree
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-5">
+        Spanning-tree
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/04-Computational-problems-in-graph-theory/Spanning-tree/Spanning-tree/" title="Spanning-tree" class="md-nav__link">
+      Spanning-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/04-Computational-problems-in-graph-theory/Spanning-tree/Minimum-spanning-tree/" title="Minimum-spanning-tree" class="md-nav__link">
+      Minimum-spanning-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Graph/04-Computational-problems-in-graph-theory/Spanning-tree/Borůvka's-algorithm/" title="Borůvka's-algorithm" class="md-nav__link">
+      Borůvka's-algorithm
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Tree
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Tree
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Tree/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Tree/Tree-structure/" title="Tree-structure" class="md-nav__link">
+      Tree-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Tree/Represent-tree/" title="Represent-tree" class="md-nav__link">
+      Represent-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Tree/Tree(set-theory)/" title="Tree(set-theory)" class="md-nav__link">
+      Tree(set-theory)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Tree/Tree(data-structure)/" title="Tree(data-structure)" class="md-nav__link">
+      Tree(data-structure)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Tree/application-of-tree-data-structure.md" title="Application-of-tree-data-structure" class="md-nav__link">
+      Application-of-tree-data-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-7" type="checkbox" id="nav-7-7">
+    
+    <label class="md-nav__link" for="nav-7-7">
+      Tree-and-stack
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-7">
+        Tree-and-stack
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Tree/Tree-and-stack/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Tree/Tree-and-stack/VS-bracket-VS-tree/" title="VS-bracket-VS-tree" class="md-nav__link">
+      VS-bracket-VS-tree
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Tree/Implicit-tree/" title="Implicit-tree" class="md-nav__link">
+      Implicit-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-9" type="checkbox" id="nav-7-9">
+    
+    <label class="md-nav__link" for="nav-7-9">
+      Tree-operation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-9">
+        Tree-operation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Tree/Tree-operation/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Tree/TODO/" title="TODO" class="md-nav__link">
+      TODO
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Hash
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Hash
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2">
+    
+    <label class="md-nav__link" for="nav-8-2">
+      Hash-function
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-2">
+        Hash-function
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash-function/Hash-function/" title="Hash-function" class="md-nav__link">
+      Hash-function
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash-function/Rolling-hash/" title="Rolling-hash" class="md-nav__link">
+      Rolling-hash
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash-function/SipHash/" title="SipHash" class="md-nav__link">
+      SipHash
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2-4" type="checkbox" id="nav-8-2-4">
+    
+    <label class="md-nav__link" for="nav-8-2-4">
+      Cryptographic-hash-functions
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-2-4">
+        Cryptographic-hash-functions
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash-function/Cryptographic-hash-functions/Cryptographic-hash-function/" title="Cryptographic-hash-function" class="md-nav__link">
+      Cryptographic-hash-function
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash-function/Cryptographic-hash-functions/Cipher/" title="Cipher" class="md-nav__link">
+      Cipher
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Hash-function/Cryptographic-hash-functions/Salt(cryptography)/" title="Salt(cryptography)" class="md-nav__link">
+      Salt(cryptography)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Set
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        Set
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Set/Set(abstract-data-type)/" title="Set" class="md-nav__link">
+      Set
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Probabilistic-data-structures
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        Probabilistic-data-structures
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Probabilistic-data-structures/Bloom-filter/" title="Bloom-filter" class="md-nav__link">
+      Bloom-filter
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Probabilistic-data-structures/Random-tree/" title="Random-tree" class="md-nav__link">
+      Random-tree
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Probabilistic-data-structures/Skip-list/" title="Skip-list" class="md-nav__link">
+      Skip-list
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      Summary-of-data-structure
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        Summary-of-data-structure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Summary-of-data-structure/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Summary-of-data-structure/List-of-data-structure/" title="List-of-data-structure" class="md-nav__link">
+      List-of-data-structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Summary-of-data-structure/VS-of-tree/" title="VS-of-trees" class="md-nav__link">
+      VS-of-trees
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Summary-of-data-structure/VS-of-graph-and-tree-and-list/" title="VS-of-graph-and-tree-and-list" class="md-nav__link">
+      VS-of-graph-and-tree-and-list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Summary-of-data-structure/VS-of-implementation-of-ADT/" title="VS-of-implementation-of-ADT" class="md-nav__link">
+      VS-of-implementation-of-ADT
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Summary-of-data-structure/VS-of-search-tree-and-hash-table/" title="VS-of-search-tree-and-hash-table" class="md-nav__link">
+      VS-of-search-tree-and-hash-table
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Summary-of-data-structure/VS-of-search-tree-and-skip-list/" title="VS-of-search-tree-and-skip-list" class="md-nav__link">
+      VS-of-search-tree-and-skip-list
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../../TODO/" title="TODO" class="md-nav__link">
+      TODO
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#history" class="md-nav__link">
+    History
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    Properties
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structure" class="md-nav__link">
+    Structure
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keyspace_partitioning" class="md-nav__link">
+    Keyspace partitioning
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#consistent_hashing" class="md-nav__link">
+    Consistent hashing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rendezvous_hashing" class="md-nav__link">
+    Rendezvous hashing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overlay_network" class="md-nav__link">
+    Overlay network
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algorithms_for_overlay_networks" class="md-nav__link">
+    Algorithms for overlay networks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dht_implementations" class="md-nav__link">
+    DHT implementations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <div class="toc">
+<ul>
+<li><a href="#distributed_hash_table">Distributed hash table</a><ul>
+<li><a href="#history">History</a></li>
+<li><a href="#properties">Properties</a></li>
+<li><a href="#structure">Structure</a><ul>
+<li><a href="#keyspace_partitioning">Keyspace partitioning</a><ul>
+<li><a href="#consistent_hashing">Consistent hashing</a></li>
+<li><a href="#rendezvous_hashing">Rendezvous hashing</a></li>
+</ul>
+</li>
+<li><a href="#overlay_network">Overlay network</a></li>
+<li><a href="#algorithms_for_overlay_networks">Algorithms for overlay networks</a></li>
+</ul>
+</li>
+<li><a href="#dht_implementations">DHT implementations</a></li>
+<li><a href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="distributed_hash_table"><a href="https://en.wikipedia.org/wiki/Distributed_hash_table">Distributed hash table</a><a class="headerlink" href="#distributed_hash_table" title="Permanent link">#</a></h1>
+<blockquote>
+<p>NOTE : redis cluster可以看做是<a href="https://en.wikipedia.org/wiki/Distributed_hash_table">Distributed hash table</a>；</p>
+</blockquote>
+<p>A <strong>distributed hash table</strong> (<strong>DHT</strong>) is a class of a decentralized <a href="https://en.wikipedia.org/wiki/Distributed_computing">distributed system</a> that provides a <strong>lookup service</strong> similar to a <a href="https://en.wikipedia.org/wiki/Hash_table">hash table</a>: (<em>key</em>, <em>value</em>) pairs are stored in a DHT, and any participating <a href="https://en.wikipedia.org/wiki/Node_(networking)">node</a> can efficiently retrieve the value associated with a given key. <em>Keys</em> are unique identifiers which map to particular <em>values</em>, which in turn can be anything from addresses, to <a href="https://en.wikipedia.org/wiki/Electronic_document">documents</a>, to arbitrary <a href="https://en.wikipedia.org/wiki/Data_(computing)">data</a>.[<a href="https://en.wikipedia.org/wiki/Distributed_hash_table#cite_note-StoicaEtAl2001-1">1]</a> <strong>Responsibility for maintaining the mapping from keys to values is distributed among the nodes, in such a way that a change in the set of participants causes a minimal amount of disruption.</strong> This allows a DHT to <a href="https://en.wikipedia.org/wiki/Scale_(computing)">scale</a> to extremely large numbers of nodes and to handle continual node arrivals, departures, and failures.</p>
+<p>DHTs form an infrastructure that can be used to build more complex services, such as <a href="https://en.wikipedia.org/wiki/Anycast">anycast</a>, cooperative <a href="https://en.wikipedia.org/wiki/Web_cache">Web caching</a>, <a href="https://en.wikipedia.org/wiki/Distributed_file_system">distributed file systems</a>, <a href="https://en.wikipedia.org/wiki/Domain_name_system">domain name services</a>, <a href="https://en.wikipedia.org/wiki/Instant_messaging">instant messaging</a>, <a href="https://en.wikipedia.org/wiki/Multicast">multicast</a>, and also <a href="https://en.wikipedia.org/wiki/Peer-to-peer">peer-to-peer</a> <a href="https://en.wikipedia.org/wiki/File_sharing">file sharing</a> and <a href="https://en.wikipedia.org/wiki/Content_distribution">content distribution</a> systems. Notable distributed networks that use DHTs include <a href="https://en.wikipedia.org/wiki/BitTorrent_(protocol)">BitTorrent</a>'s distributed tracker, the <a href="https://en.wikipedia.org/wiki/Coral_Content_Distribution_Network">Coral Content Distribution Network</a>, the <a href="https://en.wikipedia.org/wiki/Kad_network">Kad network</a>, the <a href="https://en.wikipedia.org/wiki/Storm_botnet">Storm botnet</a>, the <a href="https://en.wikipedia.org/wiki/Tox_(protocol)">Tox instant messenger</a>, <a href="https://en.wikipedia.org/wiki/Freenet">Freenet</a>, the <a href="https://en.wikipedia.org/wiki/YaCy">YaCy</a> search engine, and the <a href="https://en.wikipedia.org/wiki/InterPlanetary_File_System">InterPlanetary File System</a>.</p>
+<p><a href="https://en.wikipedia.org/wiki/File:DHT_en.svg"><img alt="img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/DHT_en.svg/500px-DHT_en.svg.png" /></a></p>
+<p>Distributed hash tables</p>
+<h2 id="history">History<a class="headerlink" href="#history" title="Permanent link">#</a></h2>
+<p>DHT research was originally motivated, in part, by <a href="https://en.wikipedia.org/wiki/Peer-to-peer">peer-to-peer</a> systems such as <a href="https://en.wikipedia.org/wiki/Freenet">Freenet</a>, <a href="https://en.wikipedia.org/wiki/Gnutella">gnutella</a>, <a href="https://en.wikipedia.org/wiki/BitTorrent_(software)">BitTorrent</a> and <a href="https://en.wikipedia.org/wiki/Napster">Napster</a>, which took advantage of resources distributed across the Internet to provide a single useful application. In particular, they took advantage of increased <a href="https://en.wikipedia.org/wiki/Bandwidth_(computing)">bandwidth</a> and <a href="https://en.wikipedia.org/wiki/Hard_disk">hard disk</a> capacity to provide a file-sharing service.[<a href="https://en.wikipedia.org/wiki/Distributed_hash_table#cite_note-2">2]</a></p>
+<p>DHT研究最初的动机部分是由Freenet，gnutella，BitTorrent和Napster等对等系统推动的，这些系统利用分布在Internet上的资源来提供单一有用的应用程序。特别是，他们利用增加的带宽和硬盘容量来提供文件共享服务。</p>
+<p>These systems differed in how they located the data offered by their peers. Napster, the first large-scale P2P content delivery system, required a <strong>central index server</strong>: each node, upon joining, would send a list of locally held files to the server, which would perform searches and refer the queries to the nodes that held the results. This central component left the system vulnerable to attacks and lawsuits.</p>
+<p>这些系统在定位同行提供的数据方面存在差异。 Napster是第一个大规模P2P内容传送系统，需要一个中央索引服务器：每个节点在加入时，会向服务器发送一个本地保存文件列表，这将执行搜索并将查询引用到持有结果。这一核心组件使系统容易受到攻击和诉讼</p>
+<p>Gnutella and similar networks moved to a flooding query model – in essence, each search would result in a message being broadcast to every other machine in the network. While avoiding a <a href="https://en.wikipedia.org/wiki/Single_point_of_failure">single point of failure</a>, this method was significantly less efficient than Napster. Later versions of Gnutella clients moved to a dynamic querying model which vastly improved efficiency.[<a href="https://en.wikipedia.org/wiki/Distributed_hash_table#cite_note-3">3]</a></p>
+<p>Gnutella和类似的网络转移到洪泛查询模型 - 实质上，每次搜索都会导致消息被广播到网络中的每台其他机器。虽然避免了单点故障，但这种方法的效率明显低于Napster。更高版本的Gnutella客户转向动态查询模型，大大提高了效率。</p>
+<p><a href="https://en.wikipedia.org/wiki/Freenet">Freenet</a> is fully distributed, but employs a heuristic <a href="https://en.wikipedia.org/wiki/Key-based_routing">key-based routing</a> in which each file is associated with a key, and files with similar keys tend to cluster on a similar set of nodes. Queries are likely to be routed through the network to such a cluster without needing to visit many peers.[<a href="https://en.wikipedia.org/wiki/Distributed_hash_table#cite_note-4">4]</a> However, Freenet does not guarantee that data will be found.</p>
+<p>Freenet是完全分布式的，但采用基于密钥的启发式路由，其中每个文件与密钥相关联，具有相似密钥的文件倾向于在类似的节点集上集群。查询很可能通过网络路由到这样的集群，而无需访问许多对等体。[4]但是，Freenet不保证会找到数据。</p>
+<p><strong>Distributed hash table</strong>s use a more structured key-based routing in order to attain both the <strong>decentralization</strong> of Freenet and gnutella, and the efficiency and guaranteed results of Napster. One drawback is that, like Freenet, DHTs only directly support <strong>exact-match search</strong>, rather than <strong>keyword search</strong>, although Freenet's routing algorithm can be generalized to any key type where a closeness operation can be defined.[<a href="https://en.wikipedia.org/wiki/Distributed_hash_table#cite_note-5">5]</a></p>
+<p>分布式哈希表使用更加结构化的基于密钥的路由，以实现Freenet和gnutella的分散化，以及Napster的效率和保证结果。 一个缺点是，像Freenet一样，DHT只直接支持精确匹配搜索，而不是关键字搜索，尽管Freenet的路由算法可以推广到任何可以定义接近度操作的密钥类型。</p>
+<p>In 2001, four systems—<a href="https://en.wikipedia.org/wiki/Content_addressable_network">CAN</a>,[<a href="https://en.wikipedia.org/wiki/Distributed_hash_table#cite_note-Ratnasamy01-6">6]</a> <a href="https://en.wikipedia.org/wiki/Chord_(peer-to-peer)">Chord</a>,[<a href="https://en.wikipedia.org/wiki/Distributed_hash_table#cite_note-7">7]</a> <a href="https://en.wikipedia.org/wiki/Pastry_(DHT)">Pastry</a>, and <a href="https://en.wikipedia.org/wiki/Tapestry_(DHT)">Tapestry</a>—ignited（激起） DHTs as a popular research topic. A project called the Infrastructure for Resilient Internet Systems (Iris) was funded by a $12 million grant from the US <a href="https://en.wikipedia.org/wiki/National_Science_Foundation">National Science Foundation</a> in 2002.[<a href="https://en.wikipedia.org/wiki/Distributed_hash_table#cite_note-8">8]</a> Researchers included <a href="https://en.wikipedia.org/wiki/Sylvia_Ratnasamy">Sylvia Ratnasamy</a>, <a href="https://en.wikipedia.org/wiki/Ion_Stoica">Ion Stoica</a>, <a href="https://en.wikipedia.org/wiki/Hari_Balakrishnan">Hari Balakrishnan</a> and <a href="https://en.wikipedia.org/wiki/Scott_Shenker">Scott Shenker</a>.[<a href="https://en.wikipedia.org/wiki/Distributed_hash_table#cite_note-9">9]</a> Outside academia, DHT technology has been adopted as a component of <a href="https://en.wikipedia.org/wiki/BitTorrent_(protocol)">BitTorrent</a> and in the <a href="https://en.wikipedia.org/wiki/Coral_Content_Distribution_Network">Coral Content Distribution Network</a>.</p>
+<p>2001年，四个系统-CAN，[6] Chord，[7] Pastry和Tapestry-点燃了DHT作为一个热门的研究课题。 一个名为“弹性互联网系统基础设施”（Iris）的项目由2002年美国国家科学基金会拨款1200万美元资助。[8] 研究人员包括Sylvia Ratnasamy，Ion Stoica，Hari Balakrishnan和Scott Shenker。[9] 在学术界之外，DHT技术已被采纳为BitTorrent和Coral内容分发网络的一个组成部分。</p>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">#</a></h2>
+<p>DHTs characteristically emphasize the following properties:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Decentralized_computing">Autonomy（自治的） and decentralization</a>: the nodes collectively form the system without any <strong>central coordination</strong>.</li>
+<li><a href="https://en.wikipedia.org/wiki/Fault_tolerance">Fault tolerance</a>: the system should be reliable (in some sense) even with nodes continuously joining, leaving, and failing.</li>
+<li><a href="https://en.wikipedia.org/wiki/Scale_(computing)">Scalability</a>: the system should function efficiently even with thousands or millions of nodes.</li>
+</ul>
+<p><strong><em>SUMMARY</em></strong> : redis cluster也具有上述的property</p>
+<p>A key technique used to achieve these goals is that any one node needs to coordinate with only a few other nodes in the system – most commonly, <a href="https://en.wikipedia.org/wiki/Big_O_notation">O</a>(log <em>n</em>) of the $ n $ participants (see below) – so that only a limited amount of work needs to be done for each change in membership.</p>
+<p>Some DHT designs seek to be <a href="https://en.wikipedia.org/wiki/Secure_communication">secure</a> against malicious（恶意的） participants[<a href="https://en.wikipedia.org/wiki/Distributed_hash_table#cite_note-10">10]</a> and to allow participants to remain <a href="https://en.wikipedia.org/wiki/Anonymity">anonymous</a>, though this is less common than in many other <a href="https://en.wikipedia.org/wiki/Peer-to-peer">peer-to-peer</a> (especially <a href="https://en.wikipedia.org/wiki/File_sharing">file sharing</a>) systems; see <a href="https://en.wikipedia.org/wiki/Anonymous_P2P">anonymous P2P</a>.</p>
+<p>Finally, DHTs must deal with more traditional distributed systems issues such as <a href="https://en.wikipedia.org/wiki/Load_balancing_(computing)">load balancing</a>, <a href="https://en.wikipedia.org/wiki/Data_integrity">data integrity</a>, and performance (in particular, ensuring that operations such as routing and data storage or retrieval complete quickly).</p>
+<h2 id="structure">Structure<a class="headerlink" href="#structure" title="Permanent link">#</a></h2>
+<p>The structure of a DHT can be decomposed into several main components.[<a href="https://en.wikipedia.org/wiki/Distributed_hash_table#cite_note-11">11]</a>[<a href="https://en.wikipedia.org/wiki/Distributed_hash_table#cite_note-12">12]</a> </p>
+<ul>
+<li>The foundation is an abstract <strong>keyspace</strong>, such as the set of 160-bit <a href="https://en.wikipedia.org/wiki/String_(computer_science)">strings</a>. </li>
+<li>A <strong>keyspace partitioning</strong> scheme splits ownership of this <strong>keyspace</strong> among the participating nodes. </li>
+<li>An <strong>overlay network</strong> then connects the nodes, allowing them to find the owner of any <strong>given key</strong> in the <strong>keyspace</strong>.</li>
+</ul>
+<p>Once these components are in place, a typical use of the DHT for <strong>storage</strong> and <strong>retrieval</strong> might proceed as follows. Suppose the keyspace is the set of 160-bit strings. To index a file with given <em>filename</em> and <em>data</em> in the DHT, the <a href="https://en.wikipedia.org/wiki/SHA-1">SHA-1</a> hash of <em>filename</em> is generated, producing a 160-bit key <em>k</em>, and a message <em>put</em>(<em>k, data</em>) is sent to any node participating in the DHT. The message is forwarded from node to node through the <strong>overlay network</strong> until it reaches the single node <strong>responsible</strong> for key <em>k</em> as specified by the <strong>keyspace partitioning</strong>. That node then stores the key and the data. Any other client can then retrieve the contents of the file by again hashing <em>filename</em> to produce <em>k</em> and asking any <strong>DHT node</strong> to find the data associated with <em>k</em> with a message <em>get</em>(<em>k</em>). The message will again be routed through the overlay to the node responsible for <em>k</em>, which will reply with the stored <em>data</em>.</p>
+<p><strong><em>SUMMARY</em></strong> : 上述是使用 <a href="https://en.wikipedia.org/wiki/SHA-1">SHA-1</a> hash 来获得abstract keyspace；使用 <a href="https://en.wikipedia.org/wiki/Consistent_hashing">Consistent hashing</a>、 <a href="https://en.wikipedia.org/wiki/Rendezvous_hashing">Rendezvous hashing</a>来进行keyspace partition；</p>
+<p><strong><em>SUMMARY</em></strong> : <strong>redis cluster</strong>是否存在上述forward的过程？</p>
+<p>The <strong>keyspace partitioning</strong> and <strong>overlay network</strong> components are described below with the goal of capturing the principal ideas common to most DHTs; many designs differ in the details.</p>
+<h3 id="keyspace_partitioning">Keyspace partitioning<a class="headerlink" href="#keyspace_partitioning" title="Permanent link">#</a></h3>
+<p>Most DHTs use some variant of <a href="https://en.wikipedia.org/wiki/Consistent_hashing">consistent hashing</a> or <a href="https://en.wikipedia.org/wiki/Rendezvous_hashing">rendezvous hashing</a> to map keys to nodes. The two algorithms appear to have been devised independently and simultaneously to solve the distributed hash table problem.</p>
+<p>Both <strong>consistent hashing</strong> and <strong>rendezvous hashing</strong> have the essential property that removal or addition of one node changes only the set of keys owned by the nodes with <strong>adjacent IDs</strong>, and leaves all other nodes unaffected. Contrast this with a traditional <a href="https://en.wikipedia.org/wiki/Hash_table">hash table</a> in which addition or removal of one bucket causes nearly the entire keyspace to be remapped. Since any change in ownership typically corresponds to <a href="https://en.wikipedia.org/wiki/Bandwidth_(computing)">bandwidth</a>-intensive movement of objects stored in the DHT from one node to another, minimizing such reorganization is required to efficiently support high rates of churn (node arrival and failure).</p>
+<h4 id="consistent_hashing">Consistent hashing<a class="headerlink" href="#consistent_hashing" title="Permanent link">#</a></h4>
+<p>Further information: <a href="https://en.wikipedia.org/wiki/Consistent_hashing">Consistent hashing</a></p>
+<p>Consistent hashing employs a function $ \delta (k_{1},k_{2}) $ that defines an abstract notion of the distance between the keys $ k_{1} $ and $ k_{2} $, which is unrelated to geographical <a href="https://en.wikipedia.org/wiki/Distance">distance</a> or network <a href="https://en.wikipedia.org/wiki/Latency_(engineering)">latency</a>. Each node is assigned a single key called its <em>identifier</em> (ID). A node with ID $ i_{x} $owns all the keys $ k_{m} $ for which $ i_{x} $ is the closest ID, measured according to $ \delta (k_{m},i_{x}) $.</p>
+<p>For example, the <a href="https://en.wikipedia.org/wiki/Chord_(peer-to-peer)">Chord DHT</a> uses <strong>consistent hashing</strong>, which treats nodes as points on a circle, and $ \delta (k_{1},k_{2}) $ is the distance traveling clockwise around the circle from $ k_{1} $ to $ k_{2} $. Thus, the circular keyspace is split into contiguous segments whose endpoints are the <strong>node identifiers</strong>. If $ i_{1} $ and $ i_{2} $ are two adjacent IDs, with a shorter clockwise distance from $ i_{1} $ to $ i_{2} $, then the node with ID $ i_{2} $owns all the keys that fall between $ i_{1} $ and $ i_{2} $.</p>
+<h4 id="rendezvous_hashing">Rendezvous hashing<a class="headerlink" href="#rendezvous_hashing" title="Permanent link">#</a></h4>
+<p>Further information: <a href="https://en.wikipedia.org/wiki/Rendezvous_hashing">Rendezvous hashing</a></p>
+<p>In rendezvous hashing, also called highest random weight hashing, all clients use the same hash function <em>h()</em> (chosen ahead of time) to associate a key to one of the <em>n</em> available servers. Each client has the same list of identifiers {<em>S</em>1, <em>S</em>2, ..., <em>S<strong>n<em> }, one for each server. Given some key </em>k<em>, a client computes </em>n<em> hash weights </em>w<em>1 = </em>h<em>(</em>S<em>1, </em>k<em>), </em>w<em>2 = </em>h<em>(</em>S<em>2, </em>k<em>), ..., </em>w</strong>n</em> = <em>h</em>(<em>S</em><em>n</em>, <em>k</em>). The client associates that key with the server corresponding to the highest hash weight for that key. A server with ID $ S_{x} $ owns all the keys $ k_{m} $ for which the hash weight $ h(S_{x},k_{m}) $ is higher than the hash weight of any other node for that key.</p>
+<h3 id="overlay_network">Overlay network<a class="headerlink" href="#overlay_network" title="Permanent link">#</a></h3>
+<p>Each node maintains a set of <a href="https://en.wikipedia.org/wiki/Data_link">links</a> to other nodes (its <em>neighbors</em> or <a href="https://en.wikipedia.org/wiki/Routing_table">routing table</a>). Together, these links form the <a href="https://en.wikipedia.org/wiki/Overlay_network">overlay network</a>. A node picks its neighbors according to a certain structure, called the <a href="https://en.wikipedia.org/wiki/Network_topology">network's topology</a>.</p>
+<p>All DHT topologies share some variant of the most essential property: for any key <em>k</em>, each node either has a <strong>node ID</strong> that owns <em>k</em> or has a link to a node whose <strong>node ID</strong> is <em>closer</em> to <em>k</em>, in terms of the <strong>keyspace distance</strong> defined above. It is then easy to <strong>route</strong> a message to the owner of any key <em>k</em> using the following <a href="https://en.wikipedia.org/wiki/Greedy_algorithm">greedy algorithm</a> (that is not necessarily globally optimal): at each step, forward the message to the neighbor whose ID is closest to <em>k</em>. When there is no such neighbor, then we must have arrived at the closest node, which is the owner of <em>k</em> as defined above. This style of routing is sometimes called <a href="https://en.wikipedia.org/wiki/Key-based_routing">key-based routing</a>.</p>
+<p><strong><em>SUMMARY</em></strong> : <strong>keyspace distance</strong> 在consistent hashing中定义的；</p>
+<p>Beyond basic routing correctness, two important constraints on the topology are to guarantee that the maximum number of <a href="https://en.wikipedia.org/wiki/Hop_(networking)">hops</a>（跳） in any route (route length) is low, so that requests complete quickly; and that the maximum number of neighbors of any node (maximum node <a href="https://en.wikipedia.org/wiki/Degree_(graph_theory)">degree</a>) is low, so that maintenance overhead is not excessive. Of course, having shorter routes requires higher <a href="https://en.wikipedia.org/wiki/Maximum_degree">maximum degree</a>. Some common choices for maximum degree and route length are as follows, where <em>n</em> is the number of nodes in the DHT, using <a href="https://en.wikipedia.org/wiki/Big_O_notation">Big O notation</a>:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Max. degree</th>
+<th align="center">Max route length</th>
+<th align="center">Used in</th>
+<th align="center">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">$ O(1) $</td>
+<td align="center">$ O(n) $</td>
+<td align="center"></td>
+<td align="center">Worst lookup lengths, with likely much slower lookups times</td>
+</tr>
+<tr>
+<td align="center">$ O(\log n) $</td>
+<td align="center">$ O(\log n) $</td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Chord_(peer-to-peer)">Chord</a>  <a href="https://en.wikipedia.org/wiki/Kademlia">Kademlia</a> <a href="https://en.wikipedia.org/wiki/Pastry_(DHT)">Pastry</a>  <a href="https://en.wikipedia.org/wiki/Tapestry_(DHT)">Tapestry</a></td>
+<td align="center">Most common, but not optimal (degree/route length). Chord is the most basic version, with Kademlia seeming the most popular optimized variant (should have improved average lookup)</td>
+</tr>
+<tr>
+<td align="center">$ O(\log n) $</td>
+<td align="center">$ O(\log n/\log(\log n)) $</td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Koorde">Koorde</a></td>
+<td align="center">Likely would be more complex to implement, but lookups might be faster (have a lower worst case bound)</td>
+</tr>
+<tr>
+<td align="center">$ O({\sqrt {n}}) $</td>
+<td align="center">$ O(1) $</td>
+<td align="center"></td>
+<td align="center">Worst local storage needs, with lots of communication after any node connects or disconnects</td>
+</tr>
+</tbody>
+</table>
+<h3 id="algorithms_for_overlay_networks">Algorithms for overlay networks<a class="headerlink" href="#algorithms_for_overlay_networks" title="Permanent link">#</a></h3>
+<p>Aside from routing, there exist many algorithms that exploit the structure of the overlay network for sending a message to all nodes, or a subset of nodes, in a DHT.[<a href="https://en.wikipedia.org/wiki/Distributed_hash_table#cite_note-16">16]</a> These algorithms are used by applications to do <a href="https://en.wikipedia.org/wiki/Overlay_multicast">overlay multicast</a>, range queries, or to collect statistics. Two systems that are based on this approach are Structella,[<a href="https://en.wikipedia.org/wiki/Distributed_hash_table#cite_note-17">17]</a> which implements flooding and random walks on a Pastry overlay, and DQ-DHT,[<a href="https://en.wikipedia.org/wiki/Distributed_hash_table#cite_note-18">18]</a> which implements a dynamic querying search algorithm over a Chord network.</p>
+<h2 id="dht_implementations">DHT implementations<a class="headerlink" href="#dht_implementations" title="Permanent link">#</a></h2>
+<p>Most notable differences encountered in practical instances of DHT implementations include at least the following:</p>
+<ul>
+<li>The address space is a parameter of DHT. Several real world DHTs use 128-bit or 160-bit key space</li>
+<li>Some real-world DHTs use hash functions other than SHA-1.</li>
+<li>In the real world the key $ k $ could be a hash of a file's <em>content</em> rather than a hash of a file's <em>name</em> to provide <a href="https://en.wikipedia.org/wiki/Content-addressable_storage">content-addressable storage</a>, so that renaming of the file does not prevent users from finding it.</li>
+<li>Some DHTs may also publish objects of different types. For example, key $ k $ could be the node $ ID $ and associated data could describe how to contact this node. This allows publication-of-presence information and often used in IM applications, etc. In the simplest case, $ ID $ is just a random number that is directly used as key $ k $ (so in a 160-bit DHT $ ID $ will be a 160-bit number, usually randomly chosen). In some DHTs, publishing of nodes' IDs is also used to optimize DHT operations.</li>
+<li>Redundancy can be added to improve reliability. The $ (k,data) $ key pair can be stored in more than one node corresponding to the key. Usually, rather than selecting just one node, real world DHT algorithms select $ i $ suitable nodes, with $ i $ being an implementation-specific parameter of the DHT. In some DHT designs, nodes agree to handle a certain keyspace range, the size of which may be chosen dynamically, rather than hard-coded.</li>
+<li>Some advanced DHTs like <a href="https://en.wikipedia.org/wiki/Kademlia">Kademlia</a> perform iterative lookups through the DHT first in order to select a set of suitable nodes and send $ put(k,data) $ messages only to those nodes, thus drastically reducing useless traffic, since published messages are only sent to nodes that seem suitable for storing the key $ k $; and iterative lookups cover just a small set of nodes rather than the entire DHT, reducing useless forwarding. In such DHTs, forwarding of $ put(k,data) $ messages may only occur as part of a self-healing algorithm: if a target node receives a $ put(k,data) $message, but believes that $ k $ is out of its handled range and a closer node (in terms of DHT keyspace) is known, the message is forwarded to that node. Otherwise, data are indexed locally. This leads to a somewhat self-balancing DHT behavior. Of course, such an algorithm requires nodes to publish their presence data in the DHT so the iterative lookups can be performed.</li>
+</ul>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
+<p>DHT protocols and implementations</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Cassandra">Apache Cassandra</a></li>
+<li><a href="https://en.wikipedia.org/wiki/BATON_Overlay">BATON Overlay</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Mainline_DHT">Mainline DHT</a> - Standard DHT used by BitTorrent (based on <a href="https://en.wikipedia.org/wiki/Kademlia">Kademlia</a> as provided by Khashmir[<a href="https://en.wikipedia.org/wiki/Distributed_hash_table#cite_note-24">24]</a>)</li>
+<li><a href="https://en.wikipedia.org/wiki/Content_Addressable_Network">CAN</a> (Content Addressable Network)</li>
+<li><a href="https://en.wikipedia.org/wiki/Chord_(DHT)">Chord</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Koorde">Koorde</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Kademlia">Kademlia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Pastry_(DHT)">Pastry</a></li>
+<li><a href="https://en.wikipedia.org/wiki/P-Grid">P-Grid</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Riak">Riak</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Tapestry_(DHT)">Tapestry</a></li>
+<li><a href="https://en.wikipedia.org/wiki/TomP2P">TomP2P</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Voldemort_(distributed_data_store)">Voldemort</a></li>
+</ul>
+<p>Applications employing DHTs</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/BTDigg">BTDigg</a>: <a href="https://en.wikipedia.org/wiki/BitTorrent_(protocol)">BitTorrent</a> DHT search engine</li>
+<li><a href="https://en.wikipedia.org/wiki/CloudSNAP">CloudSNAP</a>: a decentralized web application deployment platform</li>
+<li><a href="https://en.wikipedia.org/wiki/Codeen">Codeen</a>: web caching</li>
+<li><a href="https://en.wikipedia.org/wiki/Coral_Content_Distribution_Network">Coral Content Distribution Network</a></li>
+<li><a href="https://en.wikipedia.org/wiki/FAROO">FAROO</a>: peer-to-peer Web search engine</li>
+<li><a href="https://en.wikipedia.org/wiki/Freenet">Freenet</a>: a censorship-resistant anonymous network</li>
+<li><a href="https://en.wikipedia.org/wiki/GlusterFS">GlusterFS</a>: a distributed file system used for storage virtualization</li>
+<li><a href="https://en.wikipedia.org/wiki/GNUnet">GNUnet</a>: Freenet-like distribution network including a DHT implementation</li>
+<li><a href="https://en.wikipedia.org/wiki/I2P">I2P</a>: An open-source anonymous <a href="https://en.wikipedia.org/wiki/Peer-to-peer">peer-to-peer</a> network.</li>
+<li><a href="https://en.wikipedia.org/wiki/I2P">I2P-Bote</a>: serverless secure anonymous e-mail.</li>
+<li><a href="https://en.wikipedia.org/wiki/InterPlanetary_File_System">IPFS</a>: A content-addressable, peer-to-peer hypermedia distribution protocol</li>
+<li><a href="https://en.wikipedia.org/wiki/JXTA">JXTA</a>: open-source P2P platform</li>
+<li><a href="https://en.wikipedia.org/w/index.php?title=LBRY&amp;action=edit&amp;redlink=1">LBRY</a>: a free, open and community-run digital marketplace</li>
+<li><a href="https://en.wikipedia.org/wiki/Oracle_Coherence">Oracle Coherence</a>: an in-memory data grid built on top of a Java DHT implementation</li>
+<li><a href="https://en.wikipedia.org/wiki/Perfect_Dark_(P2P)">Perfect Dark</a>: a <a href="https://en.wikipedia.org/wiki/Peer-to-peer">peer-to-peer</a> <a href="https://en.wikipedia.org/wiki/File-sharing">file-sharing</a> application from Japan</li>
+<li><a href="https://en.wikipedia.org/wiki/Retroshare">Retroshare</a>: a <a href="https://en.wikipedia.org/wiki/Friend-to-friend">Friend-to-friend</a> network[<a href="https://en.wikipedia.org/wiki/Distributed_hash_table#cite_note-25">25]</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Ring_(software)">Ring</a>: a privacy-preserving voice, video and chat communication platform, based on a Kademlia-like DHT</li>
+<li><a href="https://en.wikipedia.org/wiki/Tox_(protocol)">Tox</a>: an <a href="https://en.wikipedia.org/wiki/Instant_messaging">instant messaging</a> system intended to function as a <a href="https://en.wikipedia.org/wiki/Skype">Skype</a>replacement</li>
+<li><a href="https://en.wikipedia.org/wiki/Twister_(software)">Twister</a>: a <a href="https://en.wikipedia.org/wiki/Microblogging">microblogging</a> <a href="https://en.wikipedia.org/wiki/Peer-to-peer">peer-to-peer</a> platform</li>
+<li><a href="https://en.wikipedia.org/wiki/YaCy">YaCy</a>: a distributed <a href="https://en.wikipedia.org/wiki/Web_search_engine">search engine</a></li>
+</ul>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../../assets/javascripts/application.808e90bb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../../.."}})</script>
+      
+    
+  </body>
+</html>
