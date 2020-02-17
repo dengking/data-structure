@@ -1,5 +1,0 @@
-nav:
-    - Hash-function: Hash-function.md
-    - Rolling-hash: Rolling-hash.md
-    - SipHash: SipHash.md
-    - Cryptographic-hash-functions: Cryptographic-hash-functions
