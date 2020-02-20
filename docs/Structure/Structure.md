@@ -28,11 +28,11 @@ Structure是一个宏大的话题，在这篇文章中，我仅仅从[computer s
 
 数学中的定义所使用的是[数学语言](https://en.wikipedia.org/wiki/Language_of_mathematics)，general定义中的“elements”使用 **数学语言** 来描述是  [set](https://en.wikipedia.org/wiki/Set_(mathematics)) ，general定义中的“interrelated”使用 **数学语言** 来描述是 [finitary operations](https://en.wikipedia.org/wiki/Finitary) and [relations](https://en.wikipedia.org/wiki/Finitary_relation)。
 
-阅读了上述定义，直观感受就是：结构不仅仅关乎元素，而且关乎它们之间的关系。相同的元素，如果使用不同的关系来进行组织的话，所呈现出的结构是不同的。所以，我们在研究结构的时候，切莫忽视元素之间的关系。
+阅读了上述定义，直观感受就是：结构不仅仅关乎元素，而且关乎它们之间的**关系**。相同的元素，如果使用不同的**关系**来进行组织，就是不同的**结构**，就呈现出不同的视觉**形态**（后文中，我们把这称之为“**形状**”），所以，在此，我们说：**关系决定（或者说：定义）了结构，进而决定了形状**，所以，我们在研究结构的时候，切莫忽视了对关系分析。
 
 > NOTE: 关于“关系”，参见[Relation](./Relation.md)。
 
-通过上面的描述，现在让我们来回答本节标题中的问题：结构是我们按照某种关系对元素进行组织后形成的，它可能是有形的（物理的），也可能是是抽象的（逻辑的）。
+通过上面的描述，现在让我们来回答本节标题中的问题：结构是我们按照某种关系对元素进行组织后形成的。
 
 “结构”是一个特殊的术语，后面当我们想要表达的是结构的形态（肉眼可见的）时，我们使用“形状”这个词。
 
@@ -48,11 +48,13 @@ Structure是一个宏大的话题，在这篇文章中，我仅仅从[computer s
 - [Network](https://en.wikipedia.org/wiki/Complex_network)， [graph](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics))，非线性的 
 - [Lattice](https://en.wikipedia.org/wiki/Lattice_(order))
 
+上诉前三种**形状**是在计算机科学中非常常见的，后面我们会对它们进行分析。
+
 In [computer science](https://en.wikipedia.org/wiki/Computer_science), [tree (data structure)](https://en.wikipedia.org/wiki/Tree_(data_structure)) is often used to describe  [hierarchy](https://en.wikipedia.org/wiki/Hierarchy)  structure, [graph(data structure)](https://en.wikipedia.org/wiki/Graph_(abstract_data_type)) is often used to describe  [network](https://en.wikipedia.org/wiki/Complex_network) structure. The two kind of structures is very importan in computer science.
 
 
 
-## Structure and relation
+## Relation 和 形状
 
 通过前面的论述，我们已经知道：结构能够表达元素间的关系，或者说，我们按照关系来组织数据，它们最终可以形成某种特定的形状，比如：
 
@@ -62,6 +64,12 @@ In [computer science](https://en.wikipedia.org/wiki/Computer_science), [tree (da
 按照有的关系来组织数据，它们会形成树结构（不会成环），比如parent-children关系；按照有的关系来组织数据，它们会形成图（会成环）。那是关系的什么特效决定了这种结果呢？要搞清楚这个问题，需要对“关系”理论有一定的了解（参见[Relation](./Relation.md)），这个问题是本节需要进行探讨的一个话题。
 
 如何来描述关系呢？不同的学科有不同的语言，比如数学中，可以使用函数来描述关系，计算机科学中呢？参见[Structure in computer science](#Structure in computer science)。
+
+TODO: 增加 hierarchy、chain（blockchain），还需要描述它们所采用的关系。分析我们肉眼看到的各种形状背后的relation的性质。
+
+## Relation 和 recursion
+
+[Transitive relation](https://en.wikipedia.org/wiki/Transitive_relation)所定义的结构具备递归性。
 
 ## 过程的结构
 

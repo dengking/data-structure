@@ -26,7 +26,7 @@ relation的本质上是set。
 
 "transitive"的中文意思是“传递性”
 
-Transitivity is a key property of both [partial orders](https://en.wikipedia.org/wiki/Partial_order) and [equivalence relations](https://en.wikipedia.org/wiki/Equivalence_relation).
+Transitivity is a key property of both [partial orders](https://en.wikipedia.org/wiki/Partial_order) and [equivalence relations](https://en.wikipedia.org/wiki/Equivalence_relation)。
 
 ### [Reflexive relation](https://en.wikipedia.org/wiki/Reflexive_relation)
 
@@ -38,7 +38,7 @@ Transitivity is a key property of both [partial orders](https://en.wikipedia.org
 
 “symmetric”即“对称”
 
-## relation and order
+## Relation and order
 
 按照relation来组织set中的元素。
 
@@ -56,3 +56,4 @@ Transitivity is a key property of both [partial orders](https://en.wikipedia.org
 
 ## [Relational algebra](https://en.wikipedia.org/wiki/Relational_algebra)
 
+关系代数，这是DBMS的基础。
