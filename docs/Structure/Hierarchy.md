@@ -1,10 +1,20 @@
 # Hierarchy
 
-本文主要是想搞清楚hierarchy和tree structure之间的关联，因为在此之前我一直将hierarchy structure看做是tree structure的同义词，即hierarchy structure就一定是tree structure，这个观念是源自于[Tree structure](https://en.wikipedia.org/wiki/Tree_structure)中这样的描述：
+## 本文动机
+
+在写作本文的时候，主要有如下两个动机：
+
+### 写作动机一
+
+对文章[Structure](./Structure.md)的“结构的形状”章节中的话题“深入分析我们肉眼看到的各种形状背后的relation的性质”进行解答。
+
+### 写作动机二
+
+本文想搞清楚hierarchy structure和tree structure之间的关联，因为在此之前我一直将hierarchy structure看做是tree structure的同义词，即hierarchy structure就一定是tree structure，这个观念是源自于[Tree structure](https://en.wikipedia.org/wiki/Tree_structure)中这样的描述：
 
 > A **tree structure** or **tree diagram** is a way of representing the [hierarchical](https://en.wikipedia.org/wiki/Hierarchy) nature of a [structure](https://en.wikipedia.org/wiki/Structure) in a graphical form. 
 
-促使我对这个观念产生怀疑的是这样的一个问题：
+促使我对这个观念产生怀疑的是在文章[Structure](./Structure.md)中提出的一个问题：
 
 > 按照inheritance关系来组织类，如果不允许多继承的话，则最终形成的是树；如果允许多继承的话，则最终形成的是图
 
@@ -22,31 +32,31 @@ class 1---|						  |-class 4
 
 
 
+维基百科的[Hierarchy](https://en.wikipedia.org/wiki/Hierarchy)基本上能够回答上述问题，所以一下正文部分是基于维基百科的[Hierarchy](https://en.wikipedia.org/wiki/Hierarchy)。
+
+## 正文
+
 如下是阅读维基百科的[Hierarchy](https://en.wikipedia.org/wiki/Hierarchy)的笔记。
 
 A **hierarchy** (from the [Greek](https://en.wikipedia.org/wiki/Ancient_Greek) *hierarkhia*, "rule of a high priest", from *[hierarkhes](https://en.wikipedia.org/wiki/Ordinary_(officer))*, "president of sacred rites") is an arrangement of items (objects, names, values, categories, etc.) in which the items are represented as being "above", "below", or "at the same level as" one another. 
 
 A hierarchy can link entities either directly or indirectly, and either vertically or diagonally. The only direct links in a hierarchy, insofar as they are hierarchical, are to one's immediate superior（上级） or to one of one's subordinates（下属）, although a system that is largely hierarchical can also incorporate alternative hierarchies. Hierarchical links can extend "vertically" upwards or downwards via multiple links in the same direction, following a [path](https://en.wikipedia.org/wiki/Path_(graph_theory)). All parts of the hierarchy that are not linked vertically to one another nevertheless can be "horizontally" linked through a path by traveling up the hierarchy to find a common direct or indirect superior, and then down again. This is akin to two [co-workers](https://en.wikipedia.org/wiki/Co-worker) or [colleagues](https://en.wikipedia.org/wiki/Comrade) （同一层）; each reports to a common superior, but they have the same relative amount of authority. Organizational forms exist that are both alternative and complementary to hierarchy. [Heterarchy](https://en.wikipedia.org/wiki/Heterarchy) is one such form.
 
-“hierarchy”的中文意思是“层级”，我们平时常常所说的“等级”与它的含义类似。Hierarchy概念所强调的是level以及level之间的关系（above-below关系或superior-subordinates关系）。可以将Hierarchy看做是一种结构（元素和元素之间的关系），Hierarchy的关系为above-below关系、superior-subordinates关系。
+“hierarchy”的中文意思是“层级”，我们平时常常所说的“等级”与它的含义类似，其实。Hierarchy概念所强调的是level以及level之间的关系（above-below关系或superior-subordinates关系）。可以将Hierarchy看做是一种结构（元素和元素之间的关系），Hierarchy的关系为above-below关系、superior-subordinates关系。
 
 Hierarchy结构，如果使用computer science 语言来描述的话，那么它类似于graph structure。
 
 Hierarchy结构，如果使用math 语言来描述的话，那么它类似于[partially ordered set](https://en.wikipedia.org/wiki/Partially_ordered_set) ，参见原文[Mathematical representation](https://en.wikipedia.org/wiki/Hierarchy#Mathematical_representation)章节。
 
-Hierachy结构并没有限制两层元素之间的link，按照上述的描述，它是允许某一层中的某个元素同时有两个superior，这种情况就是本文开头所列举的多继承。
-
-思考：既然hierarchy是一种结构，那么按照哪种relation来组织元素无法形成hierarchy？
-
-这个问题原文中并没有给出严格的说明，在原文的[Informal representation](https://en.wikipedia.org/wiki/Hierarchy#Informal_representation)中有非严格的描述。
+Hierarchy结构并没有限制两层元素之间的link，按照上述的描述，它是允许某一层中的某个元素同时有两个superior，这种情况就是本文开头所列举的多继承。
 
 
 
-## [Nomenclature](https://en.wikipedia.org/wiki/Hierarchy#Nomenclature) 命名法
+### [Nomenclature](https://en.wikipedia.org/wiki/Hierarchy#Nomenclature) 命名法
 
 稍微浏览了一下，原文这一段中给出的一些术语是比较好理解的。
 
-## [Informal representation](https://en.wikipedia.org/wiki/Hierarchy#Informal_representation)
+### [Informal representation](https://en.wikipedia.org/wiki/Hierarchy#Informal_representation)
 
 In plain English, a hierarchy can be thought of as a [set](https://en.wikipedia.org/wiki/Set_(mathematics)) in which: 
 
@@ -59,15 +69,15 @@ The first requirement is also interpreted to mean that a hierarchy can have no [
 
 
 
-## [Mathematical representation](https://en.wikipedia.org/wiki/Hierarchy#Mathematical_representation)
+### [Mathematical representation](https://en.wikipedia.org/wiki/Hierarchy#Mathematical_representation)
 
 Mathematically, in its most general form, a hierarchy is a [partially ordered set](https://en.wikipedia.org/wiki/Partially_ordered_set) or *poset*.
 
-## [Subtypes](https://en.wikipedia.org/wiki/Hierarchy#Subtypes)
+### [Subtypes](https://en.wikipedia.org/wiki/Hierarchy#Subtypes)
 
 “subtype”即子类，所以原文的这一节所描述的是特殊类型的hierarchy。
 
-### Nested hierarchy
+#### Nested hierarchy
 
 A nested hierarchy or *inclusion hierarchy* is a hierarchical ordering of [nested sets](https://en.wikipedia.org/wiki/Nested_set).
 
@@ -87,17 +97,23 @@ nested hierarchy structure是一种特殊的hierarchy structure，tree是一种�
 
 原文这一节后面的内容pass掉了。
 
-## Hierarchy and data structure
+## 讨论
+
+### 按照哪种relation来组织元素会形成hierarchy？
+
+在原文的[Informal representation](https://en.wikipedia.org/wiki/Hierarchy#Informal_representation)中有非严格的描述。其实简而言之就是元素之间需要存在着[**partial order**](https://en.wikipedia.org/wiki/Partially_ordered_set#Formal_definition)。
+
+
+
+### Hierarchy and data structure
 
 Hierarchy structure可以使用graph来进行表示。
 
-Nested hierarchy structure可以是要弄tree来进行表示你。
+Nested hierarchy structure可以是要弄tree来进行表示。
 
 
 
-
-
-## [Hierarchy](https://en.wikipedia.org/wiki/Hierarchy) structure and recursion
+### [Hierarchy](https://en.wikipedia.org/wiki/Hierarchy) structure and recursion
 
 具备[hierarchical](https://en.wikipedia.org/wiki/Hierarchical)结构的往往具备recursive的特征。
 

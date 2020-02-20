@@ -1,6 +1,7 @@
 nav:
     - Introduction: index.md
     - Tree-structure:  Tree-structure.md
+    - Examples-of-tree-structures: Examples-of-tree-structures.md
     - Represent-tree: Represent-tree.md
     - Tree(set-theory): Tree(set-theory).md
     - Tree(data-structure): Tree(data-structure).md

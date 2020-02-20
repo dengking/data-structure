@@ -36,40 +36,46 @@ Structure是一个宏大的话题，在这篇文章中，我仅仅从[computer s
 
 “结构”是一个特殊的术语，后面当我们想要表达的是结构的形态（肉眼可见的）时，我们使用“形状”这个词。
 
-## 结构的形状
 
-当我们按照一定的关系对元素进行组织后，如果能够将它们给“画”出来，可能会呈现一定的“形状”，此处使用“形状”这个词，是为了与"结构""这个词有所区分，它强调的是，我们肉眼可以看到的形态，但是，平时，我们更多的还是使用结构这个词。
 
-比较常见有：
+## Representing structure/relation
 
-- [Chain](https://en.wikipedia.org/wiki/Chain)，线性的
+本节的内容参考自：
 
-- [Hierarchy](https://en.wikipedia.org/wiki/Hierarchy)、[tree structure](https://en.wikipedia.org/wiki/Tree_structure)，非线性的，呈现出层次的结构
-- [Network](https://en.wikipedia.org/wiki/Complex_network)， [graph](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics))，非线性的 
-- [Lattice](https://en.wikipedia.org/wiki/Lattice_(order))
+- [Discrete Mathematics and Its Applications](https://www.amazon.com/Discrete-Mathematics-Applications-Kenneth-Rosen/dp/125967651X)的9.3 Representing Relations
+
+在离散数学中的relation概念和本文中的structure概念相同，由于本节内容是参考自离散数学教材，所以在本节relation和structure是同义的。正如在[Discrete Mathematics and Its Applications](https://www.amazon.com/Discrete-Mathematics-Applications-Kenneth-Rosen/dp/125967651X)的9.3 Representing Relations中所说：
+
+> There is another important way of representing a relation using a pictorial representation. Each element of the set is represented by a point, and each ordered pair is represented using an arc with its direction indicated by an arrow. We use such pictorial representations when we think of relations on a finite set as directed graphs, or digraphs.
+
+我们可以使用digraph来表示一个structure/relation，这样表示后，我们可以把它画出来。
+
+### 结构的形状
+
+当我们按照一定的关系对元素进行组织后，我们可以使用digraph将它们给“画”出来，这时会呈现一定的“形状”（此处使用“形状”这个词，是为了与"结构""这个词有所区分，它强调的是，我们肉眼可以看到的形态，但是，平时，我们更多的还是使用结构这个词），比如
+
+- 按照parent-child关系来组织process，最终形成的是树形结构
+- 按照inheritance来组织类，如果不允许多继承的话，则最终形成的是树形结构；如果允许多继承的话，则最终形成的是层次化结构
+
+比较典型的形状有：
+
+- Chain，线性的
+- Hierarchy，非线性的，呈现出层次的结构
+- Network， 参见维基百科[Network](https://en.wikipedia.org/wiki/Complex_network)
+- Lattice，参见维基百科[Lattice](https://en.wikipedia.org/wiki/Lattice_(order))
 
 上诉前三种**形状**是在计算机科学中非常常见的，后面我们会对它们进行分析。
 
-In [computer science](https://en.wikipedia.org/wiki/Computer_science), [tree (data structure)](https://en.wikipedia.org/wiki/Tree_(data_structure)) is often used to describe  [hierarchy](https://en.wikipedia.org/wiki/Hierarchy)  structure, [graph(data structure)](https://en.wikipedia.org/wiki/Graph_(abstract_data_type)) is often used to describe  [network](https://en.wikipedia.org/wiki/Complex_network) structure. The two kind of structures is very importan in computer science.
+按照有的关系来组织数据，它们会形成树结构（不会成环），比如parent-children关系；按照有的关系来组织数据，它们会形成层次化结构（是图，因为它会成环）。那是关系的什么特性决定了这种结果呢？要搞清楚这个问题，首先我们需要对“关系”理论有一定的了解（参见[Relation](./Relation.md)），然后在深入分析我们肉眼看到的各种形状背后的relation的性质。对于上面几种形状的分析，参见：
+
+- Hierarchy，在[Hierarchy](Hierarchy.md)中对其进行详细分析
+- Chain，在[Chain](./Chain.md)中对其进行详细分析
 
 
-
-## Relation 和 形状
-
-通过前面的论述，我们已经知道：结构能够表达元素间的关系，或者说，我们按照关系来组织数据，它们最终可以形成某种特定的形状，比如：
-
-- 按照parent-child关系来组织process，最终形成的是树
-- 按照inheritance来组织类，如果不允许多继承的话，则最终形成的是树；如果允许多继承的话，则最终形成的是图
-
-按照有的关系来组织数据，它们会形成树结构（不会成环），比如parent-children关系；按照有的关系来组织数据，它们会形成图（会成环）。那是关系的什么特效决定了这种结果呢？要搞清楚这个问题，需要对“关系”理论有一定的了解（参见[Relation](./Relation.md)），这个问题是本节需要进行探讨的一个话题。
-
-如何来描述关系呢？不同的学科有不同的语言，比如数学中，可以使用函数来描述关系，计算机科学中呢？参见[Structure in computer science](#Structure in computer science)。
-
-TODO: 增加 hierarchy、chain（blockchain），还需要描述它们所采用的关系。分析我们肉眼看到的各种形状背后的relation的性质。
 
 ## Relation 和 recursion
 
-[Transitive relation](https://en.wikipedia.org/wiki/Transitive_relation)所定义的结构具备递归性。
+当我们按照同一种关系对元素进行组织后，形成的结构是具备递归性的，典型的例子就是list、tree。参见[Recursive data type](https://en.wikipedia.org/wiki/Recursive_data_type)、[Recursive definition](https://en.wikipedia.org/wiki/Recursive_definition)。
 
 ## 过程的结构
 
@@ -91,8 +97,6 @@ TODO: 增加 hierarchy、chain（blockchain），还需要描述它们所采用�
 
 在[Compilers Principles, Techniques and Tools Second Edition(aka ***dragon book***)](https://en.wikipedia.org/wiki/Compilers:_Principles,_Techniques,_and_Tools) 的[7.2.1 Activation Trees](https://dengking.github.io/compiler-principle/Chapter-7-Run-Time-Environments/7.2-Stack-Allocation-of-Space/#721-activation-trees)中对此进行了详细分析。
 
-
-
 ## 各个学科中的Structure
 
 前面我们接触了Structure in math，下面看看在其他学科中关于Structure的研究内容。
@@ -105,7 +109,7 @@ TODO: 增加 hierarchy、chain（blockchain），还需要描述它们所采用�
 
 实现中的一个非常重要的问题是：如何来实现（描述）结构的关系？一般使用link或变来表示关系，比如在tree、graph中。
 
-
+In [computer science](https://en.wikipedia.org/wiki/Computer_science), [tree (data structure)](https://en.wikipedia.org/wiki/Tree_(data_structure)) is often used to describe  [hierarchy](https://en.wikipedia.org/wiki/Hierarchy)  structure, [graph(data structure)](https://en.wikipedia.org/wiki/Graph_(abstract_data_type)) is often used to describe  [network](https://en.wikipedia.org/wiki/Complex_network) structure. The two kind of structures is very importan in computer science.
 
 #### [Software architecture](https://en.wikipedia.org/wiki/Software_architecture)
 

@@ -1,6 +1,8 @@
 nav:
     - Introduction: index.md
     - Structure: Structure.md
-    - Hierarchy: Hierarchy.md
     - Relation: Relation.md
+    - Transitive-relation: Transitive-relation.md
+    - Hierarchy: Hierarchy.md
+    - Chain: Chain.md
     - Describe-structure: Describe-structure.md

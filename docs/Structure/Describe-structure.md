@@ -1,12 +1,6 @@
-
-
 # 如何描述structure？
 
-如何来描述结构？我们可以使用不同的语言来进行描述，在计算机科学中，我们往往描述方式往往是human-readable 且 machine-readable的。下面枚举了一些例子：
-
-
-
-
+如何来描述结构的结构？我们可以使用不同的语言来进行描述，在计算机科学中，我们往往描述方式往往是human-readable 且 machine-readable的。下面枚举了一些例子：
 
 ## ASDL
 

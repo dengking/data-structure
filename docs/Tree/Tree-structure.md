@@ -6,24 +6,22 @@
 
 A **tree structure** or **tree diagram** is a way of representing the [hierarchical](https://en.wikipedia.org/wiki/Hierarchy) nature of a [structure](https://en.wikipedia.org/wiki/Structure) in a graphical form. It is named a "tree structure" because the classic [representation](https://en.wikipedia.org/wiki/Tree_structure#Representing_trees) resembles a [tree](https://en.wikipedia.org/wiki/Tree).
 
-在[Hierarchy](../Structure/Hierarchy.md)中，我们已经总结了**tree structure**对应的是 nested hierarchy structure。**tree structure** 的最最典型的特性是：一个节点可以有（包含）多个子节点，一个子节点只能够有一个父节点，root节点没有父节点。**tree structure** 的 “一个子节点只能够有一个父节点” 的要求，将它和graph区分开来了（参见[Discrete Mathematics and Its Applications](https://www.amazon.com/Discrete-Mathematics-Applications-Kenneth-Rosen/dp/125967651X)的Tree章节）。
+在[Hierarchy](../Structure/Hierarchy.md)中，我们已经总结了**tree structure**对应的是 nested hierarchy structure。**tree structure** 的最最典型的特性是：一个节点可以有（包含）多个子节点，一个子节点只能够有一个父节点，root节点没有父节点。**tree structure** 的 “一个子节点只能够有一个父节点” 的要求，将它和graph区分开来了（参见[Discrete Mathematics and Its Applications](https://www.amazon.com/Discrete-Mathematics-Applications-Kenneth-Rosen/dp/125967651X)的Tree章节）。在本文的后面我们使用“nesting ”这个词来描述**tree structure**的这个特性。“nesting”这个词的含义是丰富的，它的表面意思是“嵌套”，“嵌套”蕴含着“包含”的含义，“嵌套”蕴含着“递归”的含义；显然具备nesting特性，就具备了如下特性：
 
-描述**tree structure**的这个最最典型特性的词是：nesting ，nesting这个词的含义是丰富的，它的表面意思是“嵌套”，同时它蕴含着“包含”的含义；“嵌套”蕴含着“递归”；后面我们将统一”nesting“解释为“嵌套包含”。
+- [hierarchical](https://en.wikipedia.org/wiki/Hierarchy)，即树结构是层次的
+- [recursive](../Data-structure/Recursive-data-type.md)，即树结构是具备递归特性的
+
+具备nesting特性的结构都可以使用tree structure来进行表示。
 
 我第一次碰到这个词是在阅读[Compilers Principles, Techniques and Tools Second Edition(aka ***dragon book***)](https://en.wikipedia.org/wiki/Compilers:_Principles,_Techniques,_and_Tools) 的[7.2.1 Activation Trees](https://dengking.github.io/compiler-principle/Chapter-7-Run-Time-Environments/7.2-Stack-Allocation-of-Space/#721-activation-trees)节时：
 
 > Stack allocation would not be feasible if procedure calls, or activations of procedures, did not **nest in time**. The following example illustrates nesting of procedure calls.
 
-这是activations of procedures的**nest in time**特性，使得“Stack allocation”变得可行，并且activations of procedures的过程是tree structure的。
+正是“activations of procedures”的“**nest in time**”特性，使得“Stack allocation”变得可行，并且activations of procedures的过程是tree structure的（原文中关于此是有分析的）。
 
 第二次碰到这个词是在阅读[Hierarchy](../Structure/Hierarchy.md)的“Nested hierarchy”节时，至此才更加觉得它非常能够体现**tree structure**的本质。
 
 更多关于nesting的描述，参见：[Nesting (computing)](https://en.wikipedia.org/wiki/Nesting_(computing))和[Nested sets](https://en.wikipedia.org/wiki/Nested_set)）。
-
-显然具备nesting特性，就具备了如下特性：
-
-- [hierarchical](https://en.wikipedia.org/wiki/Hierarchy)，即树结构是层次的
-- [recursive](../Data-structure/Recursive-data-type.md)，即树结构是具备递归特性的
 
 
 
@@ -63,81 +61,17 @@ Formal grammar的production的head可以derive得到body，这个过程其实非
 
 可以这样不严谨地进行描述：**具备传递性的包含关系**。
 
+后面我们为了描述的便利，统一将这种关系称为“nesting关系”，后面文章中，我们有时候也会将“tree structure”表述成“nesting structure”。
+
 ## Examples of tree structures
 
-### [Directory structure](https://en.wikipedia.org/wiki/Directory_structure) ([directory](https://en.wikipedia.org/wiki/Directory_(computing)))
-
-nesting关系。
-
-See also: 
-
-[Tree (command)](https://en.wikipedia.org/wiki/Tree_(command))
-
-[Path (computing)](https://en.wikipedia.org/wiki/Path_(computing))
-
-### [Process tree](https://en.wikipedia.org/wiki/Pstree)
-
-parent-children关系。
-
-### [File format](https://en.wikipedia.org/wiki/File_format)
-
-nesting关系。
-
-- [Document Object Model](https://en.wikipedia.org/wiki/Document_Object_Model)（[XML](https://en.wikipedia.org/wiki/XML)）
-- [json](https://en.wikipedia.org/wiki/JSON)
-- [yaml](https://en.wikipedia.org/wiki/YAML)
-
-### [Namespace](https://en.wikipedia.org/wiki/Namespace)
-
-nesting关系。
-
-Namespace的应用场景实在太多，在维基百科的[Namespace](https://en.wikipedia.org/wiki/Namespace)对它总结地非常好。在对它进行思考的时候，发觉使用namespace来组织的数据最终就是hierarchy结构。其实也可以简单地将namespace看做是括号。
-
-### Expression
-
-[binary expression tree](https://en.wikipedia.org/wiki/Binary_expression_tree)
-
-### Source code
-
-[Parse tree](https://en.wikipedia.org/wiki/Parse_tree)、[Abstract syntax tree](https://en.wikipedia.org/wiki/Abstract_syntax_tree)。
-
-nesting关系。
-
-### Activation tree
-
-nesting关系。
-
-函数的调用过程也是可以使用tree来进行描述的，参见[Compilers Principles, Techniques and Tools Second Edition(aka ***dragon book***)](https://en.wikipedia.org/wiki/Compilers:_Principles,_Techniques,_and_Tools) 的[7.2.1 Activation Trees](https://dengking.github.io/compiler-principle/Chapter-7-Run-Time-Environments/7.2-Stack-Allocation-of-Space/#721-activation-trees)。
-
-
-
-### Linguistics
-
-在语言学中，基本上是使用tree来描述语言的结构。
-
-If you have read book describing the **compiler technology**, for example the classic definitive book [Compilers: Principles, Techniques, and Tools](https://en.wikipedia.org/wiki/Compilers:_Principles,_Techniques,_and_Tools) by Alfred V. Aho, Monica S. Lam, Ravi Sethi, and Jeffrey D. Ullman, you will be aware how important the tree structure is to the compiler. As described in chapter 2.2.3 Parse Trees:
-
-> Tree data structures figure prominently in compiling.
-
-There are some many tree in the book, such as [Parse tree](https://en.wikipedia.org/wiki/Parse_tree), [abstract syntax tree](https://en.wikipedia.org/wiki/Abstract_syntax_tree), activation tree(in chapter 7.2.1 Activation Trees), [expression tree](https://en.wikipedia.org/wiki/Binary_expression_tree).
-
-Essentially Speaking, a **programming language** is a [formal language](https://en.wikipedia.org/wiki/Formal_language), what have been concluded in article structure is that 
-
->  Tree can be used to describe the structure of [sentences](https://en.wikipedia.org/wiki/Sentence_(linguistics)) that is  [syntax](https://en.wikipedia.org/wiki/Syntax) and  [formal grammar](https://en.wikipedia.org/wiki/Formal_grammar) can be convert to [tree](https://en.wikipedia.org/wiki/Tree_(data_structure)).
-
-So it's natural to use trees in the compiling.
-
-[Regular expression](https://en.wikipedia.org/wiki/Regular_expression), [algebraic expression](https://en.wikipedia.org/wiki/Algebraic_expression) can be described using  [formal grammar](https://en.wikipedia.org/wiki/Formal_grammar), so given an expression, it can be converted to an equivalent  [parse tree](https://en.wikipedia.org/wiki/Parse_tree).
-
-
+参见[Examples-of-tree-structures](./Examples-of-tree-structures.md)。
 
 ## Nesting 与 hierarchy
 
 Nesting结构具备hierarchy特性，可以这样来进行解释：
 
 最外层是是第一层、它所直接包含的元素都属于第二层、依次递归。
-
-
 
 
 
