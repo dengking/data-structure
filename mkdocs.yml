@@ -19,8 +19,11 @@ nav:
 - Structure:
   - Introduction: Structure/index.md
   - Structure: Structure/Structure.md
-  - Hierarchy: Structure/Hierarchy.md
   - Relation: Structure/Relation.md
+  - Transitive-relation: Structure/Transitive-relation.md
+  - Hierarchy: Structure/Hierarchy.md
+  - Chain: Structure/Chain.md
+  - Describe-structure: Structure/Describe-structure.md
 - Data-structure:
   - Introduction: Data-structure/index.md
   - Data-structure: Data-structure/Data-structure.md
@@ -36,7 +39,6 @@ nav:
     - Circular-array: Array/circular-array/circular-array.md
 - List:
   - List: List/List.md
-  - Chain: List/Chain.md
   - VS-double-linked-list-VS-binary-tree: List/VS-double-linked-list-VS-binary-tree.md
   - VS-Unrolled-linked list-VS-B-tree: List/VS-Unrolled-linked list-VS-B-tree.md
 - Stack:
@@ -78,6 +80,7 @@ nav:
 - Tree:
   - Introduction: Tree/index.md
   - Tree-structure: Tree/Tree-structure.md
+  - Examples-of-tree-structures: Tree/Examples-of-tree-structures.md
   - Represent-tree: Tree/Represent-tree.md
   - Tree(set-theory): Tree/Tree(set-theory).md
   - Tree(data-structure): Tree/Tree(data-structure).md
