@@ -1,6 +1,12 @@
 # Chain 
 
-在本文，我们将chain当做一种形状。
+在本文，我们将chain当做一种形状。本文探索按照哪种关系来组织元素会形成chain。这个问题在维基百科[Total order](https://en.wikipedia.org/wiki/Total_order)中已经给出了答案：
+
+>  A set paired with a total order is called a **chain**
+
+即按照[Total order](https://en.wikipedia.org/wiki/Total_order)来进行组织的话，则会形成chain。
+
+在维基百科[Total order](https://en.wikipedia.org/wiki/Total_order)的[Chains](https://en.wikipedia.org/wiki/Total_order#Chains)章节有对此的更多的讨论。
 
 ## 以chain命名的术语
 

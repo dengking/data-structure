@@ -8,7 +8,7 @@
 
 需要注意的是，结构不仅仅局限于我们肉眼可见的物理结构，它还包括我们肉眼无法看到的逻辑（抽象）结构。
 
-Structure是一个宏大的话题，在这篇文章中，我仅仅从[computer science](https://en.wikipedia.org/wiki/Computer_science)的角度来探讨structure.
+Structure是一个宏大的话题，在这篇文章中，我从[computer science](https://en.wikipedia.org/wiki/Computer_science)的角度来探讨structure.
 
 ## What is structure?
 
@@ -30,7 +30,7 @@ Structure是一个宏大的话题，在这篇文章中，我仅仅从[computer s
 
 阅读了上述定义，直观感受就是：结构不仅仅关乎元素，而且关乎它们之间的**关系**。相同的元素，如果使用不同的**关系**来进行组织，就是不同的**结构**，就呈现出不同的视觉**形态**（后文中，我们把这称之为“**形状**”），所以，在此，我们说：**关系决定（或者说：定义）了结构，进而决定了形状**，所以，我们在研究结构的时候，切莫忽视了对关系分析。
 
-> NOTE: 关于“关系”，参见[Relation](./Relation.md)。
+> NOTE: 关于“关系”，参见[Relation](./Relation/index.md)。
 
 通过上面的描述，现在让我们来回答本节标题中的问题：结构是我们按照某种关系对元素进行组织后形成的。
 
@@ -44,7 +44,7 @@ Structure是一个宏大的话题，在这篇文章中，我仅仅从[computer s
 
 - [Discrete Mathematics and Its Applications](https://www.amazon.com/Discrete-Mathematics-Applications-Kenneth-Rosen/dp/125967651X)的9.3 Representing Relations
 
-在离散数学中的relation概念和本文中的structure概念相同，由于本节内容是参考自离散数学教材，所以在本节relation和structure是同义的。正如在[Discrete Mathematics and Its Applications](https://www.amazon.com/Discrete-Mathematics-Applications-Kenneth-Rosen/dp/125967651X)的9.3 Representing Relations中所说：
+在离散数学中的relation概念和本文中的structure概念相同，由于本节内容是参考自离散数学教材，所以在本小节relation和structure是同义的。正如在[Discrete Mathematics and Its Applications](https://www.amazon.com/Discrete-Mathematics-Applications-Kenneth-Rosen/dp/125967651X)的9.3 Representing Relations中所说：
 
 > There is another important way of representing a relation using a pictorial representation. Each element of the set is represented by a point, and each ordered pair is represented using an arc with its direction indicated by an arrow. We use such pictorial representations when we think of relations on a finite set as directed graphs, or digraphs.
 
@@ -66,7 +66,7 @@ Structure是一个宏大的话题，在这篇文章中，我仅仅从[computer s
 
 上诉前三种**形状**是在计算机科学中非常常见的，后面我们会对它们进行分析。
 
-按照有的关系来组织数据，它们会形成树结构（不会成环），比如parent-children关系；按照有的关系来组织数据，它们会形成层次化结构（是图，因为它会成环）。那是关系的什么特性决定了这种结果呢？要搞清楚这个问题，首先我们需要对“关系”理论有一定的了解（参见[Relation](./Relation.md)），然后在深入分析我们肉眼看到的各种形状背后的relation的性质。对于上面几种形状的分析，参见：
+按照有的关系来组织数据，它们会形成树结构（不会成环），比如parent-children关系；按照有的关系来组织数据，它们会形成层次化结构（是图，因为它会成环）。那是关系的什么特性决定了这种结果呢？要搞清楚这个问题，首先我们需要对“关系”理论有一定的了解（参见[Relation](./Relation/index.md)），然后在深入分析我们肉眼看到的各种形状背后的relation的性质。对于上面几种形状的分析，参见：
 
 - Hierarchy，在[Hierarchy](Hierarchy.md)中对其进行详细分析
 - Chain，在[Chain](./Chain.md)中对其进行详细分析
