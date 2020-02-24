@@ -19,10 +19,21 @@ nav:
 - Structure:
   - Introduction: Structure/index.md
   - Structure: Structure/Structure.md
-  - Relation: Structure/Relation.md
+  - Relation:
+    - Introduction: Structure/Relation/index.md
+    - Relation: Structure/Relation/Relation.md
+    - Order-theory:
+      - Introduction: Structure/Relation/Order-theory/Order-theory.md
+      - Preorder: Structure/Relation/Order-theory/Preorder.md
+      - Partially-order: Structure/Relation/Order-theory/Partially-order.md
+      - Total-order: Structure/Relation/Order-theory/Total-order.md
+      - Well-order: Structure/Relation/Order-theory/Well-order.md
+      - Greatest-and-least-elements: Structure/Relation/Order-theory/Greatest-and-least-elements.md
+      - Application: Structure/Relation/Order-theory/Application.md
   - Transitive-relation: Structure/Transitive-relation.md
   - Hierarchy: Structure/Hierarchy.md
   - Chain: Structure/Chain.md
+  - VS-chain-VS-hierarchy: Structure/VS-chain-VS-hierarchy.md
   - Describe-structure: Structure/Describe-structure.md
 - Data-structure:
   - Introduction: Data-structure/index.md
