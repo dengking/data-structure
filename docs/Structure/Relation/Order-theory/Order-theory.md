@@ -32,4 +32,4 @@
 
 A "✓" indicates that the column property is required in the row definition. For example, the definition of an equivalence relation requires it to be symmetric. All definitions tacitly require [transitivity](https://en.wikipedia.org/wiki/Transitive_relation) and [reflexivity](https://en.wikipedia.org/wiki/Reflexive_relation).
 
-> NOTE:  [transitivity](https://en.wikipedia.org/wiki/Transitive_relation) 对于“排序”非常重要。
+> NOTE:  [transitivity](https://en.wikipedia.org/wiki/Transitive_relation) 是可以进行“排序”的前提条件。
