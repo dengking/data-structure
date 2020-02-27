@@ -30,3 +30,16 @@ https://en.wikipedia.org/wiki/Abstract_syntax
 
 Grammar是对语言结构的描述，使用[production](https://en.wikipedia.org/wiki/Production_(computer_science))来表示grammar。
 
+## Function
+
+按照数学定义，relation是集合的笛卡尔积的子集。表示一个relation，一种可选的方式是枚举出所有的ordered pair，可以将它们组织成graph。另外一种方式是使用类似于grammar、function的工具来描述relation的“生成方法”，所谓“生成方法”其实就是确定哪些ordered pair是符合该关系的。
+
+
+
+## 图与关系
+
+图能够表示关系
+
+如果从逻辑学的角度来看的话，我觉得关系其实是一种推导
+
+production其实所表达的就是一种关系，nesting关系。这种关系可以使用tree来进行表示。
