@@ -6,9 +6,7 @@ nav:
     - Tree(set-theory): Tree(set-theory).md
     - Tree(data-structure): Tree(data-structure).md
     - Application-of-tree-data-structure: Application-of-tree-data-structure.md
-    - Tree-and-stack: Tree-and-stack
     - Implicit-tree: Implicit-tree.md
     - Tree-operation: Tree-operation
     - Trie: Trie
-    - Implementation: Implementation
     - TODO: TODO.md

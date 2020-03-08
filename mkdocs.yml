@@ -105,19 +105,14 @@ nav:
   - Tree(set-theory): Tree/Tree(set-theory).md
   - Tree(data-structure): Tree/Tree(data-structure).md
   - Application-of-tree-data-structure: Tree/Application-of-tree-data-structure.md
-  - Tree-and-stack:
-    - Introduction: Tree/Tree-and-stack/index.md
-    - VS-bracket-VS-tree: Tree/Tree-and-stack/VS-bracket-VS-tree.md
   - Implicit-tree: Tree/Implicit-tree.md
   - Tree-operation:
     - Introduction: Tree/Tree-operation/index.md
+    - Build-tree:
+      - Introduction: Tree/Tree-operation/Build-tree/index.md
   - Trie:
     - Introduction: Tree/Trie/index.md
     - Trie: Tree/Trie/Trie.md
-  - Implementation:
-    - Introduction: Tree/Implementation/index.md
-    - nltk-tree: Tree/Implementation/nltk-tree.md
-    - Python-library: Tree/Implementation/Python-library.md
   - TODO: Tree/TODO.md
 - Hash:
   - Introduction: Hash/index.md
