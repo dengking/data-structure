@@ -1,12 +1,12 @@
 # Tree structure
 
-本文所要讨论的是“树形形状”，标题中的“structure”在所要表达的含义是“形状”。
+本文所要讨论的是“树形形状”，标题中的“structure”所要表达的含义是“形状”。
 
 本文基于维基百科[Tree structure](https://en.wikipedia.org/wiki/Tree_structure)。
 
-A **tree structure** or **tree diagram** is a way of representing the [hierarchical](https://en.wikipedia.org/wiki/Hierarchy) nature of a [structure](https://en.wikipedia.org/wiki/Structure) in a graphical form. It is named a "tree structure" because the classic [representation](https://en.wikipedia.org/wiki/Tree_structure#Representing_trees) resembles a [tree](https://en.wikipedia.org/wiki/Tree).
+> A **tree structure** or **tree diagram** is a way of representing the [hierarchical](https://en.wikipedia.org/wiki/Hierarchy) nature of a [structure](https://en.wikipedia.org/wiki/Structure) in a graphical form. It is named a "tree structure" because the classic [representation](https://en.wikipedia.org/wiki/Tree_structure#Representing_trees) resembles a [tree](https://en.wikipedia.org/wiki/Tree).
 
-在[Hierarchy](../Structure/Hierarchy.md)中，我们已经总结了**tree structure**对应的是 nested hierarchy structure。**tree structure** 的最最典型的特性是：一个节点可以有（包含）多个子节点，一个子节点只能够有一个父节点，root节点没有父节点。**tree structure** 的 “一个子节点只能够有一个父节点” 的要求，将它和graph区分开来了（参见[Discrete Mathematics and Its Applications](https://www.amazon.com/Discrete-Mathematics-Applications-Kenneth-Rosen/dp/125967651X)的Tree章节）。在本文的后面我们使用“nesting ”这个词来描述**tree structure**的这个特性。“nesting”这个词的含义是丰富的，它的表面意思是“嵌套”，“嵌套”蕴含着“包含”的含义，“嵌套”蕴含着“递归”的含义；显然具备nesting特性，就具备了如下特性：
+在[Hierarchy](../Structure/Hierarchy.md)中，我们已经总结了**tree structure**对应的是 nested hierarchy structure。**tree structure** 的最最典型的特性是：一个节点可以有（包含）多个子节点，一个子节点只能够有一个父节点，root节点没有父节点。**tree structure** 的 “一个子节点只能够有一个父节点” 的要求，将它和graph区分开来了（参见[Discrete Mathematics and Its Applications](https://www.amazon.com/Discrete-Mathematics-Applications-Kenneth-Rosen/dp/125967651X)的Tree章节）。在本文的后面我们使用“**nesting** ”这个词来描述**tree structure**的这个特性。“**nesting**”的中文含义是“嵌套”，显然，它能够描述元素之间的嵌套关系；这个词的含义是丰富的，它的表面意思是“嵌套”，“嵌套”蕴含着“包含”的含义，“嵌套”蕴含着“递归”的含义；显然具备nesting特性，就具备了如下特性：
 
 - [hierarchical](https://en.wikipedia.org/wiki/Hierarchy)，即树结构是层次的
 - [recursive](../Data-structure/Recursive-data-type.md)，即树结构是具备递归特性的
@@ -19,9 +19,9 @@ A **tree structure** or **tree diagram** is a way of representing the [hierarchi
 
 正是“activations of procedures”的“**nest in time**”特性，使得“Stack allocation”变得可行，并且activations of procedures的过程是tree structure的（原文中关于此是有分析的）。
 
-第二次碰到这个词是在阅读[Hierarchy](../Structure/Hierarchy.md)的“Nested hierarchy”节时，至此才更加觉得它非常能够体现**tree structure**的本质。
+第二次碰到这个词是在阅读[Hierarchy](../Structure/Hierarchy.md)的“Nested hierarchy”节时，至此才更加觉得nesting这个词非常能够体现**tree structure**的本质。
 
-更多关于nesting的描述，参见：[Nesting (computing)](https://en.wikipedia.org/wiki/Nesting_(computing))和[Nested sets](https://en.wikipedia.org/wiki/Nested_set)）。
+更多关于nesting的描述，参见：[Nesting (computing)](https://en.wikipedia.org/wiki/Nesting_(computing))和[Nested sets](https://en.wikipedia.org/wiki/Nested_set)。
 
 
 
@@ -31,7 +31,7 @@ A **tree structure** or **tree diagram** is a way of representing the [hierarchi
 
 ### Example: nesting关系
 
-在前面我们已经说明了tree structure的最最根本的特征是nesting，所有的具备nesting关系的数据，按照该关系进行组织，都能够形成tree structure。在计算机科学中，存在着太多太多具备nesting关系的数据了，在下面的[Examples of tree structures](#Examples of tree structures)会枚举具备这种关系的结构。
+在前面我们已经说明了tree structure的最最根本的特征是nesting，所有的具备nesting关系的数据，按照该关系进行组织，都能够形成tree structure。在计算机科学中，存在着太多太多具备nesting关系的数据了，在[Examples-of-tree-structures](./Examples-of-tree-structures.md)中会枚举具备这种关系的结构。
 
 其实有很多的关系本质上都是nesting关系：
 
@@ -63,9 +63,26 @@ Formal grammar的production的head可以derive得到body，这个过程其实非
 
 后面我们为了描述的便利，统一将这种关系称为“nesting关系”，后面文章中，我们有时候也会将“tree structure”表述成“nesting structure”。
 
-## Examples of tree structures
+#### 具备传递性的包含关系例子
 
-参见[Examples-of-tree-structures](./Examples-of-tree-structures.md)。
+一些包含关系具有传递性（回去看离散数学对这的描述），比如A包含B，B又包含C，则A应该包含所有的C。
+
+如下是一个例子：
+
+```
+有价证券:股票,债券,权证,资产支持证券,买入返售金融资产
+
+债券:国债,企债,非政策型金融债,地方债,可转债,政策性金融债,公司债,央行票据,次级债
+
+```
+
+`有价证券`包含`债券`，债券又包含`国债,企债,非政策型金融债,地方债,可转债,政策性金融债,公司债,央行票据,次级债`，所以`有价证券`包括`国债,企债,非政策型金融债,地方债,可转债,政策性金融债,公司债,央行票据,次级债`。
+
+上述关系是可以使用tree来进行描述的
+
+上述结构可以使用一个dict来进行保存：所有作为key的都是non-terminal，都需要进行扩展；
+
+
 
 ## Nesting 与 hierarchy
 
@@ -83,7 +100,7 @@ Nesting结构具备hierarchy特性，可以这样来进行解释：
 ( () () ( ( ) ) )
 ```
 
-Nesting的中文含义是“嵌套”，显然，它能够描述元素之间的嵌套关系；上面使用括号来表示nesting结构，因为括号所能够表达的“包含”关系和“嵌套”关系是基本类似的，关于此，参见下面的[Structure and relation](#Structure and relation)。
+上面使用括号来表示nesting结构，因为括号所能够表达的“包含”关系和“嵌套”关系是基本类似的。
 
 上述结构是可以表示成树的，如下：
 
@@ -129,27 +146,6 @@ while len(to_expand_words):
 
 
 
-## 具备传递性的包含关系例子
-
-一些包含关系具有传递性（回去看离散数学对这的描述），比如A包含B，B又包含C，则A应该包含所有的C。
-
-如下是一个例子：
-
-```
-有价证券:股票,债券,权证,资产支持证券,买入返售金融资产
-
-债券:国债,企债,非政策型金融债,地方债,可转债,政策性金融债,公司债,央行票据,次级债
-
-```
-
-`有价证券`包含`债券`，债券又包含`国债,企债,非政策型金融债,地方债,可转债,政策性金融债,公司债,央行票据,次级债`，所以`有价证券`包括`国债,企债,非政策型金融债,地方债,可转债,政策性金融债,公司债,央行票据,次级债`。
-
-上述关系是可以使用tree来进行描述的
-
-上述结构可以使用一个dict来进行保存：所有作为key的都是non-terminal，都需要进行扩展；
-
-
-
 ## See also
 
 - [Hierarchy](https://en.wikipedia.org/wiki/Hierarchy)
@@ -158,4 +154,3 @@ while len(to_expand_words):
 - [Nested set](https://en.wikipedia.org/wiki/Nested_set)
 - [Hereditary property](https://en.wikipedia.org/wiki/Hereditary_property)
 
-Software engineer对这两个词肯定不会陌生，但不知是否知晓它们都可以使用tree structure来进行表示，希望在阅读了本文后，读者下次在遇到这两个词的时候能够产生这样的反映。
