@@ -83,8 +83,6 @@ So it's natural to use trees in the compiling.
 
 
 
-nesting的递归性：我觉得nesting的递归性可以使用关系的transitive特性来进行解释。比如[recursive](https://en.wikipedia.org/wiki/Scope_(programming)) scope rules ，这种包含关系一种transitive relation。   
 
 
-与nesting相关的另外一个词是：level，其实它就和树的深度相关。
 
