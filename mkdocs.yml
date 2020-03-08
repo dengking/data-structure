@@ -8,28 +8,33 @@ markdown_extensions:
 - toc:
     baselevel: 1
     permalink: '#'
-    separator: _
+    separator: '-'
 - admonition
 - def_list
 - mdx_gh_links:
     repo: mkdocs
     user: mkdocs
+- pymdownx.arithmatex
+- pymdownx.betterem:
+    smart_enable: all
+- pymdownx.caret
+- pymdownx.critic
+- pymdownx.details
+- pymdownx.emoji:
+    emoji_generator: '!!python/name:pymdownx.emoji.to_svg'
+- pymdownx.inlinehilite
+- pymdownx.magiclink
+- pymdownx.mark
+- pymdownx.smartsymbols
+- pymdownx.superfences
+- pymdownx.tasklist:
+    custom_checkbox: true
+- pymdownx.tilde
 nav:
 - Home: index.md
 - Structure:
   - Introduction: Structure/index.md
   - Structure: Structure/Structure.md
-  - Relation:
-    - Introduction: Structure/Relation/index.md
-    - Relation: Structure/Relation/Relation.md
-    - Order-theory:
-      - Introduction: Structure/Relation/Order-theory/Order-theory.md
-      - Preorder: Structure/Relation/Order-theory/Preorder.md
-      - Partially-order: Structure/Relation/Order-theory/Partially-order.md
-      - Total-order: Structure/Relation/Order-theory/Total-order.md
-      - Well-order: Structure/Relation/Order-theory/Well-order.md
-      - Greatest-and-least-elements: Structure/Relation/Order-theory/Greatest-and-least-elements.md
-      - Application: Structure/Relation/Order-theory/Application.md
   - Transitive-relation: Structure/Transitive-relation.md
   - Hierarchy: Structure/Hierarchy.md
   - Chain: Structure/Chain.md
@@ -88,6 +93,10 @@ nav:
       - Minimum-spanning-tree: Graph/04-Computational-problems-in-graph-theory/Spanning-tree/Minimum-spanning-tree.md
       - "Bor\u016Fvka's-algorithm": "Graph/04-Computational-problems-in-graph-theory/Spanning-tree/Bor\u016F\
           vka's-algorithm.md"
+  - Implementation:
+    - Introduction: Graph/Implementation/index.md
+    - Cpp-library: Graph/Implementation/Cpp-library.md
+    - Python-library: Graph/Implementation/Python-library.md
 - Tree:
   - Introduction: Tree/index.md
   - Tree-structure: Tree/Tree-structure.md
@@ -105,6 +114,10 @@ nav:
   - Trie:
     - Introduction: Tree/Trie/index.md
     - Trie: Tree/Trie/Trie.md
+  - Implementation:
+    - Introduction: Tree/Implementation/index.md
+    - nltk-tree: Tree/Implementation/nltk-tree.md
+    - Python-library: Tree/Implementation/Python-library.md
   - TODO: Tree/TODO.md
 - Hash:
   - Introduction: Hash/index.md
