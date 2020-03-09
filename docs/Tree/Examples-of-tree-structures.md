@@ -83,6 +83,6 @@ So it's natural to use trees in the compiling.
 
 
 
+## Counting problems can be solved using tree diagrams
 
-
-
+在[Discrete Mathematics and Its Applications](https://dengking.github.io/discrete-math/Book-Discrete-Mathematics-and-Its-Applications/)的[6.1 The Basics of Counting](https://dengking.github.io/discrete-math/Book-Discrete-Mathematics-and-Its-Applications/Chapter-6-Counting/#61-the-basics-of-counting)中使用tree diagram来描述**Counting problems**，这是一种典型的逻辑结构（并非肉眼可见的树结构）。

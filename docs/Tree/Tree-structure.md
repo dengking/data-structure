@@ -61,7 +61,7 @@ Formal grammar的production的head可以derive得到body，这个过程其实非
 
 可以这样不严谨地进行描述：**具备传递性的包含关系**。
 
-后面我们为了描述的便利，统一将这种关系称为“nesting关系”，后面文章中，我们有时候也会将“tree structure”表述成“nesting structure”。
+后面我们为了描述的便利，统一将这种关系称为“**nesting关系**”，后面文章中，我们有时候也会将“tree structure”表述成“nesting structure”。
 
 #### 具备传递性的包含关系例子
 
