@@ -39,13 +39,17 @@ In utilizing full buffer capacity with pointer-based implementation strategy, th
 
 ### [ spdlog](https://github.com/gabime/spdlog) [`circular_q.h`](https://github.com/gabime/spdlog/blob/v1.x/include/spdlog/details/circular_q.h) 
 
-这是实现是按照上述维基百科[Circular buffer](https://en.wikipedia.org/wiki/Circular_buffer)中描述的实现的，在本目录下，将对它从原项目中抽离了出来，以可以进行独立运行。
+这是实现是按照上述维基百科[Circular buffer](https://en.wikipedia.org/wiki/Circular_buffer)中描述的实现的，在本目录下，收录了它的源代码。
 
 
+
+### [CIRCULAR QUEUE IN C](http://www.martinbroadhurst.com/cirque-in-c.html)
+
+这个实现也非常好，在本目录下，收录了它的源代码。
 
 ### Others
 
-[CIRCULAR QUEUE IN C](http://www.martinbroadhurst.com/cirque-in-c.html)
+
 
 [Implementing a Queue using a *circular* array](http://www.mathcs.emory.edu/~cheung/Courses/171/Syllabus/8-List/array-queue2.html)
 

@@ -8,6 +8,7 @@
 #include <vector>
 
 /**
+ * 源：https://github.com/gabime/spdlog/blob/v1.x/include/spdlog/details/circular_q.h
  * 本程序中overrun与overwrite同义，关于overwrite，参见 https://en.wikipedia.org/wiki/Circular_buffer
  *
  * tail_所指向的位置是留空的
