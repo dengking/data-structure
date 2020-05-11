@@ -4,8 +4,9 @@
 // circular q view of std::vector.
 #pragma once
 
+#include "stddef.h"
 #include <vector>
-#include <cassert>
+
 /**
  * 本程序中overrun与overwrite同义，关于overwrite，参见 https://en.wikipedia.org/wiki/Circular_buffer
  *
