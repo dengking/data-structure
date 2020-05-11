@@ -1,49 +1,34 @@
-[TOC]
+# Hash table
 
+Hash table在计算机科学中有着广泛的应用，维基百科的这篇文章总结地非常好。
 
-
-# [Hash table](https://en.wikipedia.org/wiki/Hash_table)
-
-
+## 维基百科[Hash table](https://en.wikipedia.org/wiki/Hash_table)
 
 In [computing](https://en.wikipedia.org/wiki/Computing), a **hash table** (**hash map**) is a [data structure](https://en.wikipedia.org/wiki/Data_structure) that implements an [associative array](https://en.wikipedia.org/wiki/Associative_array) [abstract data type](https://en.wikipedia.org/wiki/Abstract_data_type), a structure that can map [keys](https://en.wikipedia.org/wiki/Unique_key) to [values](https://en.wikipedia.org/wiki/Value_(computer_science)). A **hash table** uses a [hash function](https://en.wikipedia.org/wiki/Hash_function) to compute an *index* into an array of *buckets* or *slots*, from which the desired value can be found.
 
-***SUMMARY*** : 
+> NOTE: 上述术语非常重要，因为它们经常被提及。
 
 Ideally, the hash function will assign each key to a unique bucket, but most hash table designs employ an imperfect hash function, which might cause hash *collisions* where the hash function generates the same index for more than one key. Such **collisions** must be accommodated in some way.
 
-In a well-dimensioned hash table, the average cost (number of [instructions](https://en.wikipedia.org/wiki/Instruction_(computer_science))) for each lookup is independent of the number of elements stored in the table. Many hash table designs also allow arbitrary insertions and deletions of key-value pairs, at ([amortized](https://en.wikipedia.org/wiki/Amortized_analysis)[[2\]](https://en.wikipedia.org/wiki/Hash_table#cite_note-leiser-2)) constant average cost per operation.[[3\]](https://en.wikipedia.org/wiki/Hash_table#cite_note-knuth-3)[[4\]](https://en.wikipedia.org/wiki/Hash_table#cite_note-cormen-4)
+> NOTE:  关于perfect hash function，参见维基百科[Perfect hash function](https://en.wikipedia.org/wiki/Perfect_hash_function)。
+
+In a well-dimensioned hash table, the average cost (number of [instructions](https://en.wikipedia.org/wiki/Instruction_(computer_science))) for each lookup is independent of the number of elements stored in the table. Many hash table designs also allow arbitrary insertions and deletions of key-value pairs, at ([amortized](https://en.wikipedia.org/wiki/Amortized_analysis)) constant average cost per operation. 
+
+> NOTE: 如何理解well-dimensioned ？我觉得它的意思是 “大小合适的”
 
 In many situations, **hash tables** turn out to be on average more efficient than [search trees](https://en.wikipedia.org/wiki/Search_tree) or any other [table](https://en.wikipedia.org/wiki/Table_(computing)) lookup structure. For this reason, they are widely used in many kinds of computer [software](https://en.wikipedia.org/wiki/Software), particularly for [associative arrays](https://en.wikipedia.org/wiki/Associative_array), [database indexing](https://en.wikipedia.org/wiki/Database_index), [caches](https://en.wikipedia.org/wiki/Cache_(computing)), and [sets](https://en.wikipedia.org/wiki/Set_(abstract_data_type)).
 
 
 
-## Hashing
+### Hashing
 
 *Main article:* [Hash function](https://en.wikipedia.org/wiki/Hash_function)
 
-The idea of hashing is to distribute the entries (key/value pairs) across an array of *buckets*. Given a key, the algorithm computes an *index* that suggests where the entry can be found:
+> NOTE:  这一段关于hash的介绍是比较精简的
 
-```
-index = f(key, array_size)
-```
+#### Choosing a hash function
 
-Often this is done in two steps:
-
-```
-hash = hashfunc(key)
-index = hash % array_size
-```
-
-In this method, the *hash* is independent of the array size, and it is then *reduced* to an index (a number between `0` and `array_size − 1`) using the [modulo operator](https://en.wikipedia.org/wiki/Modulo_operation) (`%`).
-
-In the case that the array size is a [power of two](https://en.wikipedia.org/wiki/Power_of_two), the remainder operation is reduced to [masking](https://en.wikipedia.org/wiki/Mask_(computing)), which improves speed, but can increase problems with a poor hash function.[[5\]](https://en.wikipedia.org/wiki/Hash_table#cite_note-5)
-
-
-
-### Choosing a hash function
-
-A basic requirement is that the function should provide a [uniform distribution](https://en.wikipedia.org/wiki/Uniform_distribution_(discrete)) （离散均匀分布）of hash values. A non-uniform distribution increases the number of collisions and the cost of resolving them. Uniformity（均匀性） is sometimes difficult to ensure by design, but may be evaluated empirically（先验地） using statistical tests, e.g., a [Pearson's chi-squared test](https://en.wikipedia.org/wiki/Pearson's_chi-squared_test#Discrete_uniform_distribution) for discrete uniform distributions.[[6\]](https://en.wikipedia.org/wiki/Hash_table#cite_note-chernoff-6)[[7\]](https://en.wikipedia.org/wiki/Hash_table#cite_note-plackett-7)
+A basic requirement is that the function should provide a [uniform distribution](https://en.wikipedia.org/wiki/Uniform_distribution_(discrete)) （离散均匀分布）of hash values. 
 
 The distribution needs to be **uniform** only for **table sizes** that occur in the application. In particular, if one uses **dynamic resizing** with exact doubling and halving of the table size, then the **hash function** needs to be uniform only when the size is a [power of two](https://en.wikipedia.org/wiki/Power_of_two). Here the index can be computed as some range of bits of the hash function. On the other hand, some hashing algorithms prefer to have the size be a [prime number](https://en.wikipedia.org/wiki/Prime_number).[[8\]](https://en.wikipedia.org/wiki/Hash_table#cite_note-:0-8) The modulus operation may provide some additional mixing; this is especially useful with a poor hash function.
 
@@ -57,7 +42,7 @@ For [open addressing](https://en.wikipedia.org/wiki/Open_addressing) schemes, th
 
 
 
-## Key statistics
+### Key statistics
 
 A critical statistic for a hash table is the *load factor*, defined as
 
@@ -68,11 +53,7 @@ where
 - *n* is the number of entries occupied in the hash table.
 - *k* is the number of buckets（其实就是table size）.
 
-As the **load factor** grows larger, the hash table becomes slower, and it may even fail to work (depending on the method used). The expected [constant time](https://en.wikipedia.org/wiki/Constant_time) property of a hash table assumes that the **load factor** be kept below some bound. For a *fixed* number of buckets, the time for a lookup grows with the number of entries, and therefore the desired constant time is not achieved. In some implementations, the solution is to automatically grow (usually, double) the size of the table when the **load factor bound** is reached, thus forcing to re-hash all entries. As a real-world example, the default **load factor** for a HashMap in Java 10 is 0.75, which "offers a good trade-off between time and space costs."[[9\]](https://en.wikipedia.org/wiki/Hash_table#cite_note-JavadocHashmap10-9)
-
-Second to the load factor, one can examine the variance of number of entries per **bucket**. For example, two tables both have 1,000 entries and 1,000 buckets; one has exactly one entry in each bucket, the other has all entries in the same bucket. Clearly the hashing is not working in the second one.
-
-A low load factor is not especially beneficial. As the **load factor** approaches 0, the proportion of unused areas in the hash table increases, but there is not necessarily any reduction in search cost. This results in wasted memory.
+> NOTE: load factor是一个非常主要的概念
 
 
 
