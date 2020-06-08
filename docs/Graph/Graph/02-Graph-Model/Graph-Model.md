@@ -63,7 +63,7 @@ Graph models are useful tools in the design of software. We will briefly describ
 
 > NOTE: 使用edge来表示control的flow
 
-
+在编译原理中使用的控制流图
 
 ### [Dataflow](https://en.wikipedia.org/wiki/Dataflow)
 
@@ -93,7 +93,7 @@ http://www.cs.columbia.edu/~mcollins/ff2.pdf
 
 In [jieba](https://github.com/fxsjy/jieba),  based on a prefix dictionary structure to achieve efficient **word graph** scanning. Build a directed acyclic graph (DAG) for all possible word combinations.
 
-
+[directed acyclic word graph](https://en.wikipedia.org/wiki/Deterministic_acyclic_finite_state_automaton)
 
 ### [probabilistic graphical model](https://en.wikipedia.org/wiki/Graphical_model)
 

@@ -1,9 +1,3 @@
 # 关于本章
 
-讨论了图的定义，构造，基本操作，以及图在计算机科学各个领域各种各样的应用。
-
-本章内容主要来自《[Discrete Mathematics and Its Applications](https://www.amazon.com/Discrete-Mathematics-Applications-Kenneth-Rosen/dp/125967651X)》和维基百科。
-
-## TODO
-
-如何判断一个graph是否是tree？
+本章讨论graph，以及一种特殊的graph：tree，两者在computer science中有着非常广泛的application。
