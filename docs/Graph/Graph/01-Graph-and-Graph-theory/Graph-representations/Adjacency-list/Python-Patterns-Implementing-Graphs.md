@@ -39,9 +39,9 @@ Let's write a simple function to determine a path between two nodes. It takes a 
         path = path + [start]
         if start == end:
             return path
-        if not graph.has_key(start):
+        if start not in graph: # 原文的写法是：if not graph.has_key(start)，python 3中dict没有has_key成员函数
             return None
-        for node in graph[start]:
+        for node in graph[start]: # adjacent nodes
             if node not in path:
                 newpath = find_path(graph, node, end, path)
                 if newpath: return newpath
@@ -56,9 +56,11 @@ A sample run (using the graph above):
     >>>
 ```
 
-The second 'if' statement is necessary only in case there are nodes that are listed as end points for arcs but that don't have outgoing arcs themselves, and aren't listed in the graph at all. Such nodes could also be contained in the graph, with an empty list of outgoing arcs, but sometimes it is more convenient not to require this.
+The second '`if`' statement is necessary only in case there are nodes that are listed as end points for arcs but that don't have outgoing arcs themselves, and aren't listed in the graph at all. Such nodes could also be contained in the graph, with an empty list of outgoing arcs, but sometimes it is more convenient not to require this.
 
-Note that while the user calls `find_path()` with three arguments, it calls itself with a fourth argument: the path that has already been traversed. The default value for this argument is the empty list, '[]', meaning no nodes have been traversed yet. This argument is used to avoid **cycles** (the first 'if' inside the 'for' loop). The 'path' argument is not modified: the assignment "path = path + [start]" creates a new list. If we had written "path.append(start)" instead, we would have modified the variable 'path' in the caller, with disastrous results. (Using tuples, we could have been sure this would not happen, at the cost of having to write "path = path + (start,)" since "(start)" isn't a singleton tuple -- it is just a parenthesized expression.)
+> NOTE: 上面这段话没有读懂
+
+Note that while the user calls `find_path()` with three arguments, it calls itself with a fourth argument: the path that has already been traversed. The default value for this argument is the empty list, '`[]`', meaning no nodes have been traversed yet. This argument is used to avoid **cycles** (the first '`if`' inside the '`for`' loop). The '`path`' argument is not modified: the assignment "`path = path + [start]`" creates a new list. If we had written "`path.append(start)`" instead, we would have modified the variable '`path`' in the caller, with disastrous results. (Using tuples, we could have been sure this would not happen, at the cost of having to write "`path = path + (start,)`" since "`(start)`" isn't a singleton tuple -- it is just a parenthesized expression.)
 
 It is simple to change this function to return a list of all paths (without cycles) instead of the first path it finds:
 
@@ -67,7 +69,7 @@ It is simple to change this function to return a list of all paths (without cycl
         path = path + [start]
         if start == end:
             return [path]
-        if not graph.has_key(start):
+        if start not in graph: # 原文的写法是：if not graph.has_key(start)，python 3中dict没有has_key成员函数
             return []
         paths = []
         for node in graph[start]:
@@ -93,7 +95,7 @@ Another variant finds the shortest path:
         path = path + [start]
         if start == end:
             return path
-        if not graph.has_key(start):
+        if start not in graph: # 原文的写法是：if not graph.has_key(start)，python 3中dict没有has_key成员函数
             return None
         shortest = None
         for node in graph[start]:
@@ -115,12 +117,12 @@ Sample run:
 
 ~~These functions are about as simple as they get. Yet, they are nearly optimal (for code written in Python). In another Python Patterns column, I will try to analyze their running speed and improve their performance, at the cost of more code.~~
 
-**UPDATE:** Eryk Kopczyński pointed out that these functions are not optimal. To the contrary, "this program runs in exponential time, while find_shortest_path can be done in linear time using BFS [Breadth First Search]. Furthermore a linear BFS is simpler:"
+**UPDATE:** Eryk Kopczyński pointed out that these functions are not optimal. To the contrary, "this program runs in exponential time, while `find_shortest_path` can be done in linear time using BFS [Breadth First Search]. Furthermore a linear BFS is simpler:"
 
 ```python
     # Code by Eryk Kopczyński
     def find_shortest_path(graph, start, end):
-        dist = {start: [start]}
+        dist = {start: [start]} # 记录下从start到该节点的路径
         q = deque(start)
         while len(q):
             at = q.popleft()
@@ -131,6 +133,8 @@ Sample run:
         return dist[end]
 ```
 
-Note that this returns the path in a weird format, e.g., `[[['A'], 'B'], 'D']``len(find_shortest_path(graph, 'A', 'D'))``[dist[at], next]``dist[at]+[next]`
+
+
+Note that this returns the path in a weird format, e.g., `[[['A'], 'B'], 'D']`. In particular, `len(find_shortest_path(graph, 'A', 'D'))` will give the incorrect answer (2, because the outer list is of length 2). This is because append is done as `[dist[at], next]` instead of `dist[at]+[next]`. The second method would use quadratic time and memory, but still should be fine for relatively small graphs; otherwise, it is easy to turn the list into the correct format.
 
 Another variation would be to add more data abstraction: create a class to represent graphs, whose methods implement the various algorithms. While this appeals to the desire for structured programming, it doesn't make the code any more efficient (to the contrary). It does make it easier to add various labels to the nodes or arcs and to add algorithms that take those labels into account (e.g. to find the shortest route between two cities on a map). ~~This, too, will be the subject of another column.~~
