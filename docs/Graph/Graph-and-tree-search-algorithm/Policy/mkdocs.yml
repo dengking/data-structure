@@ -1,7 +1,0 @@
-nav:
-    - Dfs-and-bfs: Dfs-and-bfs.md
-    - A-star-search-algorithm: A-star-search-algorithm.md
-    - B-star-search-algorithm: B-star-search-algorithm.md
-    - Beam-search: Beam-search.md
-    - Iterative-deepening-depth-first-search: Iterative-deepening-depth-first-search.md
-    
