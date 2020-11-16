@@ -1,1 +1,0 @@
-# [Geometric hashing](https://en.wikipedia.org/wiki/Geometric_hashing)
